@@ -1,19 +1,21 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\CategorydController;
-use App\Http\Controllers\CityController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\TagController;
-use App\Models\Categories;
 use App\Models\City;
 use App\Models\Post;
+use App\Models\Categories;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\CategorydController;
+use App\Http\Controllers\ComplainStoryController;
+use App\Http\Controllers\WriteNewStoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,15 +58,6 @@ Route::controller(ServiceController::class)
     });
 
 
-Route::prefix('contact')
-    ->name('contact.')
-    ->group(function () {
-        Route::get('/', [ContactController::class, 'view'])->name('index');
-        Route::post('/', [ContactController::class, 'store'])->name('store');
-    });
-
-
-
 Route::get('guides-nuisibles/{category}', [CategorydController::class, 'postByCategory'])
     ->where(['category' => '[A-Za-z-_]+'])
     ->name('category');
@@ -87,3 +80,13 @@ Route::get('sitemap:generate:blanee', function () {
         return abort(404);
     }
 });
+
+Route::get('/submit-new-story', [WriteNewStoryController::class, 'index'])->name('submit.story');
+Route::get('/complain-story', [ComplainStoryController::class, 'index'])->name('complain.story');
+
+Route::prefix('contact')
+    ->name('contact.')
+    ->group(function () {
+        Route::get('/', [ContactController::class, 'view'])->name('index');
+        Route::post('/', [ContactController::class, 'store'])->name('store');
+    });

@@ -1,19 +1,18 @@
 <footer class="mx-auto border-t-2 border-solid border-t-red-600 bg-neutral-800">
-    <div class="m-auto border-t border-t-neutral-500 pt-5 pb-10 text-center">
+    <div class="m-auto border-t border-t-neutral-500 pt-5 pb-3 text-center">
         <p class="pb-3 text-base font-light text-gray-300">
             Copyright – Blanee.com © 2021 - 2023
         </p>
-        <p class="m-auto px-7 text-center text-sm font-light text-gray-300 md:max-w-4xl">
-            Avis de non-responsabilité important : Les informations contenues sur
-            Blanee sont uniquement destinées à des fins d'information. Les
-            déclarations faites sur ce site Web n'ont pas été évaluées par l'Agence de
-            l'environnement et de la maîtrise de l'énergie (ADEME), la Haute Autorité
-            de Santé (HAS) ou tout autre organisme de réglementation. Les informations
-            ou les produits discutés ne sont pas destinés à remédier, exterminer,
-            traiter ou prévenir une infestation d'insectes ou de rongeurs. Veuillez
-            consulter une société de désinsectisation, dératisation, désinfection
-            agréée avant d'utiliser des pesticides dans ou autour de votre lieu de
-            vie.
+        <p class="m-auto px-7 text-left text-sm font-light text-gray-300 md:max-w-4xl">
+            সতর্কীকরণ : এই ওয়েবসাইটটি ১৮ বছরের কম বয়সীদের জন্য উপযুক্ত নয় এবং সমস্ত প্রাপ্তবয়স্ক পাঠকদের জন্য
+            উপযুক্ত নাও হতে পারে ৷ আপনার বিবেচনার ভিত্তিতে দেখুন। প্রকাশিত গল্প গুলো ইন্টারনেট বা বিভিন্ন ওয়েব সাইট থেকে
+            সংগ্রহ করা, এবং লেখকদের কল্পনা শক্তি ব্যবহার করে লেখতে পারেন কিংবা নিজের জীবন থেকে উপলপদ্ধি করতে
+            পারেন।<br />
+            এই ওয়েবসাইট এর কোনো কনটেন্ট যদি কারও জীবনের সাথে মিলে যায় অথবা যদি ক্ষতিগ্রস্ত হয়ে থাকেন বা হবেন তাহলে
+            ওয়েবসাইট দায় বদ্ধ থাকবে না । <br />
+            যদি মনে করেন কোনো কনটেন্ট এই ওয়েবসাইট থাকা প্রয়োজন নেই তাহলে আমারদের কে জানাতে পারেন ।
+            শুধু আপনাকে সাময়িক আনন্দ দেয়ার জন্য এই ওয়েবসাইট , দয়াকরে কেউ বাস্তব জীবনে এসব চেষ্টা করবেন না।
+            <br /> পাপ ও খারাপ কাজ থেকে বিরত থাকুন
         </p>
     </div>
 </footer>

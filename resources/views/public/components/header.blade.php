@@ -96,7 +96,7 @@
                     জনপ্রিয় লেখক
                 </a>
                 <a class="mx-4 transform text-xl leading-5 text-white hover:text-blue-600 transition-colors duration-300 dark:text-gray-200"
-                    href="{{ route('category', ['category' => 'prix']) }}">
+                    href="{{ route('submit.story') }}">
                     গল্প লিখে পাঠান
                 </a>
 
@@ -113,19 +113,19 @@
                     </svg>
 
                     <div
-                        class="hs-dropdown-menu duration-[0.1ms] sm:duration-[150ms] top-full z-10 hidden w-full bg-white p-2 opacity-0 transition-[opacity,margin] before:absolute before:-top-5 before:left-0 before:h-5 before:w-full hs-dropdown-open:opacity-100 dark:divide-gray-700 dark:border-gray-700 dark:bg-gray-800 sm:w-72 sm:rounded-lg sm:border sm:shadow-md sm:dark:border">
+                        class="hs-dropdown-menu duration-[0.1ms] sm:duration-[150ms] top-full z-10 hidden w-full bg-white p-2 opacity-0 transition-[opacity,margin] before:absolute before:-top-5 before:left-0 before:h-5 before:w-full hs-dropdown-open:opacity-100 dark:divide-gray-700 dark:border-gray-700 dark:bg-gray-800 sm:w-36 sm:rounded-lg sm:border sm:shadow-md sm:dark:border">
 
                         <div
                             class="hs-dropdown relative [--strategy:static] [--adaptive:none] sm:[--strategy:absolute] sm:[--trigger:hover]">
                             <a class="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-gray-800 hover:text-blue-600 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                                href="https://serruriergenial.com/?source=blanee">
+                                href="{{ route('contact.index') }}">
                                 যোগাযোগ করুন
                             </a>
                         </div>
                         <div
                             class="hs-dropdown relative [--strategy:static] [--adaptive:none] sm:[--strategy:absolute] sm:[--trigger:hover]">
                             <a class="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-gray-800 hover:text-blue-600 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                                href="https://jardiniergenial.com/?source=blanee">
+                                href="{{ route('complain.story') }}">
                                 অভিযোগ জানান
                             </a>
                         </div>
