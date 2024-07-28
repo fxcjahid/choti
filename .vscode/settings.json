@@ -6,10 +6,10 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        "vendor": true
+        "vendor": true,
+        "node_modules": true
     },
     "hide-files.files": [
-        "vendor",
         "node_modules"
     ]
 }
