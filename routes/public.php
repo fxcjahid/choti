@@ -15,6 +15,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategorydController;
 use App\Http\Controllers\ComplainStoryController;
+use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\WriteNewStoryController;
 
 /*
@@ -33,34 +34,25 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 /**
  * Page Controller
  */
-Route::controller(PageController::class)
-    ->prefix('service')
-    ->group(function () {
-        Route::view('mice-control', 'public.page.service.mice-control')->name('mice');
-    });
 
 Route::controller(PageController::class)
     ->group(function () {
         //Route::get('prix', 'prix')->name('prix');
         Route::get('qui-sommes-nous', 'AboutUs')->name('about-us');
-        Route::get('guides-nuisibles', 'guidesNuisibles')->name('guides-nuisibles');
+        Route::get('category', 'guidesNuisibles')->name('guides-nuisibles');
+        Route::get('series', 'series')->name('series');
         Route::get('nos-conditions-generales-utilisation-mentions-legales', 'PolitiqueConfidentialite')->name('privacy-policy');
         // Service Page 
         //Route::get('{page}', 'servicePage')->name('service-page'); 
     });
 
-Route::controller(ServiceController::class)
-    ->prefix('service')
-    ->name('service.')
-    ->group(function () {
-        Route::get('{service}/couverture', 'coverage')->name('coverage');
-        Route::get('{service}/{city}', 'page')->name('page');
-    });
-
-
-Route::get('guides-nuisibles/{category}', [CategorydController::class, 'postByCategory'])
+Route::get('category/{category}', [CategorydController::class, 'postByCategory'])
     ->where(['category' => '[A-Za-z-_]+'])
     ->name('category');
+
+Route::get('series/{series}', [SeriesController::class, 'postBySeries'])
+    ->where(['series' => '[A-Za-z-_]+'])
+    ->name('series');
 
 Route::get('tags/{tag}', [TagController::class, 'postBytag'])
     ->where(['tag' => '[A-Za-z-_]+'])

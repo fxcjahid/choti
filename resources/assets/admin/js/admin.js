@@ -6,6 +6,7 @@ import CreatePostButton from './components/CreatePostButton'
 import CretatePostEditor from './components/CretatePostEditor'
 import CreatePost from './components/CreatePost'
 import CreateCategory from './components/CreateCategory'
+import CreateSeries from './components/CreateSeries'
 import CreateTag from './components/CreateTag';
 import CreateUploader from "./components/CreateUploader";
 import CreateFileManagerModal from './components/CreateFileManagerModal';
@@ -28,6 +29,7 @@ app.component('CreatePost', CreatePost);
 app.component('CreatePostButton', CreatePostButton)
 app.component('CretatePostEditor', CretatePostEditor)
 app.component('CreateCategory', CreateCategory)
+app.component('CreateSeries', CreateSeries)
 app.component('CreateTag', CreateTag)
 app.component('CreateUploader', CreateUploader)
 app.component('CreateFileManagerModal', CreateFileManagerModal)

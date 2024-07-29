@@ -21938,14 +21938,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_CretatePostEditor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/CretatePostEditor */ "./resources/assets/admin/js/components/CretatePostEditor.js");
 /* harmony import */ var _components_CreatePost__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/CreatePost */ "./resources/assets/admin/js/components/CreatePost.js");
 /* harmony import */ var _components_CreateCategory__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/CreateCategory */ "./resources/assets/admin/js/components/CreateCategory.js");
-/* harmony import */ var _components_CreateTag__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/CreateTag */ "./resources/assets/admin/js/components/CreateTag.js");
-/* harmony import */ var _components_CreateUploader__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/CreateUploader */ "./resources/assets/admin/js/components/CreateUploader.js");
-/* harmony import */ var _components_CreateFileManagerModal__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/CreateFileManagerModal */ "./resources/assets/admin/js/components/CreateFileManagerModal.js");
-/* harmony import */ var _components_FileManager__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/FileManager */ "./resources/assets/admin/js/components/FileManager.vue");
-/* harmony import */ var _Dashboard_DashboardIndex__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Dashboard/DashboardIndex */ "./resources/assets/admin/js/Dashboard/DashboardIndex.js");
-/* harmony import */ var _components_CreateSearch__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/CreateSearch */ "./resources/assets/admin/js/components/CreateSearch.js");
-/* harmony import */ var _Page_PageIndex__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./Page/PageIndex */ "./resources/assets/admin/js/Page/PageIndex.js");
-/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
+/* harmony import */ var _components_CreateSeries__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/CreateSeries */ "./resources/assets/admin/js/components/CreateSeries.js");
+/* harmony import */ var _components_CreateTag__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/CreateTag */ "./resources/assets/admin/js/components/CreateTag.js");
+/* harmony import */ var _components_CreateUploader__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/CreateUploader */ "./resources/assets/admin/js/components/CreateUploader.js");
+/* harmony import */ var _components_CreateFileManagerModal__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/CreateFileManagerModal */ "./resources/assets/admin/js/components/CreateFileManagerModal.js");
+/* harmony import */ var _components_FileManager__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/FileManager */ "./resources/assets/admin/js/components/FileManager.vue");
+/* harmony import */ var _Dashboard_DashboardIndex__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Dashboard/DashboardIndex */ "./resources/assets/admin/js/Dashboard/DashboardIndex.js");
+/* harmony import */ var _components_CreateSearch__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/CreateSearch */ "./resources/assets/admin/js/components/CreateSearch.js");
+/* harmony import */ var _Page_PageIndex__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./Page/PageIndex */ "./resources/assets/admin/js/Page/PageIndex.js");
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
+
 
 
 
@@ -21972,13 +21974,14 @@ app.component('CreatePost', _components_CreatePost__WEBPACK_IMPORTED_MODULE_6__[
 app.component('CreatePostButton', _components_CreatePostButton__WEBPACK_IMPORTED_MODULE_4__["default"]);
 app.component('CretatePostEditor', _components_CretatePostEditor__WEBPACK_IMPORTED_MODULE_5__["default"]);
 app.component('CreateCategory', _components_CreateCategory__WEBPACK_IMPORTED_MODULE_7__["default"]);
-app.component('CreateTag', _components_CreateTag__WEBPACK_IMPORTED_MODULE_8__["default"]);
-app.component('CreateUploader', _components_CreateUploader__WEBPACK_IMPORTED_MODULE_9__["default"]);
-app.component('CreateFileManagerModal', _components_CreateFileManagerModal__WEBPACK_IMPORTED_MODULE_10__["default"]);
-app.component('FileManager', _components_FileManager__WEBPACK_IMPORTED_MODULE_11__["default"]);
-app.component('DashboardIndex', _Dashboard_DashboardIndex__WEBPACK_IMPORTED_MODULE_12__["default"]);
-app.component('CreateSearch', _components_CreateSearch__WEBPACK_IMPORTED_MODULE_13__["default"]);
-app.component('PageIndex', _Page_PageIndex__WEBPACK_IMPORTED_MODULE_14__["default"]);
+app.component('CreateSeries', _components_CreateSeries__WEBPACK_IMPORTED_MODULE_8__["default"]);
+app.component('CreateTag', _components_CreateTag__WEBPACK_IMPORTED_MODULE_9__["default"]);
+app.component('CreateUploader', _components_CreateUploader__WEBPACK_IMPORTED_MODULE_10__["default"]);
+app.component('CreateFileManagerModal', _components_CreateFileManagerModal__WEBPACK_IMPORTED_MODULE_11__["default"]);
+app.component('FileManager', _components_FileManager__WEBPACK_IMPORTED_MODULE_12__["default"]);
+app.component('DashboardIndex', _Dashboard_DashboardIndex__WEBPACK_IMPORTED_MODULE_13__["default"]);
+app.component('CreateSearch', _components_CreateSearch__WEBPACK_IMPORTED_MODULE_14__["default"]);
+app.component('PageIndex', _Page_PageIndex__WEBPACK_IMPORTED_MODULE_15__["default"]);
 app.use(_meforma_vue_toaster__WEBPACK_IMPORTED_MODULE_2__["default"]);
 app.use((vue_sweetalert2__WEBPACK_IMPORTED_MODULE_3___default()));
 app.mount('#app');
@@ -22249,6 +22252,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       form: _objectSpread(_objectSpread({}, this.posts), {}, {
         category: this.selectedCategories(),
+        series: this.selectedSeries(),
         tag: this.selectedTags(),
         permalink: {
           custom: false,
@@ -22306,6 +22310,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     selectedCategories: function selectedCategories() {
       var array = [];
       this.posts.category.forEach(function (element) {
+        array.push(element.id);
+      });
+      return array;
+    },
+    selectedSeries: function selectedSeries() {
+      var array = [];
+      console.log(this.posts);
+      this.posts.series.forEach(function (element) {
         array.push(element.id);
       });
       return array;
@@ -22454,7 +22466,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   mounted: function mounted() {
-    var _this7 = this,
+    var _this8 = this,
         _TomSelect;
 
     this.updateFirstCategory();
@@ -22529,6 +22541,42 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
     });
+    new (tom_select__WEBPACK_IMPORTED_MODULE_3___default())('#select-series', {
+      plugins: {
+        remove_button: {
+          title: 'Remove this item'
+        }
+      },
+      persist: false,
+      create: true,
+      maxItems: 10,
+      // max added items
+      onOptionAdd: function onOptionAdd(params) {},
+      // Before create option Minimum Length word length must be 3 charaters
+      createFilter: function createFilter(input) {
+        return input.length >= 3;
+      },
+      onChange: function onChange(element) {
+        var _this7 = this;
+
+        element.forEach(function (value, key) {
+          if (key == 0) {
+            var nodeEl = _this7.getItem(value);
+
+            var slug = nodeEl.dataset.slug;
+            that.getFirstCategoryName = slug;
+          }
+        });
+      },
+      valueField: 'value',
+      labelField: 'title',
+      searchField: 'title',
+      render: {
+        item: function item(data, escape) {
+          return "<div data-slug=\"".concat(data.slug, "\">").concat(escape(data.title), "</div>");
+        }
+      }
+    });
     new (tom_select__WEBPACK_IMPORTED_MODULE_3___default())('#select-tags', (_TomSelect = {
       plugins: {
         remove_button: {
@@ -22542,7 +22590,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var OptionID = '';
       var OptionName = input;
 
-      _this7.$swal({
+      _this8.$swal({
         title: 'Create Tag?',
         html: "Do yo want to create tag <b>".concat(OptionName, "</b> ?"),
         showCancelButton: true,
@@ -22557,7 +22605,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             console.log(res);
 
             if (res.data.success) {
-              _this7.$toast.success(res.data.message, {
+              _this8.$toast.success(res.data.message, {
                 position: "bottom-right"
               });
 
@@ -22570,7 +22618,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
             if (status == 422) {
               Object.entries(data.errors).forEach(function (element) {
-                _this7.$toast.error(element[1], {
+                _this8.$toast.error(element[1], {
                   position: "bottom-right"
                 });
               });
@@ -22671,6 +22719,165 @@ __webpack_require__.r(__webpack_exports__);
       window.open(url, target);
     }
   }
+});
+
+/***/ }),
+
+/***/ "./resources/assets/admin/js/components/CreateSeries.js":
+/*!**************************************************************!*\
+  !*** ./resources/assets/admin/js/components/CreateSeries.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  template: '<slot v-bind="self"/>',
+  computed: {
+    self: function self() {
+      return this;
+    }
+  },
+  data: function data() {
+    return {
+      isloading: false,
+      isEditCatogory: false,
+      form: {},
+      tables: []
+    };
+  },
+  methods: {
+    updateSlug: function updateSlug() {
+      this.form.slug = this.slugify(this.form.name);
+    },
+    validationSlug: function validationSlug() {
+      this.form.slug = this.slugify(this.form.slug);
+    },
+    slugify: function slugify() {
+      var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var ampersand = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'and';
+      var a = 'àáäâèéëêìíïîòóöôùúüûñçßÿỳýœæŕśńṕẃǵǹḿǘẍźḧ';
+      var b = 'aaaaeeeeiiiioooouuuuncsyyyoarsnpwgnmuxzh';
+      var p = new RegExp(a.split('').join('|'), 'g');
+      return text.toString().toLowerCase().replace(/[\s_]+/g, '-').replace(p, function (c) {
+        return b.charAt(a.indexOf(c));
+      }).replace(/&/g, "-".concat(ampersand, "-")).replace(/[^\w-]+/g, '').replace(/^-+|-+$/g, '').replace(/[0-9]/g, '').replace(/--+/g, '-');
+    },
+    store: function store() {
+      var _this = this;
+
+      this.isloading = 1, axios__WEBPACK_IMPORTED_MODULE_0___default().post(route('admin.series.store'), this.form).then(function (res) {
+        if (res.data.success) {
+          _this.$toast.success(res.data.message, {
+            position: "bottom-left"
+          });
+
+          _this.show();
+
+          _this.form = {};
+          _this.isloading = false;
+        }
+      })["catch"](function (err) {
+        var status = err.response.status;
+        var data = err.response.data;
+
+        if (status == 422) {
+          Object.entries(data.errors).forEach(function (element) {
+            _this.$toast.error(element[1], {
+              position: "bottom-left"
+            });
+          });
+        }
+
+        _this.isloading = false;
+      });
+    },
+    show: function show() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post(route('admin.series.show')).then(function (res) {
+        _this2.tables = res.data;
+      });
+    },
+    edit: function edit(item) {
+      this.isEditCatogory = true;
+      this.form = item;
+    },
+    editClose: function editClose() {
+      this.isEditCatogory = false;
+      this.form = {};
+      this.show();
+    },
+    update: function update() {
+      var _this3 = this;
+
+      this.isloading = 1, axios__WEBPACK_IMPORTED_MODULE_0___default().post(route('admin.series.update'), this.form).then(function (res) {
+        if (res.data.success) {
+          _this3.$toast.success(res.data.message, {
+            position: "bottom-left"
+          });
+
+          _this3.show();
+
+          _this3.form = {};
+          _this3.isloading = false;
+          _this3.isEditCatogory = false;
+        }
+      })["catch"](function (err) {
+        var status = err.response.status;
+        var data = err.response.data;
+
+        if (status == 422) {
+          Object.entries(data.errors).forEach(function (element) {
+            _this3.$toast.error(element[1], {
+              position: "bottom-left"
+            });
+          });
+        }
+
+        _this3.isloading = false;
+      });
+    },
+    destroy: function destroy(id, name) {
+      var _this4 = this;
+
+      this.$swal({
+        title: 'Are you sure?',
+        html: "Really! Do yo want to remove <b>".concat(name, "</b> series?"),
+        showCancelButton: true,
+        confirmButtonColor: '#a82730',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"](route("admin.series.destroy", {
+            id: id
+          })).then(function (res) {
+            _this4.show();
+
+            _this4.$swal('Deleted!', 'series has been deleted.', 'success');
+          });
+        }
+      });
+    },
+    openPager: function openPager(slug) {
+      var url = route('series', {
+        series: slug
+      });
+      /** Open New Tab */
+
+      window.open(url, '_blank');
+    }
+  },
+  beforeMount: function beforeMount() {
+    this.show();
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),

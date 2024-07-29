@@ -862,18 +862,20 @@ video {
   margin-left: 0.5rem;
 }.mb-5 {
   margin-bottom: 1.25rem;
-}.mt-1\.5 {
-  margin-top: 0.375rem;
-}.mb-1\.5 {
-  margin-bottom: 0.375rem;
 }.mb-10 {
   margin-bottom: 2.5rem;
 }.mb-8 {
   margin-bottom: 2rem;
+}.ml-10 {
+  margin-left: 2.5rem;
 }.\!mt-2 {
   margin-top: 0.5rem !important;
-}.\!-mt-3 {
-  margin-top: -0.75rem !important;
+}.mt-1\.5 {
+  margin-top: 0.375rem;
+}.mb-1\.5 {
+  margin-bottom: 0.375rem;
+}.\!-mt-1 {
+  margin-top: -0.25rem !important;
 }.-mr-1 {
   margin-right: -0.25rem;
 }.ml-6 {
@@ -882,8 +884,10 @@ video {
   margin-left: 4rem;
 }.ml-12 {
   margin-left: 3rem;
-}.ml-10 {
-  margin-left: 2.5rem;
+}.\!-mt-0\.5 {
+  margin-top: -0.125rem !important;
+}.\!-mt-0 {
+  margin-top: -0px !important;
 }.-mt-4 {
   margin-top: -1rem;
 }.mt-12 {
@@ -908,12 +912,6 @@ video {
   margin-bottom: 3rem;
 }.\!mt-4 {
   margin-top: 1rem !important;
-}.\!-mt-1 {
-  margin-top: -0.25rem !important;
-}.\!-mt-0\.5 {
-  margin-top: -0.125rem !important;
-}.\!-mt-0 {
-  margin-top: -0px !important;
 }.block {
   display: block;
 }.\!block {
@@ -1080,12 +1078,12 @@ video {
   max-width: 0rem;
 }.max-w-\[250px\] {
   max-width: 250px;
+}.max-w-screen-md {
+  max-width: 768px;
 }.max-w-md {
   max-width: 28rem;
 }.max-w-screen-xl {
   max-width: 1280px;
-}.max-w-screen-md {
-  max-width: 768px;
 }.max-w-screen-sm {
   max-width: 640px;
 }.max-w-screen-2xl {
@@ -1179,12 +1177,12 @@ video {
           user-select: none;
 }.resize {
   resize: both;
+}.list-disc {
+  list-style-type: disc;
 }.list-none {
   list-style-type: none;
 }.\!list-disc {
   list-style-type: disc !important;
-}.list-disc {
-  list-style-type: disc;
 }.\!list-none {
   list-style-type: none !important;
 }.columns-4 {
@@ -1635,14 +1633,14 @@ video {
   padding-right: 0.75rem;
 }.pb-3 {
   padding-bottom: 0.75rem;
-}.pb-10 {
-  padding-bottom: 2.5rem;
 }.pr-4 {
   padding-right: 1rem;
 }.pt-16 {
   padding-top: 4rem;
 }.pb-5 {
   padding-bottom: 1.25rem;
+}.pb-10 {
+  padding-bottom: 2.5rem;
 }.\!pl-0 {
   padding-left: 0px !important;
 }.pr-1 {
@@ -1689,12 +1687,12 @@ video {
   font-size: 0px;
 }.text-\[40px\] {
   font-size: 40px;
+}.text-\[30px\] {
+  font-size: 30px;
 }.text-\[36px\] {
   font-size: 36px;
 }.text-\[27px\] {
   font-size: 27px;
-}.text-\[30px\] {
-  font-size: 30px;
 }.text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -1728,10 +1726,10 @@ video {
   font-weight: 300;
 }.font-extrabold {
   font-weight: 800;
-}.\!font-semibold {
-  font-weight: 600 !important;
 }.font-black {
   font-weight: 900;
+}.\!font-semibold {
+  font-weight: 600 !important;
 }.uppercase {
   text-transform: uppercase;
 }.capitalize {
@@ -1808,15 +1806,15 @@ video {
 }.text-slate-900 {
   --tw-text-opacity: 1;
   color: rgb(15 23 42 / var(--tw-text-opacity));
+}.text-blue-700 {
+  --tw-text-opacity: 1;
+  color: rgb(26 86 219 / var(--tw-text-opacity));
 }.text-gray-300 {
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity));
 }.text-slate-600 {
   --tw-text-opacity: 1;
   color: rgb(71 85 105 / var(--tw-text-opacity));
-}.text-blue-700 {
-  --tw-text-opacity: 1;
-  color: rgb(26 86 219 / var(--tw-text-opacity));
 }.text-indigo-600 {
   --tw-text-opacity: 1;
   color: rgb(88 80 236 / var(--tw-text-opacity));
@@ -2409,12 +2407,12 @@ video {
 }.hover\:bg-red-500:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(240 82 82 / var(--tw-bg-opacity));
-}.hover\:bg-gray-900:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }.hover\:bg-theme-light:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(35 56 118 / var(--tw-bg-opacity));
+}.hover\:bg-gray-900:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }.hover\:bg-gray-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(55 65 81 / var(--tw-bg-opacity));
@@ -2850,11 +2848,11 @@ video {
     height: 4rem;
   }.sm\:h-24 {
     height: 6rem;
-  }.sm\:w-36 {
-    width: 9rem;
   }.sm\:w-fit {
     width: -moz-fit-content;
     width: fit-content;
+  }.sm\:w-36 {
+    width: 9rem;
   }.sm\:w-full {
     width: 100%;
   }.sm\:w-20 {

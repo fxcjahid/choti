@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Series;
 use App\Models\Categories;
 
 class PageController extends Controller
 {
-    public function guidesNuisibles()
+    public function category()
     {
         $data = Categories::whereNotIn(
             'slug',
-            ['prix']
+            ['prix'],
         )
             ->where('is_active', true)
             ->with([
@@ -18,7 +19,64 @@ class PageController extends Controller
                     return $query->where('status', '=', 'publish')
                         ->with(
                             'category',
-                            'thumbnail'
+                            'thumbnail',
+                        )
+                        ->orderBy('name')->get();
+                },
+            ])
+            ->withCount('post')
+            ->orderBy('name')
+            ->get()
+            ->map(function ($query) {
+                return $query->setRelation('post', $query->post->take(3));
+            });
+
+        /**
+         * Make Hide useless arrtibutes
+         */
+        $data->each(function ($each) {
+            $each->makeHidden([
+                'user_id',
+                'summary',
+                'status',
+                'parent_id',
+                'description',
+                'position',
+                'is_active',
+                'pivot',
+                'created_at',
+                'updated_at',
+                'deleted_at',
+            ]);
+            $each->post->makeHidden([
+                'user_id',
+                'summary',
+                'status',
+                'pivot',
+                'content',
+                'created_at',
+                'updated_at',
+                'deleted_at',
+                'body',
+            ]);
+        });
+
+        return view('public.page.guides-nuisibles', compact('data'));
+    }
+
+    public function series()
+    {
+        $data = Series::whereNotIn(
+            'slug',
+            ['prix'],
+        )
+            ->where('is_active', true)
+            ->with([
+                'post' => function ($query) {
+                    return $query->where('status', '=', 'publish')
+                        ->with(
+                            'category',
+                            'thumbnail',
                         )
                         ->orderBy('name')->get();
                 },
@@ -67,7 +125,7 @@ class PageController extends Controller
     {
         $data = Categories::whereIn(
             'slug',
-            ['prix']
+            ['prix'],
         )
             ->where('is_active', true)
             ->with([
@@ -75,7 +133,7 @@ class PageController extends Controller
                     return $query->where('status', '=', 'publish')
                         ->with(
                             'category',
-                            'thumbnail'
+                            'thumbnail',
                         )
                         ->orderBy('name')->get();
                 },
@@ -119,7 +177,7 @@ class PageController extends Controller
     public function servicePage($page)
     {
         $basePath = 'public/page/service/' . $page;
-        if (!view()->exists($basePath)) {
+        if (! view()->exists($basePath)) {
             return abort(404);
         }
 
@@ -131,7 +189,7 @@ class PageController extends Controller
         /**
          * get page relate article
          */
-        if (!empty($load['blog'])) {
+        if (! empty($load['blog'])) {
             $category = $load['blog']['category'];
             $keyword  = $load['blog']['keyword'];
             $post     = Categories::with([
@@ -146,7 +204,7 @@ class PageController extends Controller
                     [
                         ['slug', '=', $category],
                         ['is_active', '=', true],
-                    ]
+                    ],
                 )
                 ->first()
                 ->makeHidden([
@@ -183,7 +241,7 @@ class PageController extends Controller
 
         return view(
             'public.page.service.layout',
-            $load
+            $load,
         );
     }
 }

@@ -218,6 +218,7 @@ class Post extends Model
             'user',
             'tag',
             'category',
+            'series',
             'thumbnail',
             'comments',
         ])->where('slug', $find)
@@ -338,6 +339,15 @@ class Post extends Model
     public function category()
     {
         return $this->belongsToMany(Categories::class, 'post_categories');
+    }
+
+    /**
+     * Get post series
+     * Relation between table
+     */
+    public function series()
+    {
+        return $this->belongsToMany(Series::class, 'post_series');
     }
 
     /**

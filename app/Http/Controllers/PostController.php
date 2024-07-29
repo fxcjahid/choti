@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\AppHelper;
-use App\Http\Requests\StorePostRequest;
-use App\Models\Categories;
-use App\Models\Post;
-use App\Models\PostCategories;
-use App\Models\PostTags;
-use App\Models\PostThumbnail;
 use App\Models\Tag;
+use App\Models\Post;
+use App\Models\Series;
+use App\Models\PostTags;
+use App\Helpers\AppHelper;
+use App\Models\Categories;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\PostThumbnail;
+use App\Models\PostCategories;
+use App\Http\Requests\StorePostRequest;
+use App\Models\PostSeries;
+use fxcjahid\LaravelTableOfContent\table;
 use fxcjahid\LaravelEditorJsHtml\BlocksManager;
 use fxcjahid\LaravelTableOfContent\MarkupFixer;
-use fxcjahid\LaravelTableOfContent\table;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -52,7 +54,7 @@ class PostController extends Controller
          */
         $suggestion = Tag::whereIn(
             'slug',
-            ['suggestion']
+            ['suggestion'],
         )
             ->where('is_active', true)
             ->with([
@@ -60,7 +62,7 @@ class PostController extends Controller
                     return $query->where('status', '=', 'publish')
                         ->with(
                             'category',
-                            'thumbnail'
+                            'thumbnail',
                         )
                         ->orderBy('name')->get();
                 },
@@ -109,8 +111,8 @@ class PostController extends Controller
                 'related',
                 'breadcrumb',
                 'suggestion',
-                'hireExpert'
-            )
+                'hireExpert',
+            ),
         );
     }
 
@@ -130,16 +132,17 @@ class PostController extends Controller
      */
     public function IndexCreatePost($find)
     {
-        if (!Post::existSlugOrID($find)) {
+        if (! Post::existSlugOrID($find)) {
             return redirect()->route('admin.dashboard')
                 ->withErrors(['error' => 'The post doesn\'t exist']);
         }
 
         $post     = Post::findBySlugOrID($find)->makeHidden(['breadcrumb', 'comments']);
         $category = Categories::all();
+        $series   = Series::all();
         $tags     = Tag::all();
 
-        return view('admin.views.createpost', compact('post', 'category', 'tags'));
+        return view('admin.views.createpost', compact('post', 'category', 'series', 'tags'));
     }
 
     /**
@@ -192,6 +195,7 @@ class PostController extends Controller
 
         $this->updateTags($request->tag, $request->id);
         $this->updateCategories($request->category, $request->id);
+        $this->updateSeries($request->series, $request->id);
         $this->updateThumbnail($request->thumbnail, $request->id);
 
         $post->save();
@@ -243,6 +247,21 @@ class PostController extends Controller
             PostCategories::create([
                 'post_id'       => $postID,
                 'categories_id' => $value,
+            ]);
+        }
+    }
+
+    /**
+     * Update Post's Series.
+     **/
+    private function updateSeries(array $series = [], int $postID = null)
+    {
+        PostSeries::where('post_id', $postID)->delete();
+
+        foreach ($series as $value) {
+            PostSeries::create([
+                'post_id'   => $postID,
+                'series_id' => $value,
             ]);
         }
     }

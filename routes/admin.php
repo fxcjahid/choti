@@ -1,20 +1,21 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\CategorydController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\FileController;
-use App\Http\Controllers\FileManagerController;
+
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostComments;
 use App\Http\Controllers\TagController;
-use App\Http\Controllers\ImageUploadController;
-use App\Http\Controllers\admin\PageController;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SeriesController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\CategorydController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\admin\PageController;
+use App\Http\Controllers\FileManagerController;
+use App\Http\Controllers\ImageUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,16 @@ Route::post('category/show', [CategorydController::class, 'show'])->name('catego
 Route::post('category/store', [CategorydController::class, 'store'])->name('category.store');
 Route::post('category/update', [CategorydController::class, 'update'])->name('category.update');
 Route::delete('category/destroy/{id}', [CategorydController::class, 'destroy'])->name('category.destroy');
+
+
+Route::prefix('series')->name('series.')->group(function () {
+    Route::get('/', [SeriesController::class, 'index'])->name('index');
+    Route::post('/show', [SeriesController::class, 'show'])->name('show');
+    Route::post('/store', [SeriesController::class, 'store'])->name('store');
+    Route::post('/update', [SeriesController::class, 'update'])->name('update');
+    Route::delete('/destroy/{id}', [SeriesController::class, 'destroy'])->name('destroy');
+});
+
 
 Route::prefix('tags')
     ->name('tags.')
