@@ -105,7 +105,7 @@ return [
     |
      */
 
-    'locale'          => 'en',
+    'locale'          => env('APP_LOCALE', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -259,7 +259,6 @@ return [
         'Validator'    => Illuminate\Support\Facades\Validator::class,
         'View'         => Illuminate\Support\Facades\View::class,
         'Debugbar'     => Barryvdh\Debugbar\Facades\Debugbar::class,
-        'AppHelper'    => App\Helpers\AppHelper::class,
         'Agent'        => Jenssegers\Agent\Facades\Agent::class,
     ],
 

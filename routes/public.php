@@ -73,12 +73,16 @@ Route::get('sitemap:generate:blanee', function () {
     }
 });
 
-Route::get('/submit-new-story', [WriteNewStoryController::class, 'index'])->name('submit.story');
-Route::get('/complain-story', [ComplainStoryController::class, 'index'])->name('complain.story');
+Route::get('/submit-new-story', [WriteNewStoryController::class, 'index'])->name('story.index');
+Route::post('/submit-new-story', [WriteNewStoryController::class, 'store'])->name('story.store');
+
+
+Route::get('/complain-story', [ComplainStoryController::class, 'index'])->name('complain.index');
+Route::post('/complain-story', [ComplainStoryController::class, 'store'])->name('complain.store');
 
 Route::prefix('contact')
     ->name('contact.')
     ->group(function () {
-        Route::get('/', [ContactController::class, 'view'])->name('index');
+        Route::get('/', [ContactController::class, 'index'])->name('index');
         Route::post('/', [ContactController::class, 'store'])->name('store');
     });

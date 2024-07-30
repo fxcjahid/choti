@@ -92,11 +92,11 @@
                     জনপ্রিয় গল্প
                 </a>
                 <a class="mx-4 transform text-xl leading-5 text-white hover:text-blue-600 transition-colors duration-300 dark:text-gray-200"
-                    href="{{ AppHelper::$leadFormLink }}" target="_blank">
+                    href="#" target="_blank">
                     জনপ্রিয় লেখক
                 </a>
                 <a class="mx-4 transform text-xl leading-5 text-white hover:text-blue-600 transition-colors duration-300 dark:text-gray-200"
-                    href="{{ route('submit.story') }}">
+                    href="{{ route('story.index') }}">
                     গল্প লিখে পাঠান
                 </a>
 
@@ -125,7 +125,7 @@
                         <div
                             class="hs-dropdown relative [--strategy:static] [--adaptive:none] sm:[--strategy:absolute] sm:[--trigger:hover]">
                             <a class="flex items-center gap-x-3.5 rounded-md py-2 px-3 text-gray-800 hover:text-blue-600 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                                href="{{ route('complain.story') }}">
+                                href="{{ route('complain.index') }}">
                                 অভিযোগ জানান
                             </a>
                         </div>

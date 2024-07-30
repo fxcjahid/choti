@@ -3,57 +3,70 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreContactRequest;
+use App\Traits\HasCrudActions;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Redirect;
 
 class ContactController extends Controller
 {
-	/**
-	 * Public View
-	 */
-	public function view()
-	{
-		return view('public.page.contact');
-	}
+    use HasCrudActions;
 
-	/**
-	 * Admin View
-	 */
-	public function index()
-	{
-		$data = Contact::all();
+    /**
+     * Model for the resource.
+     *
+     * @var string
+     */
+    protected $model = Contact::class;
 
-		return view('admin.views.contact.index', compact('data'));
-	}
+    /**
+     * Label of the resource.
+     *
+     * @var string
+     */
+    protected $label = 'contact.contact';
 
-	/**
-	 * Admin: show contact
-	 */
-	public function show()
-	{
-	}
+    /**
+     * Route prefix.
+     *
+     * @var string
+     */
+    protected $routePrefix = 'contact';
+
+    /**
+     * View path of the resource.
+     *
+     * @var string
+     */
+    protected $viewPath = 'public.contact';
+
+    /**
+     * Form requests for the resource.
+     *
+     * @var array|string
+     */
+    protected $validation = StoreContactRequest::class;
+
+    /**
+     * Redirect to url after saving a resource.
+     *
+     * @param \App\Http\Controllers\ContactController $contact
+     * @return \Illuminate\Http\Response
+     */
+    // protected function redirectTo($contact)
+    // {
+    //     return redirect()->route('admin.menus.edit', $contact);
+    // }
 
 
-	/**
-	 * Store new data
-	 */
-	public function store(StoreContactRequest $request)
-	{
-		$request = $request->only([
-			'name',
-			'phone',
-			'email',
-			'message'
-		]);
+    /**
+     * Admin View
+     */
+    // public function index()
+    // {
+    //     $data = Contact::all();
 
-		try {
-			Contact::create($request);
-		} catch (\Throwable $th) {
-			throw $th;
-		}
+    //     return view('admin.views.contact.index', compact('data'));
+    // } 
 
-		return Redirect::back()
-			->with('success', 'Merci ! <br/> Votre message a été envoyé avec succès. Nous vous contacterons très bientôt !');
-	}
 }

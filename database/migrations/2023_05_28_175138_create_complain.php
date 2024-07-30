@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePosts extends Migration
+class CreateComplain extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreatePosts extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('complain', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title')->nullable();
-            $table->text('content')->nullable();
-            $table->text('summary')->nullable();
+            $table->integer('post_url');
+            $table->string('message');
+            $table->string('email')->nullable();
             $table->string('name')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->enum('status', ['publish', 'draft', 'scheduled', 'trash'])->default('draft');
-            $table->string('slug')->unique();
+            $table->boolean('read')->default(0);
+            $table->integer('assign')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -34,6 +33,6 @@ class CreatePosts extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post');
+        Schema::dropIfExists('complain');
     }
 }

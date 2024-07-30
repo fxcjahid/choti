@@ -1,7 +1,7 @@
 @extends('public.app')
 
-@section('title', 'বাংলা চটি গল্প লিখে পাঠান')
-@section('canonical', route('submit.story'))
+@section('title', trans('story.title'))
+@section('canonical', route('story.index'))
 @section('content')
     <main class="">
         <div class="2xl:m-auto 2xl:max-w-screen-2xl">
@@ -20,7 +20,7 @@
                     @endif
 
                     <h1 class="mb-3 text-center font-trebuchet text-[30px] font-extrabold text-slate-900">
-                        বাংলা চটি গল্প লিখে পাঠান
+                        {{ trans('story.title') }}
                     </h1>
                     <p class="mb-8 mt-8 font-nato text-lg font-normal text-slate-900 sm:mx-auto">
                         বাংলায় লিখিত সমস্ত চটি লেখক বা লেখিকাদের প্রতি আমাদের বিনীত অনুরোধ আপনারা দয়া করে বাংলায় লেখা চটি
@@ -38,13 +38,13 @@
                             ক্লিক করুন
                         </a>
                     </p>
-                    <form action="{{ route('contact.store') }}" method="post" class="space-y-8">
+                    <form action="{{ route('story.store') }}" method="post" class="space-y-8">
                         {{ csrf_field() }}
                         <div>
                             <label for="title" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
                                 টাইটেল লিখুন <span class="text-red-600 font-black">*</span>
                             </label>
-                            <input type="text" id="title" name="phone" value="{{ old('title') }}"
+                            <input type="text" id="title" name="title" value="{{ old('title') }}"
                                 class="block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
                             @if ($errors->has('title'))
                                 <div class="text-base font-medium text-red-600">

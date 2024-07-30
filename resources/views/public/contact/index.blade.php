@@ -1,6 +1,6 @@
 @extends('public.app')
 
-@section('title', 'যোগাযোগ করুন')
+@section('title', trans('contact.title'))
 @section('canonical', route('contact.index'))
 
 @section('content')
@@ -8,9 +8,7 @@
 
         <section class="bg-white dark:bg-gray-900">
             <div class="mx-auto max-w-screen-md py-8 px-4 lg:py-16">
-
                 @include('public.components.errors.alert')
-
                 @if (Session::has('success'))
                     <div class="alert alert-success mb-10">
                         {!! Session::get('success') !!}
@@ -33,7 +31,7 @@
                     <div class="flex justify-between gap-4">
                         <div class="w-full">
                             <label for="name" class="mb-2 block text-base font-medium text-gray-900 dark:text-gray-300">
-                                আপনার নাম (অপশনালঃ)
+                                আপনার নাম <span class="text-red-600 font-black">*</span>
                             </label>
                             <input type="text" id="name" name="name" value="{{ old('name') }}"
                                 class="block w-full rounded-md border-gray-200 py-2 px-4 text-base outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
@@ -68,13 +66,14 @@
                             </div>
                         @endif
                     </div>
-                    <div class="!mt-2 sm:col-span-2">
-                        <p class="font-nato text-sm text-gray-600">
-                            Ce site Web est protégé par reCAPTCHA et la <a rel="nofollow" class="text-blue-700 underline"
-                                target="_blank" href="https://policies.google.com/privacy">Politique de
-                                Confidentialité</a> et les <a rel="nofollow" class="text-blue-700 underline" target="_blank"
-                                href="https://policies.google.com/terms">Conditions Générales
-                                d'Utilisation</a> de Google sont applicables.
+                    <div class="!mt-2.5 sm:col-span-2">
+                        <p class="text-sm text-gray-600">
+                            এই ওয়েবসাইটটি reCAPTCHA দ্বারা সুরক্ষিত এবং Google <a rel="nofollow"
+                                class="text-blue-700 underline" target="_blank"
+                                href="https://policies.google.com/privacy">গোপনীয়তা নীতি</a> এবং <a rel="nofollow"
+                                class="text-blue-700 underline" target="_blank"
+                                href="https://policies.google.com/terms">পরিষেবার শর্তাবলী</a>
+                            প্রযোজ্য৷
                         </p>
                     </div>
                     {!! GoogleReCaptchaV3::renderField('contact_us_id', 'contact_us_action') !!}

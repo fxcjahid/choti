@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b17c112e25cd2ad933659bfe5482526",
+    "content-hash": "44df9cc681ebb31c34338779aedebb3a",
     "packages": [
         {
             "name": "airmanbzh/php-html-generator",
@@ -1998,6 +1998,63 @@
                 "source": "https://github.com/laravel/framework"
             },
             "time": "2024-07-23T16:06:06+00:00"
+        },
+        {
+            "name": "laravel/helpers",
+            "version": "v1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/helpers.git",
+                "reference": "6caaa242a23bc39b4e3cf57304b5409260a7a346"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/helpers/zipball/6caaa242a23bc39b4e3cf57304b5409260a7a346",
+                "reference": "6caaa242a23bc39b4e3cf57304b5409260a7a346",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.8.0|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
+                "php": "^7.2.0|^8.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^7.0|^8.0|^9.0|^10.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                },
+                {
+                    "name": "Dries Vints",
+                    "email": "dries@laravel.com"
+                }
+            ],
+            "description": "Provides backwards compatibility for helpers in the latest Laravel release.",
+            "keywords": [
+                "helpers",
+                "laravel"
+            ],
+            "support": {
+                "source": "https://github.com/laravel/helpers/tree/v1.7.0"
+            },
+            "time": "2023-11-30T14:09:05+00:00"
         },
         {
             "name": "laravel/pint",
@@ -4913,79 +4970,6 @@
                 }
             ],
             "time": "2024-04-27T21:32:50+00:00"
-        },
-        {
-            "name": "sertxudeveloper/laravel-sitemap",
-            "version": "v1.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sertxudeveloper/laravel-sitemap.git",
-                "reference": "ba18f3e9ae39de2c78d51d343904ca8dda70601c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sertxudeveloper/laravel-sitemap/zipball/ba18f3e9ae39de2c78d51d343904ca8dda70601c",
-                "reference": "ba18f3e9ae39de2c78d51d343904ca8dda70601c",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "^8.0|^9.0|^10.0",
-                "illuminate/support": "^8.0|^9.0|^10.0",
-                "nesbot/carbon": "^2.0",
-                "php": "^7.4|^8.0"
-            },
-            "require-dev": {
-                "nunomaduro/collision": "^6.0",
-                "orchestra/testbench": "^7.5",
-                "phpunit/phpunit": "^9.5"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "SertxuDeveloper\\Sitemap\\SitemapServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SertxuDeveloper\\Sitemap\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sertxu Developer",
-                    "email": "dev.sertxu@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Create programmatically a sitemap for your Laravel website",
-            "homepage": "https://github.com/sertxudeveloper/laravel-sitemap",
-            "keywords": [
-                "Sitemap",
-                "laravel",
-                "laravel-sitemap"
-            ],
-            "support": {
-                "issues": "https://github.com/sertxudeveloper/laravel-sitemap/issues",
-                "source": "https://github.com/sertxudeveloper/laravel-sitemap/tree/v1.5.0"
-            },
-            "funding": [
-                {
-                    "url": "https://buymeacoffee.com/sertxudeveloper",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/sertxudev",
-                    "type": "github"
-                }
-            ],
-            "abandoned": true,
-            "time": "2023-04-18T06:39:25+00:00"
         },
         {
             "name": "spatie/db-dumper",

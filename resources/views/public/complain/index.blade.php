@@ -1,7 +1,7 @@
 @extends('public.app')
 
-@section('title', 'অভিযোগ করুন ')
-@section('canonical', route('complain.story'))
+@section('title', trans('complain.title'))
+@section('canonical', route('complain.index'))
 @section('content')
     <main class="">
         <div class="2xl:m-auto 2xl:max-w-screen-2xl">
@@ -48,13 +48,13 @@
                         </li>
                     </ul>
 
-                    <form action="{{ route('contact.store') }}" method="post" class="space-y-8">
+                    <form action="{{ route('complain.store') }}" method="post" class="space-y-8">
                         {{ csrf_field() }}
                         <div>
                             <label for="post_url" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
                                 পোষ্ট লিংক দিন <span class="text-red-600 font-black">*</span>
                             </label>
-                            <input type="text" id="post_url" name="phone" value="{{ old('post_url') }}"
+                            <input type="text" id="post_url" name="post_url" value="{{ old('post_url') }}"
                                 class="block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
                             @if ($errors->has('post_url'))
                                 <div class="text-base font-medium text-red-600">
@@ -116,7 +116,7 @@
                         </div>
                         {!! GoogleReCaptchaV3::renderField('contact_us_id', 'contact_us_action') !!}
                         <button type="submit"
-                            class="mt-4 rounded-lg bg-theme-color py-2 px-5 text-center text-lg font-medium text-white outline-none hover:bg-theme-light dark:bg-primary-600 dark:hover:bg-primary-700 sm:w-fit">
+                            class="mt-2 rounded-lg bg-theme-color py-2 px-5 text-center text-lg font-medium text-white outline-none hover:bg-theme-light dark:bg-primary-600 dark:hover:bg-primary-700 sm:w-fit">
                             সাবমিট করুন
                         </button>
                     </form>
