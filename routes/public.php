@@ -59,10 +59,7 @@ Route::get('tags/{tag}', [TagController::class, 'postBytag'])
     ->name('tag');
 
 
-
-Route::get('{category}/{slug}', [PostController::class, 'show'])
-    ->where(['category' => '[A-Za-z-_]+', 'slug' => '[A-Za-z-_0-9]+'])
-    ->name('post.show');
+Route::get('{category}/{slug}', [PostController::class, 'show'])->name('post.show');
 
 
 Route::get('sitemap:generate:blanee', function () {

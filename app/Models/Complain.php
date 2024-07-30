@@ -15,10 +15,10 @@ class Complain extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'phone',
-        'email',
+        'post_url',
         'message',
+        'name',
+        'email',
     ];
 
     protected static function boot()

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Scope;
 use App\Traits\Sluggable;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
-    use HasFactory, Sluggable, SoftDeletes;
+    use HasFactory, Sluggable, Scope, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -44,16 +45,30 @@ class Post extends Model
 
         static::creating(function ($post) {
 
-            // Create Article Content
-            if (empty($post->content)) {
-                $post->content = json_encode([]);
-            }
+            $post->content = self::setContent($post->content);
 
             // Set Article Status
             if (empty($post->status)) {
                 $post->status = 'draft';
             }
         });
+    }
+
+    private static function setContent($content)
+    {
+        if (empty($content)) {
+            return json_encode([
+                'time'    => round(microtime(true) * 1000),
+                'blocks'  => [],
+                'version' => '2.27.0',
+            ], JSON_PRETTY_PRINT);
+        } else {
+            if (! isValidEditorJsBlocks($content)) {
+                return ConvertPlaneTextToEditorJsBlocks($content);
+            }
+        }
+
+        return $content;
     }
 
     /**
@@ -240,49 +255,18 @@ class Post extends Model
     }
 
     /** 
-     * get active post by slug or ID
+     * Get active post by slug
      * @return mixed
      **/
     public static function findPublishPost($category, $post)
     {
-        $post = self::with([
-            'thumbnail',
-            'comments',
-            'tag'      => function ($query) {
-                $query
-                    ->where('slug', '!=', 'guide')
-                    ->where('slug', '!=', 'popular')
-                    ->where('slug', '!=', 'suggestion');
-            },
-            'category' => function ($query) use ($category) {
-                $query
-                    ->where('slug', '=', $category)
-                    ->where('is_active', '=', true)
-                    ->when(Auth()->check(), function ($query) use ($category) {
-                        $query
-                            ->where([
-                                ['slug', '=', $category],
-                                ['is_active', '=', true],
-                            ])
-                            ->orWhere([
-                                ['slug', '=', $category],
-                                ['is_active', '=', false],
-                            ]);
-                    })
-                    ->firstOrFail();
-            },
-        ])
-            ->where([
-                ['slug', '=', $post],
-                ['status', '=', 'publish'],
-            ])
-            ->orWhere([
-                ['id', '=', $post],
-                ['status', '=', 'publish'],
-            ])
+        return self::WithThumbnail()
+            ->WithTag()
+            ->WithComments()
+            ->WherePublished()
+            ->WhereCategory($category)
+            ->whereSlug($post)
             ->firstOrFail();
-
-        return $post;
     }
 
     /**

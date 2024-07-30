@@ -1,6 +1,6 @@
 @extends('public.app')
 
-@section('title', $post->name . ' - Blanee.com')
+@section('title', $post->name)
 @section('canonical',
     route('post.show', [
     'category' => $post->category[0]->slug,
@@ -25,7 +25,7 @@
                     <div class="px-3 sm:px-7">
                         <h1 role="title" aria-label="title"
                             class="mt-6 text-3xl font-semibold leading-tight text-gray-800 dark:text-white md:mt-1 md:text-5xl">
-                            {{ $post->name }}
+                            {{ $post->title }}
                         </h1>
 
                         <div class="mt-8 items-center">

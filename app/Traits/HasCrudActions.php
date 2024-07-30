@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use App\Models\Post;
+
 trait HasCrudActions
 {
     /**
@@ -51,12 +53,16 @@ trait HasCrudActions
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param int|string $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $entity = $this->getEntity($id);
+        if (is_string($slug)) {
+            $entity = $this->findBySlug($slug);
+        } else {
+            $entity = $this->getEntity($slug);
+        }
 
         return view("{$this->viewPath}.show")->with($this->getResourceName(), $entity);
     }
@@ -122,8 +128,21 @@ trait HasCrudActions
     {
         return $this->getModel()
             ->with($this->relations())
-            ->withoutGlobalScope('active')
             ->findOrFail($id);
+    }
+
+    /**
+     * Get an data by the given slug.
+     *
+     * @param string $slug
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    protected function findBySlug($slug)
+    {
+        return $this->getModel()
+            ->with($this->relations())
+            ->whereSlug($slug)
+            ->firstOrFail();
     }
 
     /**

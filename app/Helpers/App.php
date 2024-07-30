@@ -30,6 +30,61 @@ if (! function_exists('ConvertPlaneTextToEditorJsBlocks')) {
             'version' => '2.27.0',
         ];
 
-        return json_encode($editorJsContent, JSON_PRETTY_PRINT);
+        return json_encode($editorJsContent, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    }
+}
+
+if (! function_exists('isValidEditorJsBlocks')) {
+    function isValidEditorJsBlocks($content)
+    {
+        // Decode the JSON content
+        $data = json_decode($content, true);
+
+        // Check if the decoding was successful and the data is an array
+        if (! is_array($data)) {
+            return false;
+        }
+
+        // Check if required keys exist and have the correct types
+        if (! isset($data['time']) || ! is_int($data['time'])) {
+            return false;
+        }
+
+        if (! isset($data['blocks']) || ! is_array($data['blocks'])) {
+            return false;
+        }
+
+        if (! isset($data['version']) || ! is_string($data['version'])) {
+            return false;
+        }
+
+        // Validate each block in the blocks array
+        foreach ($data['blocks'] as $block) {
+            if (! isset($block['type']) || ! is_string($block['type'])) {
+                return false;
+            }
+
+            if (! isset($block['data']) || ! is_array($block['data'])) {
+                return false;
+            }
+
+            // Additional checks for the 'paragraph' block type
+            if ($block['type'] === 'paragraph') {
+                if (! isset($block['data']['text']) || ! is_string($block['data']['text'])) {
+                    return false;
+                }
+            }
+
+            // Add additional validation for other block types as needed
+            // For example:
+            // if ($block['type'] === 'header') {
+            //     if (!isset($block['data']['text']) || !is_string($block['data']['text']) ||
+            //         !isset($block['data']['level']) || !is_int($block['data']['level'])) {
+            //         return false;
+            //     }
+            // }
+        }
+
+        return true;
     }
 }
