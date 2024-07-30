@@ -12,10 +12,8 @@ trait Scope
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWherePublished($query = null)
+    public function scopeWherePublished($query)
     {
-        $query = $query ?: $this;
-
         return $query->where('status', 'publish');
     }
 

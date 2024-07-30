@@ -140,7 +140,7 @@ fieldset[disabled] {
 }
 
 .art-content p {
-    @apply my-5 sm:my-8 text-lg font-normal text-slate-800;
+    @apply my-3.5 sm:my-4 text-lg font-normal text-slate-800;
 }
 
 .art-content ul {
