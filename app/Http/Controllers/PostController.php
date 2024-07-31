@@ -51,7 +51,6 @@ class PostController extends Controller
     {
         $post = Post::findPublishPost($category, $slug);
 
-
         $breadcrumb = BreadcrumbHelper::forPost($post);
 
         return view(

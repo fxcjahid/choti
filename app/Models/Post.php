@@ -130,6 +130,25 @@ class Post extends Model
         return ! empty($this->summary) ? $this->summary : $summary;
     }
 
+    public function getAuthorAttribute()
+    {
+        return $this->user->name() ?? $this->name;
+    }
+
+    public function previous()
+    {
+        return self::where('created_at', '<', $this->created_at)
+            ->orderByDesc('created_at')
+            ->first();
+    }
+
+    public function next()
+    {
+        return self::where('created_at', '>', $this->created_at)
+            ->orderBy('created_at')
+            ->first();
+    }
+
     /**
      * Get publish aricles link for Sitemap
      */
@@ -230,6 +249,7 @@ class Post extends Model
     public static function findPublishPost($category, $post)
     {
         return self::WithThumbnail()
+            ->WithSeries()
             ->WithTag()
             ->WithComments()
             ->WherePublished()

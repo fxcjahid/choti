@@ -21,7 +21,7 @@ export default {
         getPostTitle() {
             // Get Post Raw Slug
             let PostSlug = (typeof (this.posts.slug) === 'number') ? '' : this.posts.slug;
-            let oldSlug = (PostSlug) ? PostSlug : this.form.name;
+            let oldSlug = (PostSlug) ? PostSlug : this.form.title;
 
             // Genarate Automatic Permalink
             let slug = this.makeSlug(oldSlug);

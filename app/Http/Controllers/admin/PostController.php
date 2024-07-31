@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Tag;
 use App\Models\Post;
@@ -8,12 +8,13 @@ use App\Models\Series;
 use App\Models\PostTags;
 use App\Helpers\AppHelper;
 use App\Models\Categories;
+use App\Models\PostSeries;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\PostThumbnail;
 use App\Models\PostCategories;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
-use App\Models\PostSeries;
 use fxcjahid\LaravelTableOfContent\table;
 use fxcjahid\LaravelEditorJsHtml\BlocksManager;
 use fxcjahid\LaravelTableOfContent\MarkupFixer;

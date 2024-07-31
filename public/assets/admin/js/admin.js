@@ -22230,7 +22230,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getPostTitle: function getPostTitle() {
       // Get Post Raw Slug
       var PostSlug = typeof this.posts.slug === 'number' ? '' : this.posts.slug;
-      var oldSlug = PostSlug ? PostSlug : this.form.name; // Genarate Automatic Permalink
+      var oldSlug = PostSlug ? PostSlug : this.form.title; // Genarate Automatic Permalink
 
       var slug = this.makeSlug(oldSlug);
       slug = !slug ? this.form.id : slug; // Genarate Custom Permalink 

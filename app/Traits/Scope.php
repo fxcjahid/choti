@@ -36,6 +36,17 @@ trait Scope
         ]);
     }
 
+    public function scopeWithSeries($query)
+    {
+        return $query->with([
+            'series.post' => function ($query) {
+                $query->select('id', 'title', 'slug')
+                    ->where('id', '!=', $this->id)
+                    ->wherePublished();
+            }
+        ]);
+    }
+
     public function scopeWithTag($query)
     {
         return $query->with('tag');

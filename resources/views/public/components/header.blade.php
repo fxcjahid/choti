@@ -41,8 +41,8 @@
                         </span>
 
                         <input type="text"
-                            class="w-52 rounded-md border bg-white py-2 pl-10 pr-4 text-gray-700 outline-none transition-all focus:w-[450px] dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
-                            placeholder="Search...">
+                            class="w-52 rounded-md border border-gray-200 bg-white py-2 pl-10 pr-4 text-gray-700 outline-none transition-all focus:w-[450px] dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                            placeholder="গল্প সার্চ করুন...">
                     </div>
                     <div class="relative">
                         <a href="https://evomart.com.bd/login"
@@ -72,7 +72,7 @@
                         </span>
 
                         <input type="text"
-                            class="w-full rounded-md border bg-white py-2 pl-10 pr-4 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-blue-300"
+                            class="w-full rounded-md border border-gray-200 bg-white py-2 pl-10 pr-4 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:border-blue-300"
                             placeholder="Search">
                     </div>
                 </div>

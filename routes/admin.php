@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostComments;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\FileController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\admin\PostController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\ContactController;

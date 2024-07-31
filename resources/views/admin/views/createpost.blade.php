@@ -65,8 +65,8 @@
                         <div class="mt-3">
                             <label for="title"
                                 class="relative block overflow-hidden border-b border-gray-200 pt-3 focus-within:border-b-2 focus-within:border-theme-color">
-                                <input type="text" id="title" name="name" placeholder="Type your title"
-                                    v-model="vm.form.name"
+                                <input type="text" id="title" name="title" placeholder="Type your title"
+                                    v-model="vm.form.title"
                                     class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-2xl" />
 
                                 <span

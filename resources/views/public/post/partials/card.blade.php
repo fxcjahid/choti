@@ -1,14 +1,14 @@
 <article role="article" class="flex gap-x-4 border-b-2 p-4 hover:border-slate-100 hover:shadow-md">
     @if ($post->image())
         <img src="{{ $post->image() }}" class="relative z-0 lg:h-60 lg:max-w-xs rounded-md object-cover"
-            alt="{{ $post->name }}">
+            alt="{{ $post->title }}">
     @endif
 
     <div class="mt-3 px-2">
         <a href="{{ $post->url() }}">
             <h1 role="title" title="Find the bedbug nest (bedbug hiding places)"
                 class="ellipsis text-lg font-semibold text-slate-900 hover:text-blue-900 dark:text-white md:text-2xl">
-                {{ $post->name }}
+                {{ $post->title }}
             </h1>
         </a>
         <date class="mt-0.5 text-sm text-gray-500 dark:text-gray-400">

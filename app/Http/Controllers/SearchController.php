@@ -14,11 +14,11 @@ class SearchController extends Controller
     {
         $searchKeyword = $request->keyword;
 
-        $post = Post::select(['id', 'name', 'slug'])
-            ->where('name', 'like', "%{$searchKeyword}%")
+        $post = Post::select(['id', 'title', 'slug'])
+            ->where('title', 'like', "%{$searchKeyword}%")
             ->orWhere('slug', 'like', "%{$searchKeyword}%")
             ->with([
-                'category:id,slug,name'
+                'category:id,slug,name',
             ])
             ->get();
 
@@ -26,7 +26,7 @@ class SearchController extends Controller
 
         return response()->json([
             'results' => $post->count(),
-            'post' => $post,
+            'post'    => $post,
         ]);
     }
 }
