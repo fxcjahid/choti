@@ -132,7 +132,11 @@ class Post extends Model
 
     public function getAuthorAttribute()
     {
-        return $this->user->name() ?? $this->name;
+        if ($this->user && $this->user->name()) {
+            $name = $this->user->name();
+        }
+
+        return $name ?? $this->name ?? 'unknown';
     }
 
     public function previous()

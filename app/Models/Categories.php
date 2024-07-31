@@ -79,4 +79,9 @@ class Categories extends Model
     {
         return $this->belongsToMany(Post::class, 'post_categories');
     }
+
+    public function url()
+    {
+        return route('category', ['category' => $this->slug]);
+    }
 }

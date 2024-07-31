@@ -88,3 +88,13 @@ if (! function_exists('isValidEditorJsBlocks')) {
         return true;
     }
 }
+
+if (! function_exists('highlightKeyword')) {
+    function highlightKeyword($text, $keyword)
+    {
+        if (! $keyword) {
+            return $text;
+        }
+        return preg_replace("/($keyword)/i", '<strong class="bg-yellow-200">$1</strong>', $text);
+    }
+}

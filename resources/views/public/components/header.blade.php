@@ -30,22 +30,24 @@
                 <!-- Search input on desktop screen -->
                 <div class="flex items-center gap-x-10">
                     <div class="relative">
-                        <span class="absolute inset-y-0 left-0 flex cursor-pointer items-center pl-3">
-                            <svg class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="none">
-                                <path
-                                    d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                </path>
-                            </svg>
-                        </span>
+                        <form action="{{ route('search.index') }}" method="GET">
+                            <span class="absolute inset-y-0 left-0 flex cursor-pointer items-center pl-3">
+                                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                    </path>
+                                </svg>
+                            </span>
 
-                        <input type="text"
-                            class="w-52 rounded-md border border-gray-200 bg-white py-2 pl-10 pr-4 text-gray-700 outline-none transition-all focus:w-[450px] dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
-                            placeholder="গল্প সার্চ করুন...">
+                            <input type="text" name="query"
+                                class="w-52 rounded-md border border-gray-200 bg-white py-2 pl-10 pr-4 text-gray-700 outline-none transition-all focus:w-[450px] dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                                placeholder="গল্প সার্চ করুন...">
+                        </form>
                     </div>
                     <div class="relative">
-                        <a href="https://evomart.com.bd/login"
+                        <a href=""
                             class="inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-theme-color py-1.5 px-3 text-sm font-medium text-white transition-all duration-700 hover:bg-theme-light">
                             Login / Singup
                         </a>
@@ -88,12 +90,12 @@
                     হোমপেজ
                 </a>
                 <a class="mx-4 transform text-xl leading-5 text-white hover:text-blue-600 transition-colors duration-300 dark:text-gray-200"
-                    href="{{ route('guides-nuisibles') }}">
+                    href="#">
                     জনপ্রিয় গল্প
                 </a>
                 <a class="mx-4 transform text-xl leading-5 text-white hover:text-blue-600 transition-colors duration-300 dark:text-gray-200"
-                    href="#" target="_blank">
-                    জনপ্রিয় লেখক
+                    href="{{ route('search.index') }}">
+                    সার্চ করুন
                 </a>
                 <a class="mx-4 transform text-xl leading-5 text-white hover:text-blue-600 transition-colors duration-300 dark:text-gray-200"
                     href="{{ route('story.index') }}">

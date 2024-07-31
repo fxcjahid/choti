@@ -113,7 +113,7 @@ fieldset[disabled] {
 
 .art-content h1 {
     @apply mt-5 mb-4 font-semibold text-gray-900;
-    @apply text-4xl md:text-5xl;
+    @apply text-4xl md:text-5xl !leading-normal;
 }
 
 .art-content h2 {

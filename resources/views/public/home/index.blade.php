@@ -31,41 +31,14 @@
                                 আরও গল্প দেখুন
                             </h2>
                             <ul class="my-1 ml-3 list-none">
-                                <li class="mb-1.5">
-                                    <a href="#" class="text-slate-800 hover:text-blue-900 text-lg lg:text-xl">
-                                        Uncategorized (7)
-                                    </a>
-                                </li>
-                                <li class="mb-1.5">
-                                    <a href="#" class="text-slate-800 hover:text-blue-900 text-lg lg:text-xl">
-                                        Uncategorized (7)
-                                    </a>
-                                </li>
-                                <li class="mb-1.5">
-                                    <a href="#" class="text-slate-800 hover:text-blue-900 text-lg lg:text-xl">
-                                        Uncategorized (7)
-                                    </a>
-                                </li>
-                                <li class="mb-1.5">
-                                    <a href="#" class="text-slate-800 hover:text-blue-900 text-lg lg:text-xl">
-                                        Uncategorized (7)
-                                    </a>
-                                </li>
-                                <li class="mb-1.5">
-                                    <a href="#" class="text-slate-800 hover:text-blue-900 text-lg lg:text-xl">
-                                        Uncategorized (7)
-                                    </a>
-                                </li>
-                                <li class="mb-1.5">
-                                    <a href="#" class="text-slate-800 hover:text-blue-900 text-lg lg:text-xl">
-                                        Uncategorized (7)
-                                    </a>
-                                </li>
-                                <li class="mb-1.5">
-                                    <a href="#" class="text-slate-800 hover:text-blue-900 text-lg lg:text-xl">
-                                        Uncategorized (7)
-                                    </a>
-                                </li>
+                                @foreach ($category as $category)
+                                    <li class="mb-1.5">
+                                        <a href="{{ $category->url() }}"
+                                            class="text-slate-800 hover:text-blue-900 text-lg lg:text-xl">
+                                            {{ $category->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
 

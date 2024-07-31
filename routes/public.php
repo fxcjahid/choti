@@ -11,11 +11,12 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategorydController;
 use App\Http\Controllers\ComplainStoryController;
-use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\WriteNewStoryController;
 
 /*
@@ -82,4 +83,10 @@ Route::prefix('contact')
     ->group(function () {
         Route::get('/', [ContactController::class, 'index'])->name('index');
         Route::post('/', [ContactController::class, 'store'])->name('store');
+    });
+
+Route::prefix('search')
+    ->name('search.')
+    ->group(function () {
+        Route::get('/', [SearchController::class, 'index'])->name('index');
     });
