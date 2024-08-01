@@ -99,7 +99,7 @@ class CategorydController extends Controller
             $category
                 ->post()
                 ->with('thumbnail')
-                ->paginate(200),
+                ->paginate(10),
         );
 
         /**
@@ -120,8 +120,13 @@ class CategorydController extends Controller
             ]);
         });
 
+        $categorylist = Categories::where('is_active', true)
+            ->inRandomOrder()
+            ->limit(10)
+            ->get();
 
-        return view('public.category.show', compact('category'));
+
+        return view('public.category.show', compact('category', 'categorylist'));
     }
 
     /**
