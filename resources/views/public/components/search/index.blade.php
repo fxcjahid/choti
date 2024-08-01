@@ -11,7 +11,7 @@
             </span>
 
             <input type="search"
-                class="w-full rounded-md border text-lg bg-white py-2 pl-10 pr-4 text-gray-700 border-gray-200 outline-none transition-all focus:border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                class="w-full rounded-md border text-lg bg-white py-2 pl-10 text-gray-700 border-gray-200 outline-none transition-all focus:border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                 name="query" placeholder="{{ trans('search.title') }}">
         </form>
     </div>

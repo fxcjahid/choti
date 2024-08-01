@@ -25,6 +25,8 @@
 
                     <div class="w-full lg:w-3/12 lg:border-l-4 lg:border-gray100 p-2">
 
+                        @include('public.components.search.index')
+
                         <div class="my-2 px-2">
                             <h2
                                 class="ellipsis my-2.5 text-lg font-semibold text-slate-900 hover:text-blue-900 dark:text-white md:text-2xl">

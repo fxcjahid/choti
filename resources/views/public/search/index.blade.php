@@ -44,7 +44,7 @@
                                 </span>
 
                                 <input type="search"
-                                    class="w-full rounded-md border text-xl bg-white py-3 pl-10 pr-4 text-gray-700 border-gray-200 outline-none transition-all focus:border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                                    class="w-full rounded-md border text-xl bg-white py-3 pl-10 pr-[140px] text-gray-700 border-gray-200 outline-none transition-all focus:border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300"
                                     name="query" value="{{ request()->query('query') }}"
                                     placeholder="{{ trans('search.title') }}">
 

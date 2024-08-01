@@ -2,7 +2,7 @@
     <div class="flex items-center">
         <h2 class="text-xl font-medium text-blue-700 hover:text-blue-900 flex-1">
             <a href="{{ $result->url() }}">
-                {!! highlightKeyword($result->title, $query) !!}
+                {!! $result->title !!}
             </a>
         </h2>
         <a href="{{ $result->url() }}" class="text-blue-800 hover:text-blue-900 ml-2">
@@ -13,6 +13,6 @@
         </a>
     </div>
     <p class="text-gray-700 mt-2 ellipsis line-clamp-4">
-        {{ str()->words($result->summary, 100, '') }}
+        {!! $result->content !!}
     </p>
 </div>
