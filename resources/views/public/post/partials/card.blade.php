@@ -1,4 +1,4 @@
-<article role="article" class="flex gap-x-4 border-b-2 p-4 hover:border-slate-100 hover:shadow-md">
+<article role="article" class="md:flex gap-x-4 border-b-2 p-4 hover:border-slate-100 hover:shadow-md">
     @if ($post->image())
         <img src="{{ $post->image() }}" class="relative z-0 lg:h-60 lg:max-w-xs rounded-md object-cover"
             alt="{{ $post->title }}">

@@ -17,7 +17,7 @@
             </div>
             <!-- Middle Search Bar -->
             <create-search v-slot="vm">
-                <div class="relative w-auto">
+                <div class="relative w-auto pr-3">
                     <div class="lg:w-[650px]">
                         <div class="relative">
                             <input type="text" v-on:input="vm.startSearching" v-on:blur="vm.cancelSearch"
@@ -64,7 +64,7 @@
             </create-search>
 
             <!-- Right sidebar -->
-            <div class="inline-flex items-center gap-3">
+            <div class="items-center gap-3 hidden md:inline-flex">
 
                 <!-- Switch Mode -->
                 <div
@@ -84,7 +84,7 @@
 
 
                 <!-- Profile Toggle -->
-                <div x-data="{ isOpen: false }" class="relative mr-4 inline-block">
+                <div x-data="{ isOpen: false }" class="hidden md:inline-block relative mr-4">
                     <!-- Dropdown toggle button -->
                     <button x-on:click="isOpen = !isOpen"
                         class="relative z-10 flex items-center rounded-md border border-transparent bg-white p-2 text-sm text-gray-600 outline-none dark:bg-gray-800 dark:text-white">

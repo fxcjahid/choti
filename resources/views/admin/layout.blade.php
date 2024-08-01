@@ -31,7 +31,7 @@
                                     class="post-containter mb-9 justify-between rounded-xl border bg-white shadow-sm transition hover:shadow-md hover:shadow-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:shadow-slate-700/[.7] sm:flex">
 
                                     <div
-                                        class="my-5 mx-8 h-24 w-24 flex-shrink-0 rounded-t-xl md:h-36 md:w-36 lg:h-40 lg:w-40">
+                                        class="my-5 mx-4 md:mx-8 h-60 w-auto flex-shrink-0 rounded-t-xl md:h-36 md:w-36 lg:h-40 lg:w-40">
                                         <a href="{{ route('admin.create.get', $post->id) }}">
                                             @php
                                                 $thumbnail = !empty(isset($post->thumbnail[0]->path))
@@ -44,7 +44,7 @@
                                     </div>
                                     <!-- content -->
                                     <div class="flex w-full flex-wrap">
-                                        <div class="flex h-full flex-col py-6 px-0">
+                                        <div class="flex h-full flex-col md:py-6 px-4 md:px-0">
                                             <a href="{{ route('admin.create.get', $post->id) }}"
                                                 class="text-lg font-bold text-gray-800 hover:text-blue-800 dark:text-white">
                                                 {{ $post->title ?? 'Untitled' }}
@@ -86,8 +86,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="mt-1 sm:mt-auto">
-                                                <div class="flex justify-start gap-2">
+                                            <div class="mt-4 md:mt-auto">
+                                                <div class="flex justify-start gap-2 flex-wrap">
                                                     @foreach ($post->tag as $tag)
                                                         <span
                                                             class="inline-flex items-center gap-1.5 rounded-full bg-gray-50 py-1.5 px-3 text-xs font-medium text-gray-500">
@@ -98,26 +98,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tools flex flex-wrap">
-                                        <div class="flex h-full min-w-[150px] flex-wrap py-6 px-2 transition-all">
+
+                                    <div class="tools md:flex flex-wrap">
+                                        <div
+                                            class="flex space-y-6 h-full min-w-[150px] flex-wrap py-2 md:py-6 px-2 transition-all">
 
                                             <!-- tools -->
                                             <div class="post-tools-hover m-auto w-full transition">
-                                                <div class="flex justify-center gap-5 rounded-full p-2 shadow">
+                                                <div
+                                                    class="flex justify-center gap-5 rounded-full -md:mx-3 -md:mt-2 p-2 shadow">
 
 
                                                     <div
                                                         class="hs-tooltip inline-block h-8 w-8 cursor-pointer p-1 text-gray-500">
-                                                        @php
-                                                            $category = empty($post->category[0]->name)
-                                                                ? 'draft'
-                                                                : $post->category[0]->slug;
-                                                            $slug = route('post.show', [
-                                                                'slug' => $post->slug,
-                                                                'category' => $category,
-                                                            ]);
-                                                        @endphp
-                                                        <a href="{{ $slug }}" target="_blank"
+                                                        <a href="{{ $post->url() }}" target="_blank"
                                                             class="hs-tooltip-toggle">
                                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
                                                                 fill="currentColor">
@@ -206,7 +200,7 @@
                                             <div class="post-tools-author m-auto w-full">
                                                 <div class="flex items-center justify-end gap-3">
                                                     <span class="text-sm text-gray-800">
-                                                        {{ $post->user->username }}
+                                                        {{ $post->author }}
                                                     </span>
                                                     <div class="mr-3 inline-flex h-6 w-6">
                                                         <img src="https://avatars.dicebear.com/api/avataaars/example.svg?options[top][]=shortHair&amp;options[accessoriesChance]=93"

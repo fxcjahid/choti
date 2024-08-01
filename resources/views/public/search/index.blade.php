@@ -26,11 +26,11 @@
             'breadcrumbs' => $breadcrumb,
         ]) --}}
 
-        <div class="padding-responsive bg-gray-200 py-10 dark:bg-gray-800 2xl:m-auto 2xl:max-w-screen-2xl">
-            <div class="flex flex-row rounded bg-white dark:bg-slate-900">
+        <div class="md:px-5 bg-gray-200 md:py-10 dark:bg-gray-800 2xl:m-auto 2xl:max-w-screen-2xl">
+            <div class="flex flex-row rounded -md:px-2 bg-white dark:bg-slate-900">
                 <div class="w-full md:w-[70%]" aria-label="content">
 
-                    <div class="m-auto">
+                    <div class="m-auto -md:px-2">
                         <div class="relative mt-8 sm:mx-6 sm:mb-8">
                             <form action="{{ route('search.index') }}" method="GET">
                                 <span class="absolute inset-y-0 left-0 flex cursor-pointer items-center pl-3">
@@ -49,7 +49,7 @@
                                     placeholder="{{ trans('search.title') }}">
 
                                 <button type="submit"
-                                    class="text-white absolute right-0 top-0 h-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-lg px-7 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    class="text-white absolute right-0 top-0 h-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-lg md:text-xl px-3 md:px-7 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                     {{ trans('search.search_submit') }}
                                 </button>
                             </form>
@@ -57,7 +57,7 @@
                     </div>
 
                     @if (!$results->isEmpty())
-                        <div class="m-auto">
+                        <div class="m-auto -md:mt-6">
                             <h1 class="text-2xl font-semibold mx-3 sm:mx-6 my-3">
                                 সার্চ রেজাল্টস: "{{ $query }}"
                             </h1>
@@ -73,7 +73,7 @@
                         @endforelse
                     </div>
 
-                    <div class="my-3 md:my-6 mx-3 sm:mx-6">
+                    <div class="my-8 md:my-6 mx-3 sm:mx-6">
                         {{ $results->appends(['query' => $query])->links('pagination::tailwind') }}
                     </div>
 

@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <!-- Right sidebar -->
-                <div class="inline-flex items-center gap-3">
+                <div class="md:inline-flex items-center gap-3 hidden">
 
                     <!-- Switch Mode -->
                     <div
@@ -55,9 +55,9 @@
         </div>
     </header>
     <!-- main content -->
-    <main class="inline-flex w-full" areia-label="content">
+    <main class="md:inline-flex w-full" areia-label="content">
         <create-post v-slot="vm" :posts="{{ $post }}">
-            <div class="w-full p-8">
+            <div class="w-full p-4 md:p-8">
                 <!-- posts content -->
                 <section aria-label="post">
 
@@ -79,7 +79,7 @@
                         <div class="-mx-4 mt-5 flex flex-wrap">
                             <div class="w-full px-4">
                                 <p class="my-2 text-xl font-medium">Content</p>
-                                <Cretate-Post-Editor class="rounded-md border" setdata="{{ $post->content }}">
+                                <Cretate-Post-Editor class="p-3 rounded-md border" setdata="{{ $post->content }}">
                                 </Cretate-Post-Editor>
                             </div>
                         </div>

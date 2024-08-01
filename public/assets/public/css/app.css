@@ -996,6 +996,10 @@ video {
   height: 12rem;
 }.h-28 {
   height: 7rem;
+}.h-40 {
+  height: 10rem;
+}.h-60 {
+  height: 15rem;
 }.max-h-\[calc\(100vh-75px\)\] {
   max-height: calc(100vh - 75px);
 }.max-h-\[22\.5rem\] {
@@ -1012,6 +1016,8 @@ video {
   min-height: inherit;
 }.min-h-\[20px\] {
   min-height: 20px;
+}.min-h-screen {
+  min-height: 100vh;
 }.w-full {
   width: 100%;
 }.w-24 {
@@ -1681,6 +1687,8 @@ video {
   padding-right: 150px;
 }.pr-\[140px\] {
   padding-right: 140px;
+}.pt-6 {
+  padding-top: 1.5rem;
 }.text-left {
   text-align: left;
 }.text-center {
@@ -2462,6 +2470,9 @@ video {
 }.hover\:bg-primary-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(30 64 175 / var(--tw-bg-opacity));
+}.hover\:bg-blue-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(26 86 219 / var(--tw-bg-opacity));
 }.hover\:bg-gradient-to-br:hover {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }.hover\:text-blue-800:hover {
@@ -3055,10 +3066,16 @@ video {
     margin-top: 3rem;
   }.md\:mr-4 {
     margin-right: 1rem;
+  }.md\:mt-auto {
+    margin-top: auto;
   }.md\:block {
     display: block;
+  }.md\:inline-block {
+    display: inline-block;
   }.md\:flex {
     display: flex;
+  }.md\:inline-flex {
+    display: inline-flex;
   }.md\:grid {
     display: grid;
   }.md\:hidden {
@@ -3127,6 +3144,8 @@ video {
     padding: 0.25rem;
   }.md\:p-\[70px\] {
     padding: 70px;
+  }.md\:p-8 {
+    padding: 2rem;
   }.md\:py-10 {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
@@ -3160,6 +3179,18 @@ video {
   }.md\:px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
+  }.md\:py-6 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }.md\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }.md\:px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }.md\:px-7 {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
   }.md\:pt-10 {
     padding-top: 2.5rem;
   }.md\:pb-10 {
@@ -3326,9 +3357,24 @@ video {
   }.\32xl\:max-w-screen-2xl {
     max-width: 1536px;
   }
-}@media (max-width: 767px) {.-md\:bg-slate-100 {
+}@media (max-width: 767px) {.-md\:mx-3 {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+  }.-md\:mt-2 {
+    margin-top: 0.5rem;
+  }.-md\:mt-6 {
+    margin-top: 1.5rem;
+  }.-md\:justify-end {
+    justify-content: flex-end;
+  }.-md\:bg-slate-100 {
     --tw-bg-opacity: 1;
     background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+  }.-md\:px-3 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }.-md\:px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }
 h1 {
