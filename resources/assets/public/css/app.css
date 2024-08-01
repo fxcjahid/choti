@@ -220,6 +220,6 @@ fieldset[disabled] {
     animation-iteration-count: infinite;
 }
 
-.hellobar + .top-header {
-    @apply mt-[121px] md:mt-14;
+.desktop-auth .auth-form {
+    max-width: 470px;
 }

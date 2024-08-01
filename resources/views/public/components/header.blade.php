@@ -45,22 +45,18 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="hidden md:relative">
-                        <a href=""
-                            class="inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-theme-color py-1.5 px-3 text-sm font-medium text-white transition-all duration-700 hover:bg-theme-light">
-                            Login / Singup
+                    <div class="hidden relative md:block">
+                        <a href="{{ route('public.auth.index') }}"
+                            class="inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-theme-color py-2.5 px-3 text-base font-medium text-white transition-all duration-700 hover:bg-theme-light">
+                            লগইন | সাইনআপ
                         </a>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
-            <div x-cloak :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']"
-                class="absolute inset-x-0 top-20 z-20 min-h-screen w-full bg-white px-6 py-2 transition-all duration-300 ease-in-out dark:bg-gray-800 md:relative md:top-0 md:mt-0 md:flex md:w-auto md:translate-x-0 md:items-center md:bg-transparent md:p-0 md:opacity-100">
-                @include('public.components.search.index')
-                @include('public.components.auth.mobile')
-            </div>
+            @includeWhen(Agent::isMobile(), 'public.components.menu.auth-search')
+
         </div>
 
         <!-- categories menu -->

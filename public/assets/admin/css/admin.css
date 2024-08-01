@@ -4177,6 +4177,9 @@ fieldset[disabled] {
   .md\:mt-auto{
     margin-top: auto;
   }
+  .md\:mt-20{
+    margin-top: 5rem;
+  }
   .md\:block{
     display: block;
   }
@@ -4403,6 +4406,10 @@ fieldset[disabled] {
     font-size: 1.875rem;
     line-height: 2.25rem;
   }
+  .md\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
   .md\:opacity-100{
     opacity: 1;
   }
@@ -4444,6 +4451,9 @@ fieldset[disabled] {
   }
   .lg\:mt-2{
     margin-top: 0.5rem;
+  }
+  .lg\:\!mt-14{
+    margin-top: 3.5rem !important;
   }
   .lg\:flex{
     display: flex;
@@ -4552,11 +4562,18 @@ fieldset[disabled] {
     padding-left: 4rem;
     padding-right: 4rem;
   }
+  .lg\:py-8{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
   .lg\:pl-5{
     padding-left: 1.25rem;
   }
   .lg\:pb-12{
     padding-bottom: 3rem;
+  }
+  .lg\:pb-16{
+    padding-bottom: 4rem;
   }
   .lg\:text-xl{
     font-size: 1.25rem;

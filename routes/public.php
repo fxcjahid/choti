@@ -9,6 +9,7 @@ use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SearchController;
@@ -89,4 +90,10 @@ Route::prefix('search')
     ->name('search.')
     ->group(function () {
         Route::get('/', [SearchController::class, 'index'])->name('index');
+    });
+
+Route::prefix('auth')
+    ->name('public.auth.')
+    ->group(function () {
+        Route::get('', [AuthController::class, 'index'])->name('index');
     });

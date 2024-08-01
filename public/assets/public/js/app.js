@@ -2975,6 +2975,36 @@ var module_default = src_default;
 
 /***/ }),
 
+/***/ "./resources/assets/public/js/components/auth.js":
+/*!*******************************************************!*\
+  !*** ./resources/assets/public/js/components/auth.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  return {
+    openTab: '',
+    init: function init() {
+      this.openTab = this.getQueryParam('tab') || 'login';
+    },
+    updateUrl: function updateUrl() {
+      var url = new URL(window.location);
+      url.searchParams.set('tab', this.openTab);
+      window.history.pushState({}, '', url);
+    },
+    getQueryParam: function getQueryParam(name) {
+      return new URLSearchParams(window.location.search).get(name);
+    }
+  };
+});
+
+/***/ }),
+
 /***/ "./node_modules/flowbite/dist/flowbite.js":
 /*!************************************************!*\
   !*** ./node_modules/flowbite/dist/flowbite.js ***!
@@ -7066,14 +7096,17 @@ var __webpack_exports__ = {};
   \*******************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
-/* harmony import */ var flowbite__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! flowbite */ "./node_modules/flowbite/dist/flowbite.js");
-/* harmony import */ var flowbite__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(flowbite__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var preline__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! preline */ "./node_modules/preline/dist/preline.js");
-/* harmony import */ var preline__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(preline__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/auth */ "./resources/assets/public/js/components/auth.js");
+/* harmony import */ var flowbite__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! flowbite */ "./node_modules/flowbite/dist/flowbite.js");
+/* harmony import */ var flowbite__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(flowbite__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var preline__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! preline */ "./node_modules/preline/dist/preline.js");
+/* harmony import */ var preline__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(preline__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('setup', _components_auth__WEBPACK_IMPORTED_MODULE_1__["default"]);
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
 })();
 
