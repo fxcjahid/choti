@@ -49,6 +49,25 @@ Route::controller(PageController::class)
         //Route::get('{page}', 'servicePage')->name('service-page'); 
     });
 
+Route::prefix('account')
+    ->middleware('auth')
+    ->name('public.account.')
+    ->group(function () {
+        Route::get('', [AccountController::class, 'index'])->name('index');
+        Route::get('profile', function () {
+            return view('public.account.page.profile');
+        })->name('profile');
+
+        Route::get('password', function () {
+            return view('public.account.page.password');
+        })->name('password');
+
+        Route::get('posts', function () {
+            return view('public.account.page.posts');
+        })->name('posts');
+
+    });
+
 Route::get('category/{category}', [CategorydController::class, 'postByCategory'])
     ->where(['category' => '[A-Za-z-_]+'])
     ->name('category');
@@ -100,11 +119,4 @@ Route::prefix('auth')
         Route::get('', [AuthController::class, 'index'])->name('index');
         Route::post('signup', [AuthController::class, 'signup'])->name('signup');
         Route::post('login', [AuthController::class, 'login'])->name('login');
-    });
-
-Route::prefix('account')
-    ->middleware('auth')
-    ->name('public.account.')
-    ->group(function () {
-        Route::get('', [AccountController::class, 'index'])->name('index');
     });

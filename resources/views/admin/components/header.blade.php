@@ -96,7 +96,7 @@
                                     class="block h-auto w-full max-w-full rounded-full bg-gray-100 dark:bg-slate-800" />
                             </div>
                             <div class="px-2 transition-colors">
-                                {{ auth()->user()->name() }}
+                                {{ auth()->user()->name }}
                             </div>
                             <span
                                 class="inline-flex h-6 w-6 items-center justify-center transition-colors lg:inline-flex">

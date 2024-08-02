@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Request;
+
 
 if (! function_exists('ConvertPlaneTextToEditorJsBlocks')) {
     function ConvertPlaneTextToEditorJsBlocks($plainText)
@@ -86,5 +88,16 @@ if (! function_exists('isValidEditorJsBlocks')) {
         }
 
         return true;
+    }
+}
+
+if (! function_exists('activeMenuClass')) {
+    function activeMenuClass($uri = '')
+    {
+        $active = '';
+        if (Request::is(Request::segment(1) . '/' . $uri . '/*') || Request::is(Request::segment(1) . '/' . $uri) || Request::is($uri)) {
+            $active = 'active';
+        }
+        return $active;
     }
 }

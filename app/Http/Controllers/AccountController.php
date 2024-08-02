@@ -43,4 +43,8 @@ class AccountController extends Controller
      */
     protected $viewPath = 'public.account';
 
+    public function index()
+    {
+        return view('public.account.page.profile');
+    }
 }
