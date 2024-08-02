@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SeriesController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategorydController;
@@ -93,7 +94,17 @@ Route::prefix('search')
     });
 
 Route::prefix('auth')
+    ->middleware('guest')
     ->name('public.auth.')
     ->group(function () {
         Route::get('', [AuthController::class, 'index'])->name('index');
+        Route::post('signup', [AuthController::class, 'signup'])->name('signup');
+        Route::post('login', [AuthController::class, 'login'])->name('login');
+    });
+
+Route::prefix('account')
+    ->middleware('auth')
+    ->name('public.account.')
+    ->group(function () {
+        Route::get('', [AccountController::class, 'index'])->name('index');
     });

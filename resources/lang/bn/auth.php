@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'title' => 'login',
+    'title' => 'লগইন | সাইনআপ করুন ',
 ];

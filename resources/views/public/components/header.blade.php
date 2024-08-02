@@ -45,12 +45,22 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="hidden relative md:block">
-                        <a href="{{ route('public.auth.index') }}"
-                            class="inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-theme-color py-2.5 px-3 text-base font-medium text-white transition-all duration-700 hover:bg-theme-light">
-                            লগইন | সাইনআপ
-                        </a>
-                    </div>
+                    @auth
+                        <div class="hidden relative md:block">
+                            <a href="{{ route('public.account.index') }}"
+                                class="inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-theme-color py-2.5 px-3 text-base font-medium text-white transition-all duration-700 hover:bg-theme-light">
+                                আপনার একাউন্ট
+                            </a>
+                        </div>
+                    @endauth
+                    @guest
+                        <div class="hidden relative md:block">
+                            <a href="{{ route('public.auth.index') }}"
+                                class="inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-theme-color py-2.5 px-3 text-base font-medium text-white transition-all duration-700 hover:bg-theme-light">
+                                লগইন | সাইনআপ
+                            </a>
+                        </div>
+                    @endguest
                 </div>
 
             </div>
