@@ -3,11 +3,11 @@
     <div class="profile-edits">
         <div class="mb-5 border-b border-gray-100">
             <h1 class="mb-3 text-xl md:text-2xl text-slate-900">
-                Password Change
+                পাসওয়ার্ড পরিবর্তন করুন
             </h1>
             <div class="pb-3 text-base">
-                If you forgot your password, you can request a new password by logging and following the steps for 'forgot
-                password'.
+                আপনি যদি আপনার পাসওয়ার্ড ভুলে যান, তাহলে আপনি নিচের থেকে <b>'পাসওয়ার্ড ভুলে গেছেন'</b> - এই অপশনটি অনুসরণ
+                করে একটি নতুন পাসওয়ার্ডের অনুরোধ করতে পারেন।
             </div>
         </div>
         <div class="my-5 mx-5">

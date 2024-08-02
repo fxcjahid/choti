@@ -1,15 +1,15 @@
 <?php
 
 return [
-    'name'                   => 'name',
-    'username'               => 'username',
-    'bio'                    => 'bio',
-    'email'                  => 'email',
+    'name'                   => 'আপনার নাম',
+    'username'               => 'আপনার ইউসার নাম',
+    'bio'                    => 'নিজের সম্পর্কে লিখুন',
+    'email'                  => 'আপনার ইমেইল',
     'submit'                 => 'সাবমিট করুন',
-    'password'               => 'passowrd',
-    'current_Password'       => 'Current Password',
-    'new_passowrd'           => 'New passowrd',
-    'confirm_password'       => 'Confirm password',
+    'password'               => 'আপনার পাসওয়ার্ড ',
+    'current_Password'       => 'আপনার বর্তমান পাসওয়ার্ড ',
+    'new_passowrd'           => 'আপনার নতুন পাসওয়ার্ড ',
+    'confirm_password'       => 'পূনরায় একই পাসওয়ার্ড দিন',
     'success_signup'         => 'আপনার একাউন্ট ক্রিট হয়েছে। নিচে লগইন করুন  ',
     'invaild_email_password' => 'আপনার একাউন্ট ক্রেডেন্টিয়ালস তথ্য সঠিক নয় ',
 ];

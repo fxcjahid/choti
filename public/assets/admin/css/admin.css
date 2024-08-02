@@ -3163,6 +3163,9 @@ fieldset[disabled] {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+.first-line\:rounded-md::first-line{
+  border-radius: 0.375rem;
+}
 .before\:absolute::before{
   content: var(--tw-content);
   position: absolute;

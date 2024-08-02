@@ -3,7 +3,7 @@
     <div class="profile-edits">
         <div class="mb-5 border-b border-gray-100">
             <h1 class="mb-3 text-xl md:text-2xl text-slate-900">
-                Profile Edits
+                {{ trans('account.profile.title') }}
             </h1>
             <div class="page-description"></div>
         </div>

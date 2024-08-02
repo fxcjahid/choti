@@ -2330,14 +2330,15 @@ video {
   text-align: left;
   flex-direction: column;
 }.settings .navigation-menu .menu-list .item {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  gap: 13px;
+  line-height: normal;
   height: 100%;
   padding: 7px 10px;
   font-size: 21px;
   font-weight: 400;
   text-transform: capitalize;
-  color: var(--black);
   cursor: pointer;
   border-left: 2px solid transparent;
   transition: 0.2s;
@@ -3116,12 +3117,6 @@ video {
   }.md\:my-4 {
     margin-top: 1rem;
     margin-bottom: 1rem;
-  }.md\:mx-6 {
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
-  }.md\:mx-5 {
-    margin-left: 1.25rem;
-    margin-right: 1.25rem;
   }.md\:mt-auto {
     margin-top: auto;
   }.md\:mt-0 {
@@ -3252,6 +3247,9 @@ video {
   }.md\:py-14 {
     padding-top: 3.5rem;
     padding-bottom: 3.5rem;
+  }.md\:py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }.md\:py-8 {
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -3273,9 +3271,6 @@ video {
   }.md\:px-4 {
     padding-left: 1rem;
     padding-right: 1rem;
-  }.md\:py-4 {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
   }.md\:pb-16 {
     padding-bottom: 4rem;
   }.md\:pt-10 {

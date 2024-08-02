@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Traits\HasCrudActions;
@@ -47,4 +48,15 @@ class AccountController extends Controller
     {
         return view('public.account.page.profile');
     }
+
+    public function posts()
+    {
+        $posts = Post::with('user')
+            ->where('user_id', auth()->id())
+            ->latest()
+            ->paginate(15);
+
+        return view('public.account.page.posts', compact('posts'));
+    }
+
 }

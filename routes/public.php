@@ -52,8 +52,10 @@ Route::controller(PageController::class)
 Route::prefix('account')
     ->middleware('auth')
     ->name('public.account.')
-    ->group(function () {
-        Route::get('', [AccountController::class, 'index'])->name('index');
+    ->group(function () { 
+        
+        Route::get('', [AccountController::class, 'posts'])->name('index');
+
         Route::get('profile', function () {
             return view('public.account.page.profile');
         })->name('profile');
@@ -62,9 +64,11 @@ Route::prefix('account')
             return view('public.account.page.password');
         })->name('password');
 
-        Route::get('posts', function () {
-            return view('public.account.page.posts');
-        })->name('posts');
+        Route::get('posts', [AccountController::class, 'posts'])->name('posts');
+
+
+        Route::view('create-story', 'public.account.page.create-story')
+            ->name('create-story');
 
     });
 
