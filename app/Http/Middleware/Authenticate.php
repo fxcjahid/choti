@@ -6,16 +6,15 @@ use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 class Authenticate extends Middleware
 {
-	/**
-	 * Get the path the user should be redirected to when they are not authenticated.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return string|null
-	 */
-	protected function redirectTo($request)
-	{
-		if (!$request->expectsJson()) {
-			return redirect()->route('admin.login')->withErrors(['warning' => 'Authentication Required.']);
-		}
-	}
+    /**
+     * Get the path the user should be redirected to when they are not authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return string|null
+     */
+    protected function redirectTo($request)
+    {
+        session()->flash('warning', 'Authentication Required.');
+        return route('public.auth.index', ['tab' => 'login']);
+    }
 }

@@ -38,7 +38,7 @@
                 <div class="hs-tooltip inline-block">
                     <div class="hs-tooltip-toggle inline-flex">
                         <div class="text-sm text-gray-500 dark:text-gray-500">
-                            Last Update: {{ $post->updated_at->diffForHumans() }}
+                            লাস্ট আপডেটঃ {{ $post->updated_at->diffForHumans() }}
                         </div>
                         <span
                             class="hs-tooltip-content invisible absolute z-10 rounded-md bg-gray-900 py-1 px-2 text-xs font-medium text-white opacity-0 shadow-sm transition-opacity hs-tooltip-shown:visible hs-tooltip-shown:opacity-100 dark:bg-slate-700 hidden"

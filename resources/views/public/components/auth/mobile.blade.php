@@ -24,6 +24,15 @@
          </div>
      @endif
 
+     @if (Session::has('warning'))
+         <div class="alert alert-danger my-10">
+             {!! Session::get('warning') !!}
+             @php
+                 Session::forget('warning');
+             @endphp
+         </div>
+     @endif
+
      <!-- Login Form -->
      <div x-show="openTab === 'login'" class="lg:!mt-14 mt-10">
          <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl">

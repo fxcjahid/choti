@@ -52,8 +52,8 @@ Route::controller(PageController::class)
 Route::prefix('account')
     ->middleware('auth')
     ->name('public.account.')
-    ->group(function () { 
-        
+    ->group(function () {
+
         Route::get('', [AccountController::class, 'posts'])->name('index');
 
         Route::get('profile', function () {
@@ -96,8 +96,16 @@ Route::get('sitemap:generate:blanee', function () {
     }
 });
 
-Route::get('/submit-new-story', [WriteNewStoryController::class, 'index'])->name('story.index');
-Route::post('/submit-new-story', [WriteNewStoryController::class, 'store'])->name('story.store');
+Route::prefix('submit-new-story')
+    ->name('public.story.')
+    ->group(function () {
+
+        Route::get('', [WriteNewStoryController::class, 'index'])->name('index');
+        Route::post('', [WriteNewStoryController::class, 'store'])->name('store');
+
+        Route::get('success/{id}', [WriteNewStoryController::class, 'success'])->name('success');
+
+    });
 
 
 Route::get('/complain-story', [ComplainStoryController::class, 'index'])->name('complain.index');

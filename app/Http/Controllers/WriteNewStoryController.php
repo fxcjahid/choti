@@ -38,4 +38,19 @@ class WriteNewStoryController extends Controller
      */
     protected $viewPath = 'public.story';
 
+
+    public function index()
+    {
+        if (auth()->check()) {
+            return redirect()->route('public.account.create-story');
+        }
+
+        return view('public.story.index');
+    }
+
+    public function success()
+    {
+        return view('public.story.success');
+    }
+
 }

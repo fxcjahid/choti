@@ -86,7 +86,7 @@
                     সার্চ করুন
                 </a>
                 <a class="mx-4 transform text-xl leading-5 text-white hover:text-blue-600 transition-colors duration-300 dark:text-gray-200"
-                    href="{{ route('story.index') }}">
+                    href="{{ route('public.story.index') }}">
                     গল্প লিখে পাঠান
                 </a>
 

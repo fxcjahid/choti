@@ -75,6 +75,6 @@ class AuthController extends Controller
         }
 
         return Redirect::back()
-            ->withErrors(['error' => trans('attrubtes.invaild_email_password')]);
+            ->withErrors(['error' => trans('attributes.invaild_email_password')]);
     }
 }
