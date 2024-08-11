@@ -3005,6 +3005,64 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/assets/public/js/components/image-uploader.js":
+/*!*****************************************************************!*\
+  !*** ./resources/assets/public/js/components/image-uploader.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  return {
+    images: [],
+    maxFiles: 10,
+    acceptedFileTypes: ['image/jpeg', 'image/png', 'image/gif', 'image/webp'],
+    handleFiles: function handleFiles(event) {
+      var _this = this;
+
+      var files = event.target.files; // Check if the total number of selected images exceeds the maximum limit
+
+      if (this.images.length + files.length > this.maxFiles) {
+        alert("You can only upload a maximum of ".concat(this.maxFiles, " images."));
+        return;
+      }
+
+      Array.from(files).forEach(function (file) {
+        // Validate file type
+        if (!_this.acceptedFileTypes.includes(file.type)) {
+          alert("Invalid file type: ".concat(file.name, ". Only images are allowed."));
+          return;
+        }
+
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          _this.images.push({
+            file: file,
+            url: e.target.result
+          });
+        };
+
+        reader.readAsDataURL(file);
+      }); // Clear the file input value to allow re-selection of the same files
+
+      event.target.value = '';
+    },
+    removeImage: function removeImage(index) {
+      this.images.splice(index, 1);
+    },
+    canAddMoreFiles: function canAddMoreFiles() {
+      return this.images.length < this.maxFiles;
+    }
+  };
+});
+
+/***/ }),
+
 /***/ "./resources/assets/public/js/components/tom-select.js":
 /*!*************************************************************!*\
   !*** ./resources/assets/public/js/components/tom-select.js ***!
@@ -8454,9 +8512,11 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
 /* harmony import */ var _components_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/auth */ "./resources/assets/public/js/components/auth.js");
-/* harmony import */ var _components_tom_select__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/tom-select */ "./resources/assets/public/js/components/tom-select.js");
-/* harmony import */ var preline__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! preline */ "./node_modules/preline/dist/preline.js");
-/* harmony import */ var preline__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(preline__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_image_uploader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/image-uploader */ "./resources/assets/public/js/components/image-uploader.js");
+/* harmony import */ var _components_tom_select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/tom-select */ "./resources/assets/public/js/components/tom-select.js");
+/* harmony import */ var preline__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! preline */ "./node_modules/preline/dist/preline.js");
+/* harmony import */ var preline__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(preline__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
  // import 'flowbite'; 
@@ -8464,8 +8524,9 @@ __webpack_require__.r(__webpack_exports__);
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('setup', _components_auth__WEBPACK_IMPORTED_MODULE_1__["default"]);
+alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data('imageUploader', _components_image_uploader__WEBPACK_IMPORTED_MODULE_2__["default"]);
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
-new _components_tom_select__WEBPACK_IMPORTED_MODULE_2__["default"]('.tom-select', {
+new _components_tom_select__WEBPACK_IMPORTED_MODULE_3__["default"]('.tom-select', {
   create: true,
   sortField: 'text'
 });

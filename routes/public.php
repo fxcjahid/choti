@@ -104,6 +104,7 @@ Route::prefix('submit-new-story')
         Route::post('', [WriteNewStoryController::class, 'store'])->name('store');
 
         Route::get('success/{id}', [WriteNewStoryController::class, 'success'])->name('success');
+        Route::post('success/{id}', [WriteNewStoryController::class, 'update'])->name('update');
 
     });
 

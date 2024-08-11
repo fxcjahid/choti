@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\Post;
+use App\Models\Series;
+use App\Models\PostTags;
 use App\Models\Categories;
+use App\Models\PostSeries;
 use Illuminate\Http\Request;
+use App\Models\PostThumbnail;
+use App\Models\PostCategories;
 use App\Traits\HasCrudActions;
 use App\Http\Requests\WriteNewStoryRequest;
+use App\Http\Requests\WriteNewStoryUpdateRequest;
 
 class WriteNewStoryController extends Controller
 {
@@ -101,9 +108,106 @@ class WriteNewStoryController extends Controller
         $post = Post::findBySlugOrID($decodeID);
 
         $category = Categories::all();
+        $series   = Series::all();
+        $tags     = Tag::all();
 
 
-        return view('public.story.success', compact('post', 'category'));
+        return view('public.story.success', compact('post', 'category', 'series', 'tags'));
+    }
+
+
+    public function update(WriteNewStoryUpdateRequest $request)
+    {
+
+        $postIds = unserialize(
+            request()
+                ->cookie('post', serialize([])),
+        );
+
+        if (! in_array($request->id, $postIds)) {
+            return abort(404);
+        }
+
+        $post = Post::findOrFail($request->id);
+
+
+        $post->name  = $request->name;
+        $post->email = $request->email;
+
+        $this->updateTags($request->tags, $request->id);
+        $this->updateCategories($request->category, $request->id);
+        $this->updateSeries($request->series, $request->id);
+        // $this->updateThumbnail($request->thumbnail, $request->id);
+
+        $post->save();
+
+
+        return redirect()
+            ->back()
+            ->withSuccess('আপনার গল্প আপডেট করা হয়েছে ');
+
+    }
+
+
+    /**
+     * Update Post's Thumbnail
+     */
+    private function updateThumbnail(array $thumbnail = [], int $postID = null)
+    {
+        PostThumbnail::where('post_id', $postID)->delete();
+
+        foreach ($thumbnail as $value) {
+            PostThumbnail::create([
+                'post_id' => $postID,
+                'file_id' => $value['id'],
+            ]);
+        }
+    }
+
+    /**
+     * Update Post's Tags.
+     **/
+    private function updateTags(array $tags = [], int $postID = null)
+    {
+        PostTags::where('post_id', $postID)->delete();
+
+        foreach ($tags as $value) {
+            PostTags::create([
+                'post_id' => $postID,
+                'tag_id'  => $value,
+            ]);
+        }
+    }
+
+    /**
+     * Update Post's Categories.
+     **/
+    private function updateCategories(array $categories = [], int $postID = null)
+    {
+        PostCategories::where('post_id', $postID)->delete();
+
+        foreach ($categories as $value) {
+            PostCategories::create([
+                'post_id'       => $postID,
+                'categories_id' => $value,
+            ]);
+        }
+    }
+
+    /**
+     * Update Post's Series.
+     **/
+    private function updateSeries($seriesID = null, int $postID = null)
+    {
+        if (empty($seriesID))
+            return;
+
+        PostSeries::where('post_id', $postID)->delete();
+
+        PostSeries::create([
+            'post_id'   => $postID,
+            'series_id' => $seriesID,
+        ]);
     }
 
 }

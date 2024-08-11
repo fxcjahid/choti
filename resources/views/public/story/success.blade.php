@@ -11,7 +11,7 @@
                     @include('public.components.errors.alert')
 
                     @if (Session::has('success'))
-                        <div class="alert alert-success mb-10">
+                        <div class="alert alert-success !mb-16 text-xl">
                             {!! Session::get('success') !!}
                             @php
                                 Session::forget('success');
@@ -34,7 +34,7 @@
                     </p>
                     <hr class="my-10 !border-t-0 border-b border-gray-200" />
 
-                    <form action="{{ route('public.story.store') }}" method="post" class="space-y-8">
+                    <form action="{{ route('public.story.update', ['id' => $post->id]) }}" method="post" class="space-y-8">
                         {{ csrf_field() }}
                         <div>
                             <div class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
@@ -68,7 +68,7 @@
                                     class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
                                     আপনার ইমেইলঃ
                                 </label>
-                                <input type="email" id="email" name="email" value="{{ old('name', $post->email) }}"
+                                <input type="email" id="email" name="email" value="{{ old('email', $post->email) }}"
                                     class="block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
                                 @if ($errors->has('email'))
                                     <div class="text-base font-medium text-red-600">
@@ -79,67 +79,101 @@
                         </div>
 
                         <div>
-                            <label for="title" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
+                            <label for="category" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
                                 ক্যাটাগরি সেলেক্ট বা লিখুনঃ <span class="text-gray-600 font-light">(অপশনাল)</span>
                             </label>
-                            <select id="category" name="category"
-                                class="block w-full tom-select rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+                            <select id="category" name="category[]" multiple
+                                class="block w-full tom-select rounded-md border border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
 
                                 @foreach ($category as $category)
-                                    <option value="{{ $category->id }}"
-                                        {{ old('category') == $category->id ? 'selected' : '' }}>
+                                    <option value="{{ $category->id }}" @if (in_array($category->id, old('category', $post->category->pluck('id')->toArray()))) selected @endif>
                                         {{ $category->name }}
                                     </option>
                                 @endforeach
 
                             </select>
-                            @if ($errors->has('title'))
+                            @if ($errors->has('category'))
                                 <div class="text-base font-medium text-red-600">
-                                    {{ $errors->first('title') }}
+                                    {{ $errors->first('category') }}
                                 </div>
                             @endif
                         </div>
 
                         <div>
-                            <label for="title" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
+                            <label for="series" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
                                 সেরিজ সেলেক্ট বা লিখুনঃ <span class="text-gray-600 font-light">(অপশনাল)</span>
                             </label>
-                            <input type="text" id="title" name="title" value="{{ old('title') }}"
-                                class="block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
-                            @if ($errors->has('title'))
+                            <select id="series" name="series"
+                                class="block w-full tom-select rounded-md border border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+
+                                @foreach ($series as $series)
+                                    <option value="{{ $series->id }}"
+                                        {{ old('series') == $series->id ? 'selected' : '' }}>
+                                        {{ $series->name }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+                            @if ($errors->has('series'))
                                 <div class="text-base font-medium text-red-600">
-                                    {{ $errors->first('title') }}
+                                    {{ $errors->first('series') }}
                                 </div>
                             @endif
                         </div>
 
                         <div>
-                            <label for="title" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
+                            <label for="tags" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
                                 ট্যাগ সেলেক্ট বা লিখুনঃ <span class="text-gray-600 font-light">(অপশনাল)</span>
                             </label>
-                            <input type="text" id="title" name="title" value="{{ old('title') }}"
-                                class="block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
-                            @if ($errors->has('title'))
+                            <select id="tags" name="tags[]" multiple
+                                class="block w-full tom-select rounded-md border border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+
+                                @foreach ($tags as $tag)
+                                    <option value="{{ $tag->id }}" @if (in_array($tag->id, old('tags', $post->tag->pluck('id')->toArray()))) selected @endif>
+                                        {{ $tag->name }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+                            @if ($errors->has('tags'))
                                 <div class="text-base font-medium text-red-600">
-                                    {{ $errors->first('title') }}
+                                    {{ $errors->first('tags') }}
                                 </div>
                             @endif
                         </div>
 
                         <div>
-                            <label for="title" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
+                            <label for="files" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
                                 ইমেজ আপলোড করুনঃ <span class="text-gray-600 font-light">(অপশনাল)</span>
                             </label>
-                            <input type="file" id="title" name="title" value="{{ old('title') }}"
-                                class="block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
-                            @if ($errors->has('title'))
+
+                            <div x-data="imageUploader()" class="mt-3 mb-4">
+                                <input type="file" multiple @change="handleFiles" class="hidden" x-ref="fileInput">
+                                <button type="button" @click="$refs.fileInput.click()" x-show="canAddMoreFiles()"
+                                    class="block w-full border border-dashed border-gray-300 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+                                    ইমেজ আপলোড করুন
+                                </button>
+
+                                <div class="mt-4 grid grid-cols-2 md:grid-cols-3 gap-4">
+                                    <template x-for="(image, index) in images" :key="index">
+                                        <div class="relative">
+                                            <img :src="image.url" class="w-full h-32 object-cover rounded"
+                                                alt="Image Preview">
+                                            <button type="button" @click="removeImage(index)"
+                                                class="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center">×</button>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                            @if ($errors->has('files'))
                                 <div class="text-base font-medium text-red-600">
-                                    {{ $errors->first('title') }}
+                                    {{ $errors->first('files') }}
                                 </div>
                             @endif
                         </div>
 
-                        {!! GoogleReCaptchaV3::renderField('contact_us_id', 'contact_us_action') !!}
+
+                        {{-- {!! GoogleReCaptchaV3::renderField('update_story_id', 'update_story_action') !!} --}}
                         <button type="submit"
                             class="!-mt-0.5 rounded-lg bg-theme-color py-2 px-5 text-center text-lg font-medium text-white outline-none hover:bg-theme-light dark:bg-primary-600 dark:hover:bg-primary-700 sm:w-fit">
                             আপডেট করুন
@@ -147,7 +181,6 @@
                     </form>
                 </div>
             </section>
-            {!! GoogleReCaptchaV3::init() !!}
         </div>
     </main>
 

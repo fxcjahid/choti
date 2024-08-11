@@ -47,7 +47,7 @@
                                 class="block h-auto w-full max-w-full rounded-full bg-gray-100 dark:bg-slate-800" />
                         </div>
                         <div class="px-2 font-medium capitalize transition-colors">
-                            {{ auth()->user()->name() }}
+                            {{ auth()->user()->name }}
                         </div>
                     </div>
                 </div>
