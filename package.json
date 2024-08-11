@@ -65,7 +65,7 @@
         "editorjs-text-alignment-blocktune": "^1.0.3",
         "flowbite": "^1.5.3",
         "jquery": "^3.6.1",
-        "tom-select": "^2.2.2",
+        "tom-select": "^2.3.1",
         "vanilla-cookieconsent": "^2.8.9",
         "vue": "^3.2.37",
         "vue-editor-js": "^2.0.1",

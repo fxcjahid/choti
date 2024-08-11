@@ -19,6 +19,7 @@ class CreatePosts extends Migration
             $table->text('content')->nullable();
             $table->text('summary')->nullable();
             $table->string('name')->nullable();
+            $table->string('email')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->enum('status', ['publish', 'draft', 'scheduled', 'trash'])->default('draft');
             $table->string('slug')->unique();

@@ -24,6 +24,7 @@ class Post extends Model
     protected $fillable = [
         'title',
         'name',
+        'email',
         'content',
         'user_id',
         'status', // 'publish','draft','scheduled','trash' 
@@ -50,7 +51,7 @@ class Post extends Model
 
             // Set Article Status
             if (empty($post->status)) {
-                $post->status = 'draft';
+                $post->status = 'pendding';
             }
         });
     }

@@ -42,7 +42,7 @@
                             </div>
                             <p
                                 class="block w-full rounded-md border cursor-no-drop border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
-                                রেইড স্প্রে কীটনাশক কি বিছানার পোকা মেরে ফেলে?
+                                {{ $post->title }}
                             </p>
                             <div class="text-sm my-0.5 font-normal text-gray-600">
                                 গল্পের নাম পরিবর্তন করতে চাইলে, অবশ্যই এক্সেস ভেরিফিকেশন করতে হবে
@@ -55,7 +55,7 @@
                                     class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
                                     আপনার নামঃ
                                 </label>
-                                <input type="text" id="name" name="name" value="{{ old('name') }}"
+                                <input type="text" id="name" name="name" value="{{ old('name', $post->name) }}"
                                     class="block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
                                 @if ($errors->has('name'))
                                     <div class="text-base font-medium text-red-600">
@@ -68,7 +68,7 @@
                                     class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
                                     আপনার ইমেইলঃ
                                 </label>
-                                <input type="email" id="email" name="email" value="{{ old('email') }}"
+                                <input type="email" id="email" name="email" value="{{ old('name', $post->email) }}"
                                     class="block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
                                 @if ($errors->has('email'))
                                     <div class="text-base font-medium text-red-600">
@@ -82,8 +82,17 @@
                             <label for="title" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
                                 ক্যাটাগরি সেলেক্ট বা লিখুনঃ <span class="text-gray-600 font-light">(অপশনাল)</span>
                             </label>
-                            <input type="text" id="title" name="title" value="{{ old('title') }}"
-                                class="block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+                            <select id="category" name="category"
+                                class="block w-full tom-select rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+
+                                @foreach ($category as $category)
+                                    <option value="{{ $category->id }}"
+                                        {{ old('category') == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+
+                            </select>
                             @if ($errors->has('title'))
                                 <div class="text-base font-medium text-red-600">
                                     {{ $errors->first('title') }}
