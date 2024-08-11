@@ -3018,13 +3018,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
   return {
+    thumbnail: '',
     images: [],
-    maxFiles: 10,
+    maxFiles: 1,
     acceptedFileTypes: ['image/jpeg', 'image/png', 'image/gif', 'image/webp'],
+    init: function init(url) {
+      this.thumbnail = url;
+    },
     handleFiles: function handleFiles(event) {
       var _this = this;
 
-      var files = event.target.files; // Check if the total number of selected images exceeds the maximum limit
+      var files = event.target.files;
+      this.thumbnail = ''; // Check if the total number of selected images exceeds the maximum limit
 
       if (this.images.length + files.length > this.maxFiles) {
         alert("You can only upload a maximum of ".concat(this.maxFiles, " images."));
@@ -3054,6 +3059,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     removeImage: function removeImage(index) {
       this.images.splice(index, 1);
+    },
+    removeThumbnail: function removeThumbnail() {
+      this.thumbnail = '';
     },
     canAddMoreFiles: function canAddMoreFiles() {
       return this.images.length < this.maxFiles;

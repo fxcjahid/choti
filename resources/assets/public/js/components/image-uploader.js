@@ -1,10 +1,17 @@
 export default () => ({
+    thumbnail: '',
     images: [],
-    maxFiles: 10,
+    maxFiles: 1,
     acceptedFileTypes: ['image/jpeg', 'image/png', 'image/gif', 'image/webp'],
+
+    init(url) {
+        this.thumbnail = url;
+    },
 
     handleFiles(event) {
         const files = event.target.files;
+
+        this.thumbnail = '';
 
         // Check if the total number of selected images exceeds the maximum limit
         if (this.images.length + files.length > this.maxFiles) {
@@ -39,7 +46,11 @@ export default () => ({
         this.images.splice(index, 1);
     },
 
+    removeThumbnail() {
+        this.thumbnail = '';
+    },
+
     canAddMoreFiles() {
         return this.images.length < this.maxFiles;
     }
-});
+}); 

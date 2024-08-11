@@ -28,8 +28,7 @@ class FileController extends Controller
 
     /**
      * Store a newly created media in storage.
-     *
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function store(UploadMediaRequest $request)
     {
@@ -38,7 +37,7 @@ class FileController extends Controller
         /**
          * Array Files Object
          */
-        if (!empty($files) && is_array($files)) {
+        if (! empty($files) && is_array($files)) {
             foreach ($files as $file) {
                 $this->uploadFileToDatabase($file);
             }
@@ -50,7 +49,7 @@ class FileController extends Controller
     /**
      * Update Files details Into Database
      */
-    private function uploadFileToDatabase($file)
+    public function uploadFileToDatabase($file)
     {
         /**
          * @@Remember: all requested files are Optimize By laravel-image-optimizer
@@ -122,23 +121,23 @@ class FileController extends Controller
 
         //Insert File details to Database
         $File = File::create([
-            'user_id'     => auth()->id(),
-            'disk'         => config('filesystems.default'),
-            'filename'     => $file->getClientOriginalName(),
-            'path'         => $path,
-            'small'        => $path,
+            'user_id'   => auth()->id(),
+            'disk'      => config('filesystems.default'),
+            'filename'  => $file->getClientOriginalName(),
+            'path'      => $path,
+            'small'     => $path,
             'medium'    => $path,
             'extension' => $file->guessClientExtension() ?? '',
-            'mime'         => $file->getClientMimeType(),
-            'size'         => $file->getSize(),
+            'mime'      => $file->getClientMimeType(),
+            'size'      => $file->getSize(),
         ]);
 
         Session::flash('success', 'File was upload successfully');
         return response(
             [
                 'success' => true,
-                'File'      => $File,
-            ]
+                'File'    => $File,
+            ],
         );
     }
 
@@ -151,7 +150,7 @@ class FileController extends Controller
     {
         $file = $request->file('image');
 
-        if (!empty($file)) {
+        if (! empty($file)) {
 
 
             // Place File to PUBLIC location
@@ -178,25 +177,25 @@ class FileController extends Controller
 
             // Insert File details to Database
             File::create([
-                'user_id'     => auth()->id(),
-                'disk'         => config('filesystems.default'),
-                'filename'     => $file->getClientOriginalName(),
-                'path'         => $path,
-                'small'        => $path,
+                'user_id'   => auth()->id(),
+                'disk'      => config('filesystems.default'),
+                'filename'  => $file->getClientOriginalName(),
+                'path'      => $path,
+                'small'     => $path,
                 'medium'    => $path,
                 'extension' => $file->extension() ?? '',
-                'mime'         => $file->getClientMimeType(),
-                'size'         => $file->getSize(),
+                'mime'      => $file->getClientMimeType(),
+                'size'      => $file->getSize(),
             ]);
 
             return response()->json(
                 [
                     "success" => 1,
-                    "file" => [
-                        "url" => Storage::disk(config('filesystems.default'))->url($path),
+                    "file"    => [
+                        "url"     => Storage::disk(config('filesystems.default'))->url($path),
                         "caption" => $file->getClientOriginalName(),
                     ],
-                ]
+                ],
             );
         }
     }
@@ -210,14 +209,14 @@ class FileController extends Controller
     {
         $file = $request->input('url');
 
-        if (!empty($file)) {
+        if (! empty($file)) {
 
-            $contents         = file_get_contents($file);
-            $FileInfo         = pathinfo($file);
-            $FileName         = (strlen($FileInfo['filename']) <= 200) ? $FileInfo['filename'] : Str::random(40);
-            $FileExtension     = strtolower('png');
-            $FileMimeType      = sprintf('image/%s', $FileExtension);
-            $FilePath         = sprintf('media/%s-%s.%s', uniqid(), $FileName, $FileExtension);
+            $contents      = file_get_contents($file);
+            $FileInfo      = pathinfo($file);
+            $FileName      = (strlen($FileInfo['filename']) <= 200) ? $FileInfo['filename'] : Str::random(40);
+            $FileExtension = strtolower('png');
+            $FileMimeType  = sprintf('image/%s', $FileExtension);
+            $FilePath      = sprintf('media/%s-%s.%s', uniqid(), $FileName, $FileExtension);
 
 
             Storage::put($FilePath, $contents);
@@ -226,25 +225,25 @@ class FileController extends Controller
              * Insert File details to Database
              **/
             File::create([
-                'user_id'     => auth()->id(),
-                'disk'         => config('filesystems.default'),
-                'filename'     => $FileName,
-                'path'         => $FilePath,
-                'small'        => $FilePath,
+                'user_id'   => auth()->id(),
+                'disk'      => config('filesystems.default'),
+                'filename'  => $FileName,
+                'path'      => $FilePath,
+                'small'     => $FilePath,
                 'medium'    => $FilePath,
                 'extension' => $FileExtension ?? '',
-                'mime'         => $FileMimeType,
-                'size'         => 0,
+                'mime'      => $FileMimeType,
+                'size'      => 0,
             ]);
 
             return response()->json(
                 [
                     "success" => 1,
-                    "file" => [
-                        "url" => Storage::disk(config('filesystems.default'))->url($FilePath),
+                    "file"    => [
+                        "url"     => Storage::disk(config('filesystems.default'))->url($FilePath),
                         "caption" => $FileName,
                     ],
-                ]
+                ],
             );
         }
     }

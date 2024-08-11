@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use App\Models\PostThumbnail;
 use App\Models\PostCategories;
 use App\Traits\HasCrudActions;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\FileController;
 use App\Http\Requests\WriteNewStoryRequest;
 use App\Http\Requests\WriteNewStoryUpdateRequest;
 
@@ -111,7 +113,6 @@ class WriteNewStoryController extends Controller
         $series   = Series::all();
         $tags     = Tag::all();
 
-
         return view('public.story.success', compact('post', 'category', 'series', 'tags'));
     }
 
@@ -137,10 +138,22 @@ class WriteNewStoryController extends Controller
         $this->updateTags($request->tags, $request->id);
         $this->updateCategories($request->category, $request->id);
         $this->updateSeries($request->series, $request->id);
-        // $this->updateThumbnail($request->thumbnail, $request->id);
+
+
+
+        if ($request->hasFile('file')) {
+            dd($request->file('file'));
+            $fileController = new FileController;
+
+            $thumbnail = $fileController->uploadFileToDatabase($request->file('file'));
+
+            $id = $thumbnail->getOriginalContent()['File']->id;
+
+            $this->updateThumbnail($id, $request->id);
+        }
+
 
         $post->save();
-
 
         return redirect()
             ->back()
@@ -152,16 +165,13 @@ class WriteNewStoryController extends Controller
     /**
      * Update Post's Thumbnail
      */
-    private function updateThumbnail(array $thumbnail = [], int $postID = null)
+    private function updateThumbnail($thumbnail, int $postID = null)
     {
         PostThumbnail::where('post_id', $postID)->delete();
-
-        foreach ($thumbnail as $value) {
-            PostThumbnail::create([
-                'post_id' => $postID,
-                'file_id' => $value['id'],
-            ]);
-        }
+        PostThumbnail::create([
+            'post_id' => $postID,
+            'file_id' => $thumbnail,
+        ]);
     }
 
     /**
