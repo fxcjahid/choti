@@ -23,7 +23,7 @@
                     ক্লিক করুন
                 </a>
             </p>
-            <form action="{{ route('story.store') }}" method="post" class="space-y-8">
+            <form action="{{ route('public.story.store') }}" method="post" class="space-y-8">
                 {{ csrf_field() }}
                 <div>
                     <label for="title" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">

@@ -25,12 +25,12 @@ class WriteNewStoryUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'id'    => 'exists:posts,id',
-            'name'  => 'min:3|max:100',
-            'email' => 'email',
-            // 'category'             => ['nullable', 'integer', 'exists:categories,id'],
-            // 'series'               => ['nullable', 'integer', 'exists:series,id'],
-            // 'tags'                 => ['nullable', 'integer', 'exists:tags,id'],
+            'id'       => 'exists:posts,id',
+            'name'     => 'nullable|min:3|max:100',
+            'email'    => 'nullable|email',
+            // 'category' => 'nullable|exists:categories,id',
+            // 'series'   => 'nullable|exists:series,id',
+            // 'tags'     => 'nullable|exists:tags,id',
             // 'g-recaptcha-response' => [new GoogleReCaptchaV3ValidationRule('update_story_action')],
         ];
 

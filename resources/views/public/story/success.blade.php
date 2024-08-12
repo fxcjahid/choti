@@ -115,10 +115,10 @@
                             </label>
                             <select id="series" name="series"
                                 class="block w-full tom-select rounded-md border border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
-
+                                <option value="" selected></option>
                                 @foreach ($series as $series)
                                     <option value="{{ $series->id }}"
-                                        {{ old('series') == $series->id ? 'selected' : '' }}>
+                                        {{ old('series', $post->series[0]->id ?? null) == $series->id ? 'selected' : '' }}>
                                         {{ $series->name }}
                                     </option>
                                 @endforeach
@@ -152,7 +152,7 @@
                             @endif
                         </div>
 
-                        <div x-data="imageUploader()" x-init="init('{{ $post->thumbnail[0]->path }}')">
+                        <div x-data="imageUploader()" x-init="init('{{ $post->thumbnail[0]->path ?? '' }}')">
                             <label for="file" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
                                 ইমেজ আপলোড করুনঃ <span class="text-gray-600 font-light">(অপশনাল)</span>
                             </label>

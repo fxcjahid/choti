@@ -19,7 +19,8 @@
                         <div class="col-md-9">
                             <input name="name"
                                 class="form-control block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
-                                id="name" value="" type="text" autocomplete="off">
+                                id="name" value="{{ old('name', auth()->user()->name) }}" type="text"
+                                autocomplete="off">
                         </div>
                     </div>
 
@@ -31,7 +32,8 @@
                         <div class="col-md-9">
                             <input name="username"
                                 class="form-control block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
-                                id="username" value="" type="text" autocomplete="off">
+                                id="username" value="{{ old('name', auth()->user()->username) }}" type="text"
+                                autocomplete="off">
                         </div>
                     </div>
 

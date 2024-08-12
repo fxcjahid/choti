@@ -150,7 +150,6 @@ class WriteNewStoryController extends Controller
         $post->email   = $request->email;
         $post->content = ConvertPlaneTextToEditorJsBlocks($request->content);
 
-
         $this->updateTags($request->tags, $request->id);
         $this->updateCategories($request->category, $request->id);
         $this->updateSeries($request->series, $request->id);
@@ -193,8 +192,11 @@ class WriteNewStoryController extends Controller
     /**
      * Update Post's Tags.
      **/
-    private function updateTags(array $tags = [], int $postID = null)
+    private function updateTags($tags = null, int $postID = null)
     {
+        if (empty($tags) && ! is_array($tags))
+            return;
+
         PostTags::where('post_id', $postID)->delete();
 
         foreach ($tags as $value) {
@@ -208,8 +210,11 @@ class WriteNewStoryController extends Controller
     /**
      * Update Post's Categories.
      **/
-    private function updateCategories(array $categories = [], int $postID = null)
+    private function updateCategories($categories = [], int $postID = null)
     {
+        if (empty($categories) && ! is_array($categories))
+            return;
+
         PostCategories::where('post_id', $postID)->delete();
 
         foreach ($categories as $value) {
