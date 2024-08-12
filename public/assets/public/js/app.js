@@ -3054,8 +3054,7 @@ __webpack_require__.r(__webpack_exports__);
 
         reader.readAsDataURL(file);
       }); // Clear the file input value to allow re-selection of the same files
-
-      event.target.value = '';
+      // event.target.value = '';
     },
     removeImage: function removeImage(index) {
       this.images.splice(index, 1);

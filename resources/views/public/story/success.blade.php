@@ -144,7 +144,7 @@
                         </div>
 
                         <div x-data="imageUploader()" x-init="init('{{ $post->thumbnail[0]->path }}')">
-                            <label for="files" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
+                            <label for="file" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
                                 ইমেজ আপলোড করুনঃ <span class="text-gray-600 font-light">(অপশনাল)</span>
                             </label>
 

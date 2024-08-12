@@ -142,7 +142,7 @@ class WriteNewStoryController extends Controller
 
 
         if ($request->hasFile('file')) {
-            dd($request->file('file'));
+
             $fileController = new FileController;
 
             $thumbnail = $fileController->uploadFileToDatabase($request->file('file'));

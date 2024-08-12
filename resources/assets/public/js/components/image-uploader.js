@@ -39,7 +39,7 @@ export default () => ({
         });
 
         // Clear the file input value to allow re-selection of the same files
-        event.target.value = '';
+        // event.target.value = '';
     },
 
     removeImage(index) {
