@@ -19,14 +19,24 @@
                         </div>
                     @endif
 
-                    <div class="alert alert-danger mb-20 text-xl">
-                        সতর্কীকরণ : এই গল্পের এক্সেস টি ব্রাউজার কুকি থেকে দেখানো হচ্ছে। যদি কোনো কারনে কুকি রিমুভ হয়ে যায়
-                        তাহলে আর আপনি এই গল্পের এক্সেস পাবেন না
-                    </div>
+                    @guest
+                        <div class="alert alert-danger mb-20 text-xl">
+                            সতর্কীকরণ : এই গল্পের এক্সেস টি ব্রাউজার কুকি থেকে দেখানো হচ্ছে। যদি কোনো কারনে কুকি রিমুভ হয়ে যায়
+                            তাহলে আর আপনি এই গল্পের এক্সেস পাবেন না
+                        </div>
+                    @endguest
 
-                    <div class="alert alert-info mt-10 mb-10 text-xl">
-                        ধন্যবাদ ! আপনার গল্প ইতিমধে স্টোর করা হয়েছে। অপেক্ষা করুন সম্পন্ন পাবলিশ হবার জন্য
-                    </div>
+                    @if ($post->status == 'pendding')
+                        <div class="alert alert-info mt-10 mb-10 text-xl">
+                            ধন্যবাদ ! আপনার গল্প ইতিমধে স্টোর করা হয়েছে। অপেক্ষা করুন সম্পন্ন পাবলিশ হবার জন্য
+                        </div>
+                    @endif
+
+                    @auth
+                        <p class="my-10 font-nato text-lg font-normal text-slate-900 sm:mx-auto">
+                            অনুগ্রহ করে নিচের ফর্মটি ফিলাপ করে সাহায্য করুন
+                        </p>
+                    @endauth
 
                     @guest
                         <p class="my-10 font-nato text-lg font-normal text-slate-900 sm:mx-auto">
@@ -47,17 +57,29 @@
                         method="post" class="space-y-8">
                         {{ csrf_field() }}
                         <div>
-                            <div class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
+                            <label for="title" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
                                 গল্পের টাইটেলঃ
-                            </div>
-                            <p
-                                class="block w-full rounded-md border cursor-no-drop border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
-                                {{ $post->title }}
-                            </p>
-                            <div class="text-sm my-0.5 font-normal text-gray-600">
-                                গল্পের নাম পরিবর্তন করতে চাইলে, অবশ্যই এক্সেস ভেরিফিকেশন করতে হবে
-                            </div>
+                            </label>
+                            @guest
+                                <p
+                                    class="block w-full rounded-md border cursor-no-drop border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+                                    {{ $post->title }}
+                                </p>
+                                <div class="text-sm my-0.5 font-normal text-gray-600">
+                                    গল্পের নাম পরিবর্তন করতে চাইলে, অবশ্যই এক্সেস ভেরিফিকেশন করতে হবে
+                                </div>
+                            @endguest
+                            @auth
+                                <input type="text" id="title" name="title" value="{{ old('title', $post->title) }}"
+                                    class="block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+                                @if ($errors->has('title'))
+                                    <div class="text-base font-medium text-red-600">
+                                        {{ $errors->first('title') }}
+                                    </div>
+                                @endif
+                            @endauth
                         </div>
+
 
 
                         <div>
@@ -75,34 +97,37 @@
 
 
 
-                        <div class="flex justify-between gap-4">
-                            <div class="w-full">
-                                <label for="name"
-                                    class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
-                                    আপনার নামঃ
-                                </label>
-                                <input type="text" id="name" name="name" value="{{ old('name', $post->name) }}"
-                                    class="block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
-                                @if ($errors->has('name'))
-                                    <div class="text-base font-medium text-red-600">
-                                        {{ $errors->first('name') }}
-                                    </div>
-                                @endif
+                        @guest
+                            <div class="flex justify-between gap-4">
+                                <div class="w-full">
+                                    <label for="name"
+                                        class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
+                                        আপনার নামঃ
+                                    </label>
+                                    <input type="text" id="name" name="name" value="{{ old('name', $post->name) }}"
+                                        class="block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+                                    @if ($errors->has('name'))
+                                        <div class="text-base font-medium text-red-600">
+                                            {{ $errors->first('name') }}
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="w-full">
+                                    <label for="email"
+                                        class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
+                                        আপনার ইমেইলঃ
+                                    </label>
+                                    <input type="email" id="email" name="email"
+                                        value="{{ old('email', $post->email) }}"
+                                        class="block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+                                    @if ($errors->has('email'))
+                                        <div class="text-base font-medium text-red-600">
+                                            {{ $errors->first('email') }}
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="w-full">
-                                <label for="email"
-                                    class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
-                                    আপনার ইমেইলঃ
-                                </label>
-                                <input type="email" id="email" name="email" value="{{ old('email', $post->email) }}"
-                                    class="block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
-                                @if ($errors->has('email'))
-                                    <div class="text-base font-medium text-red-600">
-                                        {{ $errors->first('email') }}
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
+                        @endguest
 
                         <div>
                             <label for="category" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">

@@ -82,12 +82,18 @@ class WriteNewStoryController extends Controller
             $this->getRequest('store')->all(),
         );
 
-        $postIds   = unserialize(
+        $postIds = unserialize(
             request()
                 ->cookie('post', serialize([])),
         );
-        $postIds[] = $entity->id;
-        $postIds   = array_unique($postIds);
+
+        /**
+         * if user if logged is skip to store post id in cookie
+         */
+        if (! auth()->check()) {
+            $postIds[] = $entity->id;
+            $postIds   = array_unique($postIds);
+        }
 
         $cookie = cookie()->forever('post', serialize($postIds));
 
@@ -113,7 +119,7 @@ class WriteNewStoryController extends Controller
                 ->cookie('post', serialize([])),
         );
 
-        if (! in_array($decodeID, $postIds)) {
+        if (! in_array($decodeID, $postIds) && ! auth()->check()) {
             return abort(404);
         }
 
@@ -140,12 +146,13 @@ class WriteNewStoryController extends Controller
                 ->cookie('post', serialize([])),
         );
 
-        if (! in_array($request->id, $postIds)) {
+        if (! in_array($request->id, $postIds) && ! auth()->check()) {
             return abort(404);
         }
 
         $post = Post::findOrFail($request->id);
 
+        $post->title   = $request->title;
         $post->name    = $request->name;
         $post->email   = $request->email;
         $post->content = ConvertPlaneTextToEditorJsBlocks($request->content);

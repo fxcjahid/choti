@@ -41,7 +41,7 @@ trait Sluggable
      */
     private function generateSlug($value)
     {
-        $slug = str_slug($value) ?: $this->slugify($value);
+        $slug = $this->slugify($value);
 
         $query = $this->getModel()->where('slug', $slug);
 
@@ -58,7 +58,7 @@ trait Sluggable
 
     private function slugify($value)
     {
-        $slug = preg_replace('/[\s<>[\]{}|\\^%&\$,\/:;=?@#\'\"]/', '-', mb_strtolower($value));
+        $slug = preg_replace('/[\s<>[\]{}|\\^%&\$,\/:~!`;=?@#\'\"]/', '-', mb_strtolower($value));
 
         // Remove duplicate separators.
         $slug = preg_replace('/-+/', '-', $slug);

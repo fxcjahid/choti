@@ -137,10 +137,11 @@ Route::prefix('auth')
 
 
 Route::prefix('my-story')
-    ->middleware('guest')
     ->name('public.mystory.')
     ->group(function () {
-        Route::get('/', [MyStoryController::class, 'index'])->name('index');
+        Route::get('/', [MyStoryController::class, 'index'])
+            ->middleware('guest')
+            ->name('index');
 
         Route::get('/edit/{id}', [MyStoryController::class, 'edit'])->name('edit');
     });

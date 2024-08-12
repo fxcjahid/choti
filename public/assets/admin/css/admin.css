@@ -1014,6 +1014,10 @@ input[type="range"]::-ms-fill-lower{
   margin-top: 0px;
   margin-bottom: 0px;
 }
+.mx-10{
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
 .my-6{
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
@@ -1029,14 +1033,6 @@ input[type="range"]::-ms-fill-lower{
 .my-9{
   margin-top: 2.25rem;
   margin-bottom: 2.25rem;
-}
-.mx-10{
-  margin-left: 2.5rem;
-  margin-right: 2.5rem;
-}
-.my-20{
-  margin-top: 5rem;
-  margin-bottom: 5rem;
 }
 .mt-3{
   margin-top: 0.75rem;
@@ -1170,12 +1166,6 @@ input[type="range"]::-ms-fill-lower{
 .ml-12{
   margin-left: 3rem;
 }
-.\!-mt-0\.5{
-  margin-top: -0.125rem !important;
-}
-.\!-mt-0{
-  margin-top: -0px !important;
-}
 .\!mb-16{
   margin-bottom: 4rem !important;
 }
@@ -1184,6 +1174,12 @@ input[type="range"]::-ms-fill-lower{
 }
 .\!mt-5{
   margin-top: 1.25rem !important;
+}
+.\!-mt-0\.5{
+  margin-top: -0.125rem !important;
+}
+.\!-mt-0{
+  margin-top: -0px !important;
 }
 .-mt-4{
   margin-top: -1rem;
@@ -2212,6 +2208,10 @@ input[type="range"]::-ms-fill-lower{
   padding-left: 0px;
   padding-right: 0px;
 }
+.px-10{
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
 .py-10{
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
@@ -2243,10 +2243,6 @@ input[type="range"]::-ms-fill-lower{
 .py-12{
   padding-top: 3rem;
   padding-bottom: 3rem;
-}
-.px-10{
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
 }
 .pl-\[20px\]{
   padding-left: 20px;
@@ -4169,11 +4165,11 @@ fieldset[disabled] {
   .md\:mt-5{
     margin-top: 1.25rem;
   }
-  .md\:mb-5{
-    margin-bottom: 1.25rem;
-  }
   .md\:ml-5{
     margin-left: 1.25rem;
+  }
+  .md\:mb-5{
+    margin-bottom: 1.25rem;
   }
   .md\:mb-12{
     margin-bottom: 3rem;
@@ -4252,9 +4248,6 @@ fieldset[disabled] {
   }
   .md\:w-\[670px\]{
     width: 670px;
-  }
-  .md\:w-96{
-    width: 24rem;
   }
   .md\:max-w-4xl{
     max-width: 56rem;

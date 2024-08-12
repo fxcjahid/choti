@@ -2,7 +2,7 @@
     class="post-containter mb-9 justify-between rounded-xl border bg-white shadow-sm transition hover:shadow-md hover:shadow-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:shadow-slate-700/[.7] sm:flex">
 
     <div class="my-5 mx-4 md:mx-8 h-60 w-auto flex-shrink-0 rounded-t-xl md:h-36 md:w-36 lg:h-40 lg:w-40">
-        <a href="{{ $post->url() }}">
+        <a href="{{ route('public.mystory.edit', ['id' => urldecode(base64_encode($post->id))]) }}">
             <img class="h-full w-full rounded-xl object-cover"
                 src="{{ $post->image() ?? asset('/assets/public/img/thumbnail-placeholder.png') }}" alt="thumbnail">
         </a>
@@ -10,7 +10,8 @@
 
     <div class="flex w-full flex-wrap">
         <div class="flex h-full flex-col md:py-6 px-4 md:px-0">
-            <a href="{{ $post->url() }}" class="text-lg font-bold text-gray-800 hover:text-blue-800 dark:text-white">
+            <a href="{{ route('public.mystory.edit', ['id' => urldecode(base64_encode($post->id))]) }}"
+                class="text-lg font-bold text-gray-800 hover:text-blue-800 dark:text-white">
                 {{ $post->title }}
             </a>
 

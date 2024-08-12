@@ -17,9 +17,15 @@ if (! function_exists('ConvertPlaneTextToEditorJsBlocks')) {
             $trimmedLine = trim($line);
             if (! empty($trimmedLine)) {
                 $blocks[] = [
-                    'type' => 'paragraph',
-                    'data' => [
+                    'id'    => uniqid('', true),  // Call the function to generate a unique ID
+                    'type'  => 'paragraph',
+                    'data'  => [
                         'text' => $trimmedLine,
+                    ],
+                    'tunes' => [
+                        'alignment' => [
+                            'alignment' => 'left',
+                        ],
                     ],
                 ];
             }

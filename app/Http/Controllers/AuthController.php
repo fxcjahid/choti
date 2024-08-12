@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Traits\HasCrudActions;
@@ -45,11 +46,27 @@ class AuthController extends Controller
 
     public function signup(RegisterNewUser $request)
     {
-        User::create([
+        $user = User::create([
             'name'     => $request['name'],
             'email'    => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
+
+        /** Get cookie stored posts */
+        $postIds = unserialize(
+            request()
+                ->cookie('post', serialize([])),
+        );
+
+        foreach ($postIds as $postId) {
+
+            $post = Post::find($postId);
+
+            if ($post) {
+                $post->user_id = $user->id;
+                $post->save();
+            }
+        }
 
         return redirect()->route('public.auth.index', ['tab' => 'login'])
             ->withSuccess(trans('attributes.success_signup'));

@@ -1677,6 +1677,11 @@ html {
     margin-bottom: 0px;
 }
 
+.mx-10 {
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}
+
 .my-6 {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
@@ -1695,16 +1700,6 @@ html {
 .my-9 {
     margin-top: 2.25rem;
     margin-bottom: 2.25rem;
-}
-
-.mx-10 {
-    margin-left: 2.5rem;
-    margin-right: 2.5rem;
-}
-
-.my-20 {
-    margin-top: 5rem;
-    margin-bottom: 5rem;
 }
 
 .mt-3 {
@@ -1883,14 +1878,6 @@ html {
     margin-left: 3rem;
 }
 
-.\!-mt-0\.5 {
-    margin-top: -0.125rem !important;
-}
-
-.\!-mt-0 {
-    margin-top: -0px !important;
-}
-
 .\!mb-16 {
     margin-bottom: 4rem !important;
 }
@@ -1901,6 +1888,14 @@ html {
 
 .\!mt-5 {
     margin-top: 1.25rem !important;
+}
+
+.\!-mt-0\.5 {
+    margin-top: -0.125rem !important;
+}
+
+.\!-mt-0 {
+    margin-top: -0px !important;
 }
 
 .-mt-4 {
@@ -3238,6 +3233,11 @@ html {
     padding-right: 0px;
 }
 
+.px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
 .py-10 {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
@@ -3276,11 +3276,6 @@ html {
 .py-12 {
     padding-top: 3rem;
     padding-bottom: 3rem;
-}
-
-.px-10 {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
 }
 
 .pl-\[20px\] {
@@ -5832,12 +5827,12 @@ html {
         margin-top: 1.25rem;
     }
 
-    .md\:mb-5 {
-        margin-bottom: 1.25rem;
-    }
-
     .md\:ml-5 {
         margin-left: 1.25rem;
+    }
+
+    .md\:mb-5 {
+        margin-bottom: 1.25rem;
     }
 
     .md\:mb-12 {
@@ -5942,10 +5937,6 @@ html {
 
     .md\:w-\[670px\] {
         width: 670px;
-    }
-
-    .md\:w-96 {
-        width: 24rem;
     }
 
     .md\:max-w-4xl {

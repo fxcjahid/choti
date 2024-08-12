@@ -49,6 +49,10 @@ class Post extends Model
 
             $post->content = self::setContent($post->content);
 
+            if (auth()->check()) {
+                $post->user_id = auth()->id();
+            }
+
             // Set Article Status
             if (empty($post->status)) {
                 $post->status = 'pendding';

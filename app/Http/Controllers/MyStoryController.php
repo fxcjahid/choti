@@ -34,7 +34,7 @@ class MyStoryController extends Controller
                 ->cookie('post', serialize([])),
         );
 
-        if (! in_array($decodeID, $postIds)) {
+        if (! in_array($decodeID, $postIds) && ! auth()->check()) {
             return abort(404);
         }
 
