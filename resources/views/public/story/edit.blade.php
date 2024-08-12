@@ -59,6 +59,22 @@
                             </div>
                         </div>
 
+
+                        <div>
+                            <div class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
+                                মুল গল্পঃ <span class="text-red-600 font-black">*</span>
+                            </div>
+                            <textarea id="content" rows="6" name="content"
+                                class="block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">{{ old('content', $post->getContentText()) }}</textarea>
+                            @if ($errors->has('content'))
+                                <div class="text-base font-medium text-red-600">
+                                    {{ $errors->first('content') }}
+                                </div>
+                            @endif
+                        </div>
+
+
+
                         <div class="flex justify-between gap-4">
                             <div class="w-full">
                                 <label for="name"
@@ -152,7 +168,7 @@
                             @endif
                         </div>
 
-                        <div x-data="imageUploader()" x-init="init('{{ $post->thumbnail[0]->path }}')">
+                        <div x-data="imageUploader()" x-init="init('{{ $post->thumbnail[0]->path ?? '' }}')">
                             <label for="file" class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
                                 ইমেজ আপলোড করুনঃ <span class="text-gray-600 font-light">(অপশনাল)</span>
                             </label>
@@ -201,7 +217,6 @@
 
 
 
-                        {{-- {!! GoogleReCaptchaV3::renderField('update_story_id', 'update_story_action') !!} --}}
                         <button type="submit"
                             class="!mt-5 rounded-lg bg-theme-color py-2 px-5 text-center text-lg font-medium text-white outline-none hover:bg-theme-light dark:bg-primary-600 dark:hover:bg-primary-700 sm:w-fit">
                             আপডেট করুন

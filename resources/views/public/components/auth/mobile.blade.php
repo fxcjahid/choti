@@ -137,5 +137,5 @@
              </button>
          </form>
      </div>
-     {!! GoogleReCaptchaV3::init() !!}
+
  </div>

@@ -122,7 +122,7 @@
                     </form>
                 </div>
             </section>
-            {!! GoogleReCaptchaV3::init() !!}
+
         </div>
     </main>
 

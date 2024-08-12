@@ -84,6 +84,6 @@
                 </form>
             </div>
         </section>
-        {!! GoogleReCaptchaV3::init() !!}
+
     </main>
 @endsection

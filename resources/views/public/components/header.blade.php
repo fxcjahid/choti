@@ -90,6 +90,13 @@
                     গল্প লিখে পাঠান
                 </a>
 
+                @if (request()->cookie('post'))
+                    <a class="mx-4 transform text-xl leading-5 text-white hover:text-blue-600 transition-colors duration-300 dark:text-gray-200"
+                        href="{{ route('public.mystory.index') }}">
+                        আমার গল্প
+                    </a>
+                @endif
+
                 <div class="hs-dropdown relative inline-flex [--trigger:hover]">
                     <button id="hs-dropdown-hover-event" type="button"
                         class="hs-dropdown-toggle mx-4 flex transform items-center gap-1 text-xl leading-5 text-white transition-colors duration-300 dark:text-gray-200">

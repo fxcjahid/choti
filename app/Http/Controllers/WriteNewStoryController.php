@@ -8,11 +8,9 @@ use App\Models\Series;
 use App\Models\PostTags;
 use App\Models\Categories;
 use App\Models\PostSeries;
-use Illuminate\Http\Request;
 use App\Models\PostThumbnail;
 use App\Models\PostCategories;
 use App\Traits\HasCrudActions;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\FileController;
 use App\Http\Requests\WriteNewStoryRequest;
 use App\Http\Requests\WriteNewStoryUpdateRequest;
@@ -58,6 +56,12 @@ class WriteNewStoryController extends Controller
     protected $validation = WriteNewStoryRequest::class;
 
 
+
+    /**
+     * Display the index view of the story resource.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     public function index()
     {
         if (auth()->check()) {
@@ -68,8 +72,9 @@ class WriteNewStoryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     * 
+     * Store a newly created story in the storage.
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store()
     {
@@ -94,6 +99,11 @@ class WriteNewStoryController extends Controller
     }
 
 
+    /**
+     * Display the success view for a newly created story.
+     *
+     * @param string $id
+     */
     public function success($id)
     {
         $decodeID = base64_decode($id);
@@ -117,6 +127,11 @@ class WriteNewStoryController extends Controller
     }
 
 
+    /**
+     * Update the specified story in the storage.
+     *
+     * @param \App\Http\Requests\WriteNewStoryUpdateRequest $request 
+     */
     public function update(WriteNewStoryUpdateRequest $request)
     {
 
@@ -131,9 +146,10 @@ class WriteNewStoryController extends Controller
 
         $post = Post::findOrFail($request->id);
 
+        $post->name    = $request->name;
+        $post->email   = $request->email;
+        $post->content = ConvertPlaneTextToEditorJsBlocks($request->content);
 
-        $post->name  = $request->name;
-        $post->email = $request->email;
 
         $this->updateTags($request->tags, $request->id);
         $this->updateCategories($request->category, $request->id);

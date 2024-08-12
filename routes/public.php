@@ -16,6 +16,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\MyStoryController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategorydController;
 use App\Http\Controllers\ComplainStoryController;
@@ -132,4 +133,14 @@ Route::prefix('auth')
         Route::get('', [AuthController::class, 'index'])->name('index');
         Route::post('signup', [AuthController::class, 'signup'])->name('signup');
         Route::post('login', [AuthController::class, 'login'])->name('login');
+    });
+
+
+Route::prefix('my-story')
+    ->middleware('guest')
+    ->name('public.mystory.')
+    ->group(function () {
+        Route::get('/', [MyStoryController::class, 'index'])->name('index');
+
+        Route::get('/edit/{id}', [MyStoryController::class, 'edit'])->name('edit');
     });

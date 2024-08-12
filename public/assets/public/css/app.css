@@ -1702,6 +1702,11 @@ html {
     margin-right: 2.5rem;
 }
 
+.my-20 {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
 .mt-3 {
     margin-top: 0.75rem;
 }
@@ -2244,6 +2249,10 @@ html {
 
 .w-8\/12 {
     width: 66.666667%;
+}
+
+.w-28 {
+    width: 7rem;
 }
 
 .min-w-\[150px\] {
@@ -3267,6 +3276,11 @@ html {
 .py-12 {
     padding-top: 3rem;
     padding-bottom: 3rem;
+}
+
+.px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
 }
 
 .pl-\[20px\] {
@@ -5928,6 +5942,10 @@ html {
 
     .md\:w-\[670px\] {
         width: 670px;
+    }
+
+    .md\:w-96 {
+        width: 24rem;
     }
 
     .md\:max-w-4xl {
