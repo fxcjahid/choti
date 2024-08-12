@@ -29,7 +29,7 @@
                     </p>
                     <p class="mb-8 font-nato text-lg font-normal text-slate-900 sm:mx-auto">
                         আপনার গল্প জমা দেওয়ার জন্য নীচের ফর্মটি ব্যবহার করুন – বিকল্পভাবে আপনি আপনার গল্প মেইল করতে পারেন
-                        <b>debjani.ipe@gmail.com</b>
+                        <b>allchotigolpo.me@gmail.com</b>
                     </p>
                     <p class="mb-8 font-nato text-lg font-normal text-slate-900 sm:mx-auto">
                         বাংলায় টাইপ করুন (Desktop) থেকে –

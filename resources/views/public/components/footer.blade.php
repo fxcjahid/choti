@@ -1,8 +1,5 @@
 <footer class="mx-auto border-t-2 border-solid border-t-red-600 bg-neutral-800">
     <div class="m-auto border-t border-t-neutral-500 pt-5 pb-3 text-center">
-        <p class="pb-3 text-base font-light text-gray-300">
-            Copyright – Blanee.com © 2021 - 2023
-        </p>
         <p class="m-auto px-7 text-left text-sm font-light text-gray-300 md:max-w-4xl">
             সতর্কীকরণ : এই ওয়েবসাইটটি ১৮ বছরের কম বয়সীদের জন্য উপযুক্ত নয় এবং সমস্ত প্রাপ্তবয়স্ক পাঠকদের জন্য
             উপযুক্ত নাও হতে পারে ৷ আপনার বিবেচনার ভিত্তিতে দেখুন। প্রকাশিত গল্প গুলো ইন্টারনেট বা বিভিন্ন ওয়েব সাইট থেকে
