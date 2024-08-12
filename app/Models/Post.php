@@ -276,6 +276,7 @@ class Post extends Model
     {
         $all        = self::count('status');
         $publish    = self::where('status', '=', 'publish')->count('status');
+        $pendding   = self::where('status', '=', 'pendding')->count('status');
         $draft      = self::where('status', '=', 'draft')->count('status');
         $trash      = self::where('status', '=', 'trash')->count('status');
         $scheduled  = self::where('status', '=', 'scheduled')->count('status');
@@ -284,6 +285,7 @@ class Post extends Model
         return (object) array(
             'all'        => $all,
             'publish'    => $publish,
+            'pendding'   => $pendding,
             'draft'      => $draft,
             'trash'      => $trash,
             'scheduled'  => $scheduled,
