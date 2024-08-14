@@ -1,4 +1,5 @@
 import 'flowbite';
+import Quill from 'quill';
 import { createApp } from 'vue'
 import Toaster from "@meforma/vue-toaster";
 import VueSweetalert2 from 'vue-sweetalert2';
@@ -38,3 +39,15 @@ app.component('PageIndex', PageIndex)
 app.use(Toaster);
 app.use(VueSweetalert2);
 app.mount('#app')
+
+window.quill = new Quill('#content', {
+    placeholder: 'Write new story...',
+    theme: 'bubble',
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, 4, false] }],
+            ['bold', 'italic'],
+            ['image']
+        ]
+    }
+});

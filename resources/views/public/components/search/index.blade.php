@@ -1,5 +1,5 @@
 <div class="m-auto">
-    <div class="relative mt-8 sm:mx-6 sm:mb-8">
+    <div class="relative mt-4 md:mt-8 sm:mx-6 sm:mb-8">
         <form action="{{ route('search.index') }}" method="GET">
             <span class="absolute inset-y-0 left-0 flex cursor-pointer items-center pl-3">
                 <svg class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="none">

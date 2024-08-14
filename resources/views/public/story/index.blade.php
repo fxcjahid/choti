@@ -65,7 +65,7 @@
                             @endif
                         </div>
 
-                        <div class="flex justify-between gap-4">
+                        <div class="md:flex -md:space-y-6 justify-between gap-4">
                             <div class="w-full">
                                 <label for="name"
                                     class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">

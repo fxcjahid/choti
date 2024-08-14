@@ -184,11 +184,11 @@ fieldset[disabled] {
 }
 
 .margin-responsive {
-    @apply mx-5 sm:mx-7 md:mx-20;
+    @apply mx-2 sm:mx-7 md:mx-20;
 }
 
 .padding-responsive {
-    @apply px-5 sm:px-7 md:px-20;
+    @apply px-0 sm:px-7 md:px-20;
 }
 
 .h-c-menu > a:first-child {

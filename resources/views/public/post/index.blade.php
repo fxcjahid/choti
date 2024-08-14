@@ -14,17 +14,17 @@
             'breadcrumbs' => $breadcrumb,
         ])
 
-        <div class="padding-responsive bg-gray-200 pb-10 dark:bg-gray-800 2xl:m-auto 2xl:max-w-screen-2xl">
+        <div class="padding-responsive bg-gray-200 md:pb-10 dark:bg-gray-800 2xl:m-auto 2xl:max-w-screen-2xl">
 
             <!-- block -->
 
-            <div class="flex flex-row rounded bg-white dark:bg-slate-900 md:pt-9">
+            <div class="flex flex-row md:rounded bg-white dark:bg-slate-900 md:pt-9">
                 <!-- content -->
                 <article class="w-full md:w-[70%]" aria-label="content" role="article">
 
                     <div class="px-3 sm:px-7">
                         <h1 role="title" aria-label="title"
-                            class="mt-6 text-3xl font-semibold leading-tight text-gray-800 dark:text-white md:mt-1 md:text-5xl">
+                            class="mt-6 text-2xl font-semibold leading-tight text-gray-800 dark:text-white md:mt-1 md:text-5xl">
                             {{ $post->title }}
                         </h1>
 
@@ -92,7 +92,7 @@
                     @if ($post->suggestion()->count() >= 1)
                         <section class="my-2 sm:my-5 sm:mt-12">
                             <div class="px-3 sm:px-7">
-                                <h2 class="mt-4 mb-6 text-3xl font-semibold text-slate-900">
+                                <h2 class="mt-4 mb-6 text-2xl md:text-3xl font-semibold text-slate-900">
                                     এই রকমের গল্প আরও পড়ুন
                                 </h2>
                                 @foreach ($post->suggestion() as $post)

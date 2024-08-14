@@ -80,10 +80,13 @@
                             <div class="w-full px-4">
                                 <label for="content"
                                     class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-400">Content</label>
-                                <textarea name="content" id="content" v-model="vm.form.content"
-                                    class="block w-full h-[calc(100vh-250px)] rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">{{ $post->content }}</textarea>
+                                <div name="content" id="content"
+                                    class="block w-full border h-[calc(100vh-250px)] rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+                                    {!! $post->content !!}
+                                </div>
                             </div>
                         </div>
+
                         <div class="-mx-4 mt-5 flex flex-wrap">
                             <div class="w-full px-4">
                                 <label for="summary"

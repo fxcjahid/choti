@@ -135,34 +135,36 @@ export default {
 
             window.open(url, '_blank');
         },
-        post(arg = [], callback) {
+        async post(arg = [], callback) {
             this.updateFirstCategory();
 
             if (arg.status) {
                 this.form.status = arg.status;
             }
 
-            axios.post(route('admin.update.post'), this.form)
-                .then((res) => {
-                    callback(res);
-                })
-                .catch((err) => {
-                    const status = err.response.status;
-                    const data = err.response.data;
+            if (window.quill) {
+                this.form.content = quill.getSemanticHTML();
+            }
 
-                    if (status == 422) {
-                        Object.entries(data.errors).forEach(element => {
-                            this.$toast.error(element[1], {
-                                position: "bottom-left"
-                            });
+            try {
+                const response = await axios.post(route('admin.update.post'), this.form);
+                callback(response);
+            } catch (err) {
+                const status = err.response.status;
+                const data = err.response.data;
+
+                if (status === 422) {
+                    Object.entries(data.errors).forEach(([field, message]) => {
+                        this.$toast.error(message, {
+                            position: "bottom-left"
                         });
-
-                    } else {
-                        console.log(err);
-                        alert(err.message)
-                    }
-                    this.isloading = false;
-                });
+                    });
+                } else {
+                    console.log(err);
+                    alert(err.message);
+                }
+                this.isloading = false;
+            }
         },
         save() {
             this.post({},

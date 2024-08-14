@@ -3,5 +3,6 @@
     "/assets/admin/js/preline.js": "/assets/admin/js/preline.js",
     "/assets/public/js/app.js": "/assets/public/js/app.js",
     "/assets/admin/css/admin.css": "/assets/admin/css/admin.css",
-    "/assets/public/css/app.css": "/assets/public/css/app.css"
+    "/assets/public/css/app.css": "/assets/public/css/app.css",
+    "/assets/admin/css/quill.bubble.css": "/assets/admin/css/quill.bubble.css"
 }

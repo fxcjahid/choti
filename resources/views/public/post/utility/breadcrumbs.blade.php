@@ -1,6 +1,6 @@
 @if (!@empty($breadcrumbs))
     <div class="padding-responsive bg-gray-200 dark:bg-gray-800">
-        <div class="container mx-auto flex items-center overflow-y-auto whitespace-nowrap py-5 pl-0 pr-6">
+        <div class="container mx-auto flex items-center overflow-y-auto whitespace-nowrap py-5 -md:pl-1 pr-6">
 
             <a href="{{ route('home') }}" class="capitalize text-gray-600 dark:text-gray-200">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
