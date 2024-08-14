@@ -1334,6 +1334,12 @@ input[type="range"]::-ms-fill-lower{
 .h-28{
   height: 7rem;
 }
+.h-3\/4{
+  height: 75%;
+}
+.h-\[calc\(100vh-250px\)\]{
+  height: calc(100vh - 250px);
+}
 .max-h-\[calc\(100vh-75px\)\]{
   max-height: calc(100vh - 75px);
 }

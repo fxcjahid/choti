@@ -1,6 +1,6 @@
 @extends('public.app')
 
-@section('title', $post->name)
+@section('title', $post->title)
 @section('canonical',
     route('post.show', [
     'category' => $post->category[0]->slug,
@@ -39,7 +39,7 @@
 
 
                     <div class="art-content mt-1 px-3 sm:mt-9 sm:px-7">
-                        {!! $post->getContent() !!}
+                        {{ $post->content }}
                     </div>
 
                     <!--- Post nagivation button -->
@@ -419,5 +419,5 @@
             </div>
 
         </div>
-    </section> 
+    </section>
 @endsection

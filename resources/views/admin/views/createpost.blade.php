@@ -78,9 +78,18 @@
 
                         <div class="-mx-4 mt-5 flex flex-wrap">
                             <div class="w-full px-4">
-                                <p class="my-2 text-xl font-medium">Content</p>
-                                <Cretate-Post-Editor class="p-3 rounded-md border" setdata="{{ $post->content }}">
-                                </Cretate-Post-Editor>
+                                <label for="content"
+                                    class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-400">Content</label>
+                                <textarea name="content" id="content" v-model="vm.form.content"
+                                    class="block w-full h-[calc(100vh-250px)] rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">{{ $post->content }}</textarea>
+                            </div>
+                        </div>
+                        <div class="-mx-4 mt-5 flex flex-wrap">
+                            <div class="w-full px-4">
+                                <label for="summary"
+                                    class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-400">Summary</label>
+                                <textarea name="summary" id="summary" v-model="vm.form.summary"
+                                    class="block w-full h-60 rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">{{ $post->summary }}</textarea>
                             </div>
                         </div>
                     </form>

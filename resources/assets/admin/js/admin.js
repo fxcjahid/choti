@@ -3,7 +3,6 @@ import { createApp } from 'vue'
 import Toaster from "@meforma/vue-toaster";
 import VueSweetalert2 from 'vue-sweetalert2';
 import CreatePostButton from './components/CreatePostButton'
-import CretatePostEditor from './components/CretatePostEditor'
 import CreatePost from './components/CreatePost'
 import CreateCategory from './components/CreateCategory'
 import CreateSeries from './components/CreateSeries'
@@ -27,7 +26,6 @@ const app = createApp({})
 
 app.component('CreatePost', CreatePost);
 app.component('CreatePostButton', CreatePostButton)
-app.component('CretatePostEditor', CretatePostEditor)
 app.component('CreateCategory', CreateCategory)
 app.component('CreateSeries', CreateSeries)
 app.component('CreateTag', CreateTag)

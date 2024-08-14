@@ -187,10 +187,11 @@ class PostController extends Controller
         $postID = $request->id;
 
         $post          = Post::find($postID);
-        $post->name    = $request->name;
+        $post->title   = $request->title;
         $post->slug    = $request->slug;
         $post->status  = $request->status;
         $post->content = $request->content;
+        $post->summary = $request->summary;
 
         $this->updateTags($request->tag, $request->id);
         $this->updateCategories($request->category, $request->id);

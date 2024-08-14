@@ -26,6 +26,7 @@ class Post extends Model
         'name',
         'email',
         'content',
+        'summary',
         'user_id',
         'status', // 'publish','draft','scheduled','trash' 
     ];
@@ -47,8 +48,6 @@ class Post extends Model
 
         static::creating(function ($post) {
 
-            $post->content = self::setContent($post->content);
-
             if (auth()->check()) {
                 $post->user_id = auth()->id();
             }
@@ -58,45 +57,6 @@ class Post extends Model
                 $post->status = 'pendding';
             }
         });
-    }
-
-    private static function setContent($content)
-    {
-        if (empty($content)) {
-            return json_encode([
-                'time'    => round(microtime(true) * 1000),
-                'blocks'  => [],
-                'version' => '2.27.0',
-            ], JSON_PRETTY_PRINT);
-        } else {
-            if (! isValidEditorJsBlocks($content)) {
-                return ConvertPlaneTextToEditorJsBlocks($content);
-            }
-        }
-
-        return $content;
-    }
-
-    /**
-     * Replace post content to HTML view useing Block-editor
-     * Wrap content by views
-     */
-    public function getContent()
-    {
-        $blocksManager = new BlocksManager($this->content);
-
-        return $blocksManager->renderHtml();
-    }
-
-    /**
-     * Get Post content only Text Format
-     * @return string 
-     */
-    public function getContentText()
-    {
-        $blocksManager = new BlocksManager($this->content);
-
-        return $blocksManager->renderText();
     }
 
     /**
@@ -124,15 +84,13 @@ class Post extends Model
     }
 
     /**
-     * Modifed Summary if is empty
-     * Fillup Summary from body
+     * Summary of getSummaryAttribute
+     * @param string $value
+     * @return string $summary
      */
-    public function getSummaryAttribute()
+    public function getSummaryAttribute($value)
     {
-        $contentText = $this->getContentText();
-        $summary     = Str::words($contentText, 400, '');
-
-        return ! empty($this->summary) ? $this->summary : $summary;
+        return $value ?: Str::words($this->content, 400, '');
     }
 
     public function getAuthorAttribute()

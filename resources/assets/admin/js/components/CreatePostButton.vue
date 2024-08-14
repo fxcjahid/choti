@@ -1,15 +1,11 @@
 <template>
-    <button
-        @click="createNew"
-        :class="isloading ? 'btn-loading disabled' : ''"
-        :disabled="isloading"
-        class="create_new_post"
-    >
+    <button @click="createNew" :class="isloading ? 'btn-loading disabled' : ''" :disabled="isloading"
+        class="create_new_post">
         <slot></slot>
     </button>
 </template>
 <script>
-import axios from "axios"; 
+import axios from "axios";
 export default {
     data() {
         return {
@@ -21,12 +17,10 @@ export default {
             this.isloading = true;
             axios
                 .post(route("admin.create.post"))
-                .then((res) => {
-                    const data = res.data;
+                .then(({ data: { id } }) => {
                     window.location = route("admin.create.get", {
-                        id: data.slug,
+                        id: id,
                     });
-                    this.isloading = false;
                 })
                 .catch((err) => {
                     console.log(err);

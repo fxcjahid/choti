@@ -2,8 +2,6 @@ import axios from 'axios';
 import MediaPicker from '../media/MediaPicker';
 import ImagePicker from '../media/ImagePicker';
 import TomSelect from 'tom-select';
-import CreateFileManagerModal from './CreateFileManagerModal';
-import FileManager from './FileManager';
 
 import 'tom-select/dist/css/tom-select.css'
 
@@ -75,6 +73,7 @@ export default {
             this.form.thumbnail = [];
         },
         makeSlug(str) {
+            if (str == '') return;
             str = str.replace(/^\s+|\s+$/g, ''); // trim
             str = str.toLowerCase();
 
@@ -107,7 +106,6 @@ export default {
         },
         selectedSeries() {
             const array = []
-            console.log(this.posts);
             this.posts.series.forEach(element => {
                 array.push(element.id)
             });
@@ -139,36 +137,32 @@ export default {
         },
         post(arg = [], callback) {
             this.updateFirstCategory();
-            window.EditorJS.save().then((savedData) => {
 
-                this.form.content = savedData;
+            if (arg.status) {
+                this.form.status = arg.status;
+            }
 
-                if (arg.status) {
-                    this.form.status = arg.status;
-                }
+            axios.post(route('admin.update.post'), this.form)
+                .then((res) => {
+                    callback(res);
+                })
+                .catch((err) => {
+                    const status = err.response.status;
+                    const data = err.response.data;
 
-                axios.post(route('admin.update.post'), this.form)
-                    .then((res) => {
-                        callback(res);
-                    })
-                    .catch((err) => {
-                        const status = err.response.status;
-                        const data = err.response.data;
-
-                        if (status == 422) {
-                            Object.entries(data.errors).forEach(element => {
-                                this.$toast.error(element[1], {
-                                    position: "bottom-left"
-                                });
+                    if (status == 422) {
+                        Object.entries(data.errors).forEach(element => {
+                            this.$toast.error(element[1], {
+                                position: "bottom-left"
                             });
+                        });
 
-                        } else {
-                            console.log(err);
-                            alert(err.message)
-                        }
-                        this.isloading = false;
-                    });
-            });
+                    } else {
+                        console.log(err);
+                        alert(err.message)
+                    }
+                    this.isloading = false;
+                });
         },
         save() {
             this.post({},
