@@ -39,7 +39,7 @@
 
 
                     <div aria-label="content" role="content" class="art-content -md:mt-5 px-3 sm:mt-9 sm:px-7">
-                        {{ $post->content }}
+                        {!! $post->content !!}
                     </div>
 
                     <!--- Post nagivation button -->
