@@ -1,4 +1,5 @@
 @extends('public.account.index')
+@section('title', 'আমার প্রোফাইল')
 @section('subcontent')
     <div class="profile-edits">
         <div class="mb-5 border-b border-gray-100">

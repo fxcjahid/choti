@@ -1,6 +1,6 @@
 @extends('public.app')
 
-@section('title', 'Blanee : votre allié contre les nuisibles')
+@section('title', 'বাংলা চটি গল্প')
 @section('canonical', route('home'))
 @section('content')
     <!-- page content start -->
@@ -9,8 +9,8 @@
 
             <!-- block -->
             <section class="bg-gray-100 py-5 md:py-10">
-                <div class="bg-white lg:flex lg:flex-row margin-responsive">
-                    <div class="w-full lg:w-9/12">
+                <div class="bg-white lg:flex lg:flex-row rounded margin-responsive">
+                    <div class="w-full lg:w-[70%]">
                         <div class="p-0">
                             @foreach ($posts as $index => $post)
                                 @include('public.post.partials.card')
@@ -23,7 +23,7 @@
                         @endif
                     </div>
 
-                    <div class="w-full lg:w-3/12 -md:border-t-2 lg:border-l-4 lg:border-gray100 p-2">
+                    <div class="w-full lg:w-[30%] -md:border-t-2 lg:border-l-4 p-2">
 
                         @include('public.components.search.index')
 
@@ -43,8 +43,6 @@
                                 @endforeach
                             </ul>
                         </div>
-
-                        <img class="mt-10 mx-auto rounded max-h-[488px]" src="https://placehold.co/350x670">
                     </div>
                 </div>
             </section>

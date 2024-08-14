@@ -1,5 +1,5 @@
 @if (!@empty($breadcrumbs))
-    <div class="padding-responsive bg-gray-200 dark:bg-gray-800">
+    <div class="padding-responsive bg-gray-100 dark:bg-gray-800">
         <div class="container mx-auto flex items-center overflow-y-auto whitespace-nowrap py-5 -md:pl-1 pr-6">
 
             <a href="{{ route('home') }}" class="capitalize text-gray-600 dark:text-gray-200">

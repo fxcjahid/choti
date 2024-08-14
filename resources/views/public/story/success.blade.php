@@ -66,6 +66,8 @@
                                 <div class="text-sm my-0.5 font-normal text-gray-600">
                                     গল্পের নাম পরিবর্তন করতে চাইলে, অবশ্যই এক্সেস ভেরিফিকেশন করতে হবে
                                 </div>
+                                <input type="hidden" id="title" name="title" value="{{ old('title', $post->title) }}"
+                                    class="hidden">
                             @endguest
                             @auth
                                 <input type="text" id="title" name="title" value="{{ old('title', $post->title) }}"
@@ -79,7 +81,7 @@
                         </div>
 
                         @guest
-                            <div class="flex justify-between gap-4">
+                            <div class="md:flex space-y-6 justify-between gap-4">
                                 <div class="w-full">
                                     <label for="name"
                                         class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
@@ -98,7 +100,8 @@
                                         class="mb-2 block text-lg font-medium text-gray-900 dark:text-gray-300">
                                         আপনার ইমেইলঃ
                                     </label>
-                                    <input type="email" id="email" name="email" value="{{ old('email', $post->email) }}"
+                                    <input type="email" id="email" name="email"
+                                        value="{{ old('email', $post->email) }}"
                                         class="block w-full rounded-md border-gray-200 py-2 px-4 text-lg outline-none dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
                                     @if ($errors->has('email'))
                                         <div class="text-base font-medium text-red-600">

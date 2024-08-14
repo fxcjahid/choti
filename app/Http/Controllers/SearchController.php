@@ -51,7 +51,7 @@ class SearchController extends Controller
         // Highlight keywords in the results
         $results->getCollection()->transform(function ($result) use ($query) {
             $result->title   = $this->highlightTitle($result->title, $query);
-            $result->content = $this->highlightKeywordSnippet($result->getContentText(), $query);
+            $result->content = $this->highlightKeywordSnippet($result->content, $query);
             return $result;
         });
 

@@ -1,4 +1,5 @@
 @extends('public.account.index')
+@section('title', 'আমার সমস্ত গল্প গুলো')
 @section('subcontent')
     <div class="profile-edits">
         <div class="mb-5 border-b border-gray-100">

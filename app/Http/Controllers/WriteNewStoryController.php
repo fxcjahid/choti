@@ -155,7 +155,7 @@ class WriteNewStoryController extends Controller
         $post->title   = $request->title;
         $post->name    = $request->name;
         $post->email   = $request->email;
-        $post->content = ConvertPlaneTextToEditorJsBlocks($request->content);
+        $post->content = $request->content;
 
         $this->updateTags($request->tags, $request->id);
         $this->updateCategories($request->category, $request->id);

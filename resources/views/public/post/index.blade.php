@@ -14,7 +14,7 @@
             'breadcrumbs' => $breadcrumb,
         ])
 
-        <div class="padding-responsive bg-gray-200 md:pb-10 dark:bg-gray-800 2xl:m-auto 2xl:max-w-screen-2xl">
+        <div class="padding-responsive bg-gray-100 md:pb-10 dark:bg-gray-800 2xl:m-auto 2xl:max-w-screen-2xl">
 
             <!-- block -->
 
@@ -24,11 +24,11 @@
 
                     <div class="px-3 sm:px-7">
                         <h1 role="title" aria-label="title"
-                            class="mt-6 text-2xl font-semibold leading-tight text-gray-800 dark:text-white md:mt-1 md:text-5xl">
+                            class="mt-6 text-2xl font-semibold !leading-normal text-gray-800 dark:text-white md:mt-1 md:text-4xl">
                             {{ $post->title }}
                         </h1>
 
-                        <div class="mt-8 items-center">
+                        <div class="mt-4 items-center">
                             <p class="text-base text-gray-500 dark:text-gray-400">
                                 লেখোক :
                                 <span role="author">{{ $post->author }}</span> |
@@ -38,7 +38,7 @@
                     </div>
 
 
-                    <div class="art-content mt-1 px-3 sm:mt-9 sm:px-7">
+                    <div aria-label="content" role="content" class="art-content -md:mt-5 px-3 sm:mt-9 sm:px-7">
                         {{ $post->content }}
                     </div>
 

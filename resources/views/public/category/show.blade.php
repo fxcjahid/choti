@@ -1,30 +1,23 @@
 @extends('public.app')
 
-@php
-    $seoTitle = "Élimination $category->name - Blanee.com";
-@endphp
-
-@section('title', $category->name . ' - Blanee.com')
+@section('title', $category->name)
 @section('canonical', route('category', ['category' => $category->slug]))
 
 @section('content')
     <main class="">
         <div class="2xl:m-auto 2xl:max-w-screen-2xl">
 
-            <section class="bg-gray-100 py-5 md:py-10">
-                <div class="bg-white lg:flex lg:flex-row margin-responsive">
-                    <div class="w-full md:w-[70%]">
+            <section class="bg-gray-100 py-3 md:py-10">
+                <div class="bg-white lg:flex lg:flex-row rounded margin-responsive">
+                    <div class="w-full lg:w-[70%]">
 
-                        <div class="mx-5 border-b border-gray-200">
-                            <h1 class="mt-8 font-semibold text-4xl text-slate-900">
+                        <div class="px-4 py-4 border-b-2">
+                            <h1 class="text-2xl md:text-4xl font-semibold text-slate-900">
                                 {{ $category->name }}
                             </h1>
-
-                            <div class="relative text-left">
-                                <p class="my-3 font-nato text-lg font-normal text-slate-900 sm:mx-auto">
-                                    {{ $category->description }}
-                                </p>
-                            </div>
+                            <p class="py-2 text-lg text-slate-900">
+                                {{ $category->description }}
+                            </p>
                         </div>
 
                         <div class="p-0">
@@ -40,7 +33,7 @@
                         @endif
                     </div>
 
-                    <div class="w-full md:w-[30%] lg:border-l-4 lg:border-gray100 p-2">
+                    <div class="w-full lg:w-[30%] -md:border-t-2 lg:border-l-4 p-2">
 
                         @include('public.components.search.index')
 
