@@ -219,7 +219,8 @@
                                                 </div>
                                                 <div class="flex">
                                                     <div class="text-gray-700" aria-lavel="comment">
-                                                        0 <i class="fa fa-chart-line"></i>
+                                                        {{ views($post)->remember(15)->count() }}
+                                                        <i class="fa fa-chart-line"></i>
                                                     </div>
                                                 </div>
                                             </div>

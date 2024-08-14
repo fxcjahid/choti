@@ -147,7 +147,7 @@
 
             <!-- statics -->
             <div class="flex w-full flex-wrap justify-end gap-4">
-                <div class="flex gap-1 items-center">
+                {{-- <div class="flex gap-1 items-center">
                     <div class="text-gray-700" aria-lavel="comment">
                         10
                     </div>
@@ -157,9 +157,11 @@
                         <path
                             d="M880-80 720-240H160q-33 0-56.5-23.5T80-320v-480q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v720ZM160-320h594l46 45v-525H160v480Zm0 0v-480 480Z" />
                     </svg>
-                </div>
-                <div class="flex gap-1 items-center">
-                    <div class="text-gray-700" aria-lavel="views">20</div>
+                </div> --}}
+                <div class="flex gap-1 items-center" title="views">
+                    <div class="text-gray-700" aria-lavel="views">
+                        {{ views($post)->remember(15)->count() }}
+                    </div>
 
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                         fill="#374151">

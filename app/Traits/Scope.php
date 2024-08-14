@@ -73,4 +73,14 @@ trait Scope
     {
         return $query->with('thumbnail');
     }
+
+    /**
+     * Summary of scopeTrackViewRecord
+     * @param mixed $query
+     * @return mixed
+     */
+    public function scopeTrackViewRecord()
+    {
+        return views($this)->record();
+    }
 }

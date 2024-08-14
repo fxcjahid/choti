@@ -1,8 +1,8 @@
 {
-    "/assets/admin/js/admin.js": "/assets/admin/js/admin.js",
-    "/assets/admin/js/preline.js": "/assets/admin/js/preline.js",
-    "/assets/public/js/app.js": "/assets/public/js/app.js",
-    "/assets/admin/css/admin.css": "/assets/admin/css/admin.css",
-    "/assets/public/css/app.css": "/assets/public/css/app.css",
-    "/assets/admin/css/quill.bubble.css": "/assets/admin/css/quill.bubble.css"
+    "/assets/admin/js/admin.js": "/assets/admin/js/admin.js?id=824a80713d5476a83370db8c33c4053b",
+    "/assets/admin/js/preline.js": "/assets/admin/js/preline.js?id=bc505da04f545f75b8a8965c34f074a8",
+    "/assets/public/js/app.js": "/assets/public/js/app.js?id=52110ecb6b69c944a998f5c04f8162dd",
+    "/assets/admin/css/admin.css": "/assets/admin/css/admin.css?id=44f591ba0f04b05b5d6bb7d4c2036072",
+    "/assets/public/css/app.css": "/assets/public/css/app.css?id=431b462fa0b048ac2592aa22fabd110f",
+    "/assets/admin/css/quill.bubble.css": "/assets/admin/css/quill.bubble.css?id=b4610309cda291439843d25606763a38"
 }

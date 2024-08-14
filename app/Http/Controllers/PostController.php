@@ -53,6 +53,8 @@ class PostController extends Controller
 
         $breadcrumb = BreadcrumbHelper::forPost($post);
 
+        $post->TrackViewRecord();
+
         return view(
             'public.post.index',
             compact(

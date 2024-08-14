@@ -191,7 +191,6 @@ return [
         /*
          * Package Service Providers...
          */
-        fxcjahid\LaravelEditorJsHtml\LaravelEditorJsHtmlProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
 
         /*

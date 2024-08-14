@@ -8,13 +8,14 @@ use App\Traits\Sluggable;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use fxcjahid\LaravelEditorJsHtml\BlocksManager;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
-class Post extends Model
+class Post extends Model implements Viewable
 {
-    use HasFactory, Sluggable, Scope, Relationship, SoftDeletes;
+    use HasFactory, Sluggable, Scope, Relationship, InteractsWithViews, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
