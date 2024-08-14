@@ -6,7 +6,7 @@
                 <!-- Band Logo --->
                 <div class="flex w-auto items-center">
                     <a href="{{ route('home') }}" class="hover:animate-pulse">
-                        <img class="w-44 py-6" src="{{ asset('assets/public/img/blanee-logo.png') }}" />
+                        <img class="w-56 md:w-80 py-6" src="{{ asset('assets/public/img/all-bangla-choti.png') }}" />
                     </a>
                 </div>
 
