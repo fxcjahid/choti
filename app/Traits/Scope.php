@@ -97,27 +97,19 @@ trait Scope
 
         $meta::setTitle($this->title);
 
-        if (
-            $this instanceof \Illuminate\Pagination\Paginator ||
-            $this instanceof \Illuminate\Pagination\LengthAwarePaginator ||
-            method_exists($this, 'links')
-        ) {
-            $meta::setPaginationLinks($this);
-        }
-
-        if ($this->previous()) {
+        if (method_exists($this, 'previous')) {
             $meta::setPrevHref(
                 $this->previous()->url(),
             );
         }
 
-        if ($this->next()) {
+        if (method_exists($this, 'next')) {
             $meta::setNextHref(
                 $this->next()->url(),
             );
         }
 
-        if ($this->url()) {
+        if (method_exists($this, 'url')) {
             $meta::setCanonical(
                 $this->url(),
             );

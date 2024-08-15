@@ -1,5 +1,7 @@
 @extends('public.account.index')
-@section('title', 'পাসওয়ার্ড পরিবর্তন করুন')
+
+{{ Meta::setTitle(__('account.menu.my_password')) }}
+
 @section('subcontent')
     <div class="profile-edits">
         <div class="mb-5 border-b border-gray-100">

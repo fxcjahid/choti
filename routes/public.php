@@ -1,9 +1,5 @@
 <?php
 
-use App\Models\City;
-use App\Models\Post;
-use App\Models\Categories;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Artisan;
@@ -35,27 +31,13 @@ use App\Http\Controllers\WriteNewStoryController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-/**
- * Page Controller
- */
-
-Route::controller(PageController::class)
-    ->group(function () {
-        //Route::get('prix', 'prix')->name('prix');
-        Route::get('qui-sommes-nous', 'AboutUs')->name('about-us');
-        Route::get('category', 'guidesNuisibles')->name('guides-nuisibles');
-        Route::get('series', 'series')->name('series');
-        Route::get('nos-conditions-generales-utilisation-mentions-legales', 'PolitiqueConfidentialite')->name('privacy-policy');
-        // Service Page 
-        //Route::get('{page}', 'servicePage')->name('service-page'); 
-    });
-
 Route::prefix('account')
     ->middleware('auth')
     ->name('public.account.')
     ->group(function () {
 
         Route::get('', [AccountController::class, 'posts'])->name('index');
+        Route::get('posts', [AccountController::class, 'posts'])->name('posts');
 
         Route::get('profile', function () {
             return view('public.account.page.profile');
@@ -65,12 +47,8 @@ Route::prefix('account')
             return view('public.account.page.password');
         })->name('password');
 
-        Route::get('posts', [AccountController::class, 'posts'])->name('posts');
-
-
         Route::view('create-story', 'public.account.page.create-story')
             ->name('create-story');
-
     });
 
 Route::get('category/{category}', [CategorydController::class, 'postByCategory'])

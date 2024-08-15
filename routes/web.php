@@ -23,17 +23,15 @@ use App\Http\Controllers\Auth\AuthController;
 */
 
 Route::prefix('blanee:admin')
-	->name('admin.')
-	->controller(AuthController::class)
-	->group(
-		function () {
+    ->name('admin.')
+    ->controller(AuthController::class)
+    ->group(
+        function () {
 
-			Route::get('login', 'getLogin')->name('login');
+            Route::get('login', 'getLogin')->name('login');
 
-			Route::post('login', 'postLogin')->name('login.post');
+            Route::post('login', 'postLogin')->name('login.post');
 
-			Route::get('logout', 'signOut')->name('logout');
-		}
-	); 
-
-//Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('register.custom');
+            Route::get('logout', 'signOut')->name('logout');
+        }
+    );

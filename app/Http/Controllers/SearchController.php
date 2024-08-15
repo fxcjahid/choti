@@ -7,6 +7,7 @@ use App\Models\Categories;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Traits\HasCrudActions;
+use Butschster\Head\Facades\Meta;
 
 class SearchController extends Controller
 {
@@ -54,6 +55,10 @@ class SearchController extends Controller
             $result->content = $this->highlightKeywordSnippet($result->content, $query);
             return $result;
         });
+
+        Meta::setTitle("সার্চ রেজাল্টস \"$query\"")
+            ->setPaginationLinks($results)
+            ->setCanonical(request()->url());
 
         return view('public.search.index', [
             'results'  => $results,

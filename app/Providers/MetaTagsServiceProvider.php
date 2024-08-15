@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Butschster\Head\MetaTags\Meta;
+use Illuminate\Support\Facades\Route;
 use Butschster\Head\Facades\PackageManager;
 use Butschster\Head\MetaTags\Entities\Webmaster;
 use Butschster\Head\Contracts\MetaTags\MetaInterface;
@@ -43,6 +44,16 @@ class MetaTagsServiceProvider extends ServiceProvider
 
             if (env('GOOGLE_WEBMASTER_ID')) {
                 $meta->addWebmaster(Webmaster::GOOGLE, env('GOOGLE_WEBMASTER_ID'));
+            }
+
+            if (empty($meta->getCanonical())) {
+                $meta->setCanonical(request()->url());
+            }
+
+            if (
+                is_null($meta->getHrefLang(app()->getLocale()))
+            ) {
+                $meta->setHrefLang(app()->getLocale(), request()->url());
             }
 
 

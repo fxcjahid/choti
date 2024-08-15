@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCategoryRequest;
-use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Categories;
 use Illuminate\Http\Request;
+use Butschster\Head\Facades\Meta;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 
 class CategorydController extends Controller
 {
@@ -124,6 +125,10 @@ class CategorydController extends Controller
             ->inRandomOrder()
             ->limit(10)
             ->get();
+
+        Meta::setTitle($category->name)
+            ->setPaginationLinks($category->post)
+            ->setCanonical(request()->url());
 
 
         return view('public.category.show', compact('category', 'categorylist'));

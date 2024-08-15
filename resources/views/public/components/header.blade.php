@@ -5,8 +5,9 @@
 
                 <!-- Band Logo --->
                 <div class="flex w-auto items-center">
-                    <a href="{{ route('home') }}" class="hover:animate-pulse">
-                        <img class="w-56 md:w-80 py-6" src="{{ asset('assets/public/img/all-bangla-choti.png') }}" />
+                    <a href="{{ route('home') }}" title="{{ trans('app.name') }}" class="hover:animate-pulse">
+                        <img class="w-56 md:w-80 py-6" alt="{{ trans('app.name') }}"
+                            src="{{ asset('assets/public/img/all-bangla-choti.png') }}" />
                     </a>
                 </div>
 

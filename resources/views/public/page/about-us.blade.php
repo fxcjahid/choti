@@ -75,9 +75,8 @@
                     </p>
                 </div>
                 <div class="pt-16 text-center">
-                    <a href="{{ AppHelper::$leadFormLink }}"
-                       target="_blank"
-                       class="block rounded-lg bg-theme-color py-5 px-7 text-center text-xl font-medium text-white outline-none hover:bg-gray-700 dark:bg-primary-600 dark:hover:bg-primary-700 sm:w-fit md:text-2xl">
+                    <a href="{{ AppHelper::$leadFormLink }}" target="_blank"
+                        class="block rounded-lg bg-theme-color py-5 px-7 text-center text-xl font-medium text-white outline-none hover:bg-gray-700 dark:bg-primary-600 dark:hover:bg-primary-700 sm:w-fit md:text-2xl">
                         Je me débarrasse de mes nuisibles
                     </a>
                 </div>

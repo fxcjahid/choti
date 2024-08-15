@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Traits\HasCrudActions;
+use Butschster\Head\Facades\Meta;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterNewUser;
@@ -55,6 +56,8 @@ class AccountController extends Controller
             ->where('user_id', auth()->id())
             ->latest()
             ->paginate(15);
+
+        Meta::setTitle(__('account.title'));
 
         return view('public.account.page.posts', compact('posts'));
     }

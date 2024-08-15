@@ -1,5 +1,7 @@
 @extends('public.account.index')
-@section('title', 'নতুন গল্প লিখুন')
+
+{{ Meta::setTitle(__('account.menu.create_new_story')) }}
+
 @section('subcontent')
     <div class="profile-edits">
         <div class="mb-5 border-b border-gray-100">

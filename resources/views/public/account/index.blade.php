@@ -1,7 +1,4 @@
 @extends('public.app')
-
-@section('title', trans('account.title'))
-@section('canonical', route('public.account.index'))
 @section('content')
     <main class="settings bg-white dark:bg-gray-900">
         <div class="m-auto">
