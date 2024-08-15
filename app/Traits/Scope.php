@@ -2,7 +2,10 @@
 
 namespace App\Traits;
 
+use App\Helpers\BreadcrumbHelper;
+use Butschster\Head\Facades\Meta;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Butschster\Head\Contracts\MetaTags\MetaInterface;
 
 trait Scope
 {
@@ -75,7 +78,7 @@ trait Scope
     }
 
     /**
-     * Summary of scopeTrackViewRecord
+     * Track model view count to database
      * @param mixed $query
      * @return mixed
      */
@@ -83,4 +86,57 @@ trait Scope
     {
         return views($this)->record();
     }
+
+    /**
+     * Generated Meta Tags for model
+     * @return Meta
+     */
+    public function scopeMetas()
+    {
+        $meta = new Meta();
+
+        $meta::setTitle($this->title);
+
+        if (
+            $this instanceof \Illuminate\Pagination\Paginator ||
+            $this instanceof \Illuminate\Pagination\LengthAwarePaginator ||
+            method_exists($this, 'links')
+        ) {
+            $meta::setPaginationLinks($this);
+        }
+
+        if ($this->previous()) {
+            $meta::setPrevHref(
+                $this->previous()->url(),
+            );
+        }
+
+        if ($this->next()) {
+            $meta::setNextHref(
+                $this->next()->url(),
+            );
+        }
+
+        if ($this->url()) {
+            $meta::setCanonical(
+                $this->url(),
+            );
+
+            $meta::setHrefLang(app()->getLocale(), $this->url());
+        }
+
+        if (! empty($this->tag->pluck('name')->toArray())) {
+            $meta::setKeywords(
+                $this->tag->pluck('name')->toArray(),
+            );
+        }
+
+        if (! empty($this->summary)) {
+            $meta::setDescription($this->summary);
+        }
+
+        return $meta;
+    }
+
+
 }

@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tag;
 use App\Models\Post;
-use Illuminate\Http\Request;
 use App\Traits\HasCrudActions;
 use App\Helpers\BreadcrumbHelper;
-use fxcjahid\LaravelEditorJsHtml\BlocksManager;
+use Butschster\Head\Facades\Meta;
 
 class PostController extends Controller
 {
@@ -54,6 +52,7 @@ class PostController extends Controller
         $breadcrumb = BreadcrumbHelper::forPost($post);
 
         $post->TrackViewRecord();
+        $post->Metas();
 
         return view(
             'public.post.index',
