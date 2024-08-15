@@ -6,17 +6,17 @@
 
     <div class="md:mt-3 px-2">
         <a href="{{ $post->url() }}">
-            <h1 role="title" title="Find the bedbug nest (bedbug hiding places)"
+            <h1 role="title" title="{{ $post->title }}"
                 class="ellipsis text-lg font-semibold text-slate-900 hover:text-blue-900 dark:text-white md:text-2xl">
                 {{ $post->title }}
             </h1>
         </a>
-        <date class="mt-0.5 text-sm text-gray-500 dark:text-gray-400">
+        <time class="mt-0.5 text-sm text-gray-500 dark:text-gray-400">
             September 12, 2022
-        </date>
-        <p role="description" class="ellipsis line-clamp-4 my-1 lg:mt-2 text-slate-700 dark:text-white">
+        </time>
+        <summary role="summary" class="ellipsis line-clamp-4 my-1 lg:mt-2 text-slate-700 dark:text-white">
             {{ $post->summary }}
-        </p>
+        </summary>
         <a href="{{ $post->url() }}"
             class="mt-1 inline-flex items-center gap-x-1 text-blue-600 decoration-2 hover:underline font-medium">
             Read more

@@ -1,13 +1,11 @@
 @extends('public.app')
 
 @section('title', $post->title)
-@section('canonical',
-    route('post.show', [
-    'category' => $post->category[0]->slug,
-    'slug' => $post->slug,
-    ]))
+@section('canonical', $post->url())
+@section('hreflang', $post->url())
+
 @section('content')
-    <section role="content">
+    <main role="content">
 
         <!-- breadcrums -->
         @include('public.post.utility.breadcrumbs', [
@@ -20,52 +18,56 @@
 
             <div class="flex flex-row md:rounded bg-white dark:bg-slate-900 md:pt-9">
                 <!-- content -->
-                <article class="w-full md:w-[70%]" aria-label="content" role="article">
+                <article itemscope itemtype="https://schema.org/article" class="w-full md:w-[70%]" aria-label="content"
+                    role="article">
 
                     <div class="px-3 sm:px-7">
-                        <h1 role="title" aria-label="title"
+                        <h1 itemprop="headline" role="title" aria-label="title"
                             class="mt-6 text-2xl font-semibold !leading-normal text-gray-800 dark:text-white md:mt-1 md:text-4xl">
                             {{ $post->title }}
                         </h1>
 
                         <div class="mt-4 items-center">
                             <p class="text-base text-gray-500 dark:text-gray-400">
-                                লেখোক :
-                                <span role="author">{{ $post->author }}</span> |
-                                <span role=datetime>{{ $post->created_at->format('j F Y') }}</span>
+                                <author role="author" itemprop="author" content="{{ $post->author }}">লেখোক :
+                                    {{ $post->author }}</author> |
+                                <time role="datetime" itemprop="datePublished"
+                                    content="{{ $post->created_at }}">{{ $post->created_at->format('j F Y') }}</time>
                             </p>
                         </div>
                     </div>
 
 
-                    <div aria-label="content" role="content" class="art-content -md:mt-5 px-3 sm:mt-9 sm:px-7">
+                    <div aria-label="content" itemprop="content" role="content"
+                        class="art-content -md:mt-5 px-3 sm:mt-9 sm:px-7">
                         {!! $post->content !!}
                     </div>
 
                     <!--- Post nagivation button -->
-                    <div class="pagination-wrapper">
-                        <nav role="navigation" aria-label="Pagination Navigation" class="flex justify-between">
+                    <nav class="pagination-wrapper" role="navigation" aria-label="Pagination Navigation">
+                        <div class="flex justify-between">
                             @if ($post->previous())
-                                <a href="{{ $post->previous()->url() }}" rel="next"
+                                <a href="{{ $post->previous()->url() }}" itemprop="previous-post" rel="previous"
                                     class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-blue-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
                                     আগের পোস্ট দেখুন
                                 </a>
                             @endif
 
                             @if ($post->next())
-                                <a href="{{ $post->next()->url() }}" rel="next"
+                                <a href="{{ $post->next()->url() }}" itemprop="next-post" rel="next"
                                     class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-blue-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
                                     পরবর্তী পোস্ট দেখুন
                                 </a>
                             @endif
-                        </nav>
-                    </div>
+                        </div>
+                    </nav>
 
                     <!-- Post Tag items -->
                     <div class="px-7 md:mt-5">
                         <div class="flex justify-start gap-2">
                             @foreach ($post->tag as $tag)
-                                <a href="{{ route('tag', ['tag' => $tag->slug]) }}" title="{{ $tag->name }}"
+                                <a href="{{ route('tag', ['tag' => $tag->slug]) }}" itemprop="post-tags"
+                                    title="{{ $tag->name }}"
                                     class="inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-blue-500 py-1.5 px-3 text-sm font-medium text-white transition-all duration-700 hover:bg-blue-900">
                                     {{ $tag->name }}
                                 </a>
@@ -76,7 +78,7 @@
                     <!-- series wise post suggest -->
                     @if ($post->series->count() >= 1)
                         <section class="my-2 sm:my-5 sm:mt-9">
-                            <div class="mx-4 md:mx-8 px-5 pt-2 pb-1 rounded-md bg-gray-100">
+                            <div itemprop="post--more-series" class="mx-4 md:mx-8 px-5 pt-2 pb-1 rounded-md bg-gray-100">
                                 <h2 class="mt-4 mb-4 text-2xl font-semibold text-slate-900">
                                     এই গল্পের আরও সিরিজ পড়ুন
                                 </h2>
@@ -419,5 +421,5 @@
             </div>
 
         </div>
-    </section>
+    </main>
 @endsection
