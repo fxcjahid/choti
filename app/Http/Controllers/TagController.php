@@ -116,7 +116,7 @@ class TagController extends Controller
             ->setPaginationLinks($tag->post)
             ->setCanonical(request()->url());
 
-        return view('public.category.show', compact('tag', 'taglist'));
+        return view('public.tag.show', compact('tag', 'taglist'));
     }
 
     /**

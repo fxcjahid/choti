@@ -11,9 +11,9 @@
                 {{ $post->title }}
             </h1>
         </a>
-        <time class="mt-0.5 text-sm text-gray-500 dark:text-gray-400">
+        {{-- <time class="mt-0.5 text-sm text-gray-500 dark:text-gray-400">
             September 12, 2022
-        </time>
+        </time> --}}
         <summary role="summary" class="ellipsis line-clamp-4 my-1 lg:mt-2 text-slate-700 dark:text-white">
             {{ $post->summary }}
         </summary>

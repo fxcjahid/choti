@@ -22,9 +22,9 @@
                     class="text-xl font-semibold text-gray-800 group-hover:text-gray-600 dark:text-gray-300 dark:group-hover:text-white">
                     {{ $post->name }}
                 </h3>
-                <time class="mt-3 text-gray-600 dark:text-gray-400">
+                {{-- <time class="mt-3 text-gray-600 dark:text-gray-400">
                     September 12, 2022
-                </time>
+                </time> --}}
                 <summary
                     class="mt-4 inline-flex items-center gap-x-1 text-blue-600 decoration-2 hover:underline font-medium">
                     Read more
