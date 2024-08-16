@@ -1,7 +1,7 @@
 @extends('public.app')
 
-@section('title', trans('auth.title'))
-@section('canonical', route('public.auth.index'))
+{{ Meta::setTitle('আপনার একাউন্ট এ লগইন করুন') }}
+
 @section('content')
     <main class="desktop-auth">
         <div class="2xl:m-auto 2xl:max-w-screen-2xl">

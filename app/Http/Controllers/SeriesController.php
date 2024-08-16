@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Series;
+use App\Models\Categories;
+use Butschster\Head\Facades\Meta;
 use App\Http\Requests\StoreSeriesRequest;
 use App\Http\Requests\UpdateSeriesRequest;
-use App\Models\Series;
 
 class SeriesController extends Controller
 {
@@ -101,26 +103,19 @@ class SeriesController extends Controller
                 ->paginate(200),
         );
 
-        /**
-         * Make Hide useless arrtibutes
-         */
-        $series->post->each(function ($each) {
-            return $each->makeHidden([
-                'user_id',
-                'summary',
-                'status',
-                'readTime',
-                'pivot',
-                'content',
-                'created_at',
-                'updated_at',
-                'deleted_at',
-                'body',
-            ]);
-        });
+
+        $categorylist = Categories::where('is_active', true)
+            ->inRandomOrder()
+            ->limit(10)
+            ->get();
+
+        Meta::setTitle($series->name)
+            ->setPaginationLinks($series->post)
+            ->setCanonical(request()->url());
 
 
-        return view('public.series.show', compact('series'));
+
+        return view('public.series.show', compact('series', 'categorylist'));
     }
 
     /**

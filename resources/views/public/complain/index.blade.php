@@ -1,7 +1,7 @@
 @extends('public.app')
 
-@section('title', trans('complain.title'))
-@section('canonical', route('complain.index'))
+{{ Meta::setTitle('অভিযোগ করুন') }}
+
 @section('content')
     <main class="">
         <div class="2xl:m-auto 2xl:max-w-screen-2xl">
@@ -125,5 +125,4 @@
 
         </div>
     </main>
-
 @endsection

@@ -6,6 +6,7 @@ use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Series;
 use App\Models\Categories;
+use Butschster\Head\Facades\Meta;
 use App\Http\Requests\StoreSeriesRequest;
 use App\Http\Requests\UpdateSeriesRequest;
 
@@ -20,6 +21,8 @@ class MyStoryController extends Controller
 
         $posts = Post::whereIn('id', $postIds)
             ->paginate(10);
+
+        Meta::setTitle('আমার গল্প গুলো');
 
         return view('public.story.mystory', compact('posts'));
     }
@@ -43,6 +46,8 @@ class MyStoryController extends Controller
         $category = Categories::all();
         $series   = Series::all();
         $tags     = Tag::all();
+
+        Meta::setTitle('আমার গল্প গুলো');
 
         return view('public.story.edit', compact('post', 'category', 'series', 'tags'));
     }

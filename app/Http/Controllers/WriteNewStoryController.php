@@ -11,6 +11,7 @@ use App\Models\PostSeries;
 use App\Models\PostThumbnail;
 use App\Models\PostCategories;
 use App\Traits\HasCrudActions;
+use Butschster\Head\Facades\Meta;
 use App\Http\Controllers\FileController;
 use App\Http\Requests\WriteNewStoryRequest;
 use App\Http\Requests\WriteNewStoryUpdateRequest;
@@ -67,6 +68,8 @@ class WriteNewStoryController extends Controller
         if (auth()->check()) {
             return redirect()->route('public.account.create-story');
         }
+
+        Meta::setTitle('গল্প লিখে পাঠান');
 
         return view('public.story.index');
     }
@@ -128,6 +131,8 @@ class WriteNewStoryController extends Controller
         $category = Categories::all();
         $series   = Series::all();
         $tags     = Tag::all();
+
+        Meta::setTitle('ধন্যবাদ ! আপনার গল্প ইতিমধে স্টোর করা হয়েছে');
 
         return view('public.story.success', compact('post', 'category', 'series', 'tags'));
     }

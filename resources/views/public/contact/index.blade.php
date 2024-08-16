@@ -1,7 +1,8 @@
 @extends('public.app')
 
-@section('title', trans('contact.title'))
-@section('canonical', route('contact.index'))
+
+{{ Meta::setTitle('যোগাযোগ করুন') }}
+
 
 @section('content')
     <main class="">

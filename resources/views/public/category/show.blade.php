@@ -1,8 +1,5 @@
 @extends('public.app')
 
-@section('title', $category->name)
-@section('canonical', route('category', ['category' => $category->slug]))
-
 @section('content')
     <main class="">
         <div class="2xl:m-auto 2xl:max-w-screen-2xl">
@@ -13,22 +10,22 @@
 
                         <div class="px-4 py-4 border-b-2">
                             <h1 class="text-2xl md:text-4xl font-semibold text-slate-900">
-                                {{ $category->name }}
+                                {{ $tag->name }}
                             </h1>
                             <p class="py-2 text-lg text-slate-900">
-                                {{ $category->description }}
+                                {{ $tag->description }}
                             </p>
                         </div>
 
                         <div class="p-0">
-                            @foreach ($category->post as $index => $post)
+                            @foreach ($tag->post as $index => $post)
                                 @include('public.post.partials.card')
                             @endforeach
                         </div>
 
-                        @if ($category->post->hasPages())
+                        @if ($tag->post->hasPages())
                             <div class="pagination-wrapper">
-                                {{ $category->post->links('public/components/pagination/simple-step') }}
+                                {{ $tag->post->links('public/components/pagination/simple-step') }}
                             </div>
                         @endif
                     </div>
@@ -43,11 +40,11 @@
                                 আরও গল্প দেখুন
                             </h2>
                             <ul class="my-1 ml-3 list-none">
-                                @foreach ($categorylist as $category)
+                                @foreach ($taglist as $tag)
                                     <li class="mb-1.5">
-                                        <a href="{{ $category->url() }}"
+                                        <a href="{{ $tag->url() }}"
                                             class="text-slate-800 hover:text-blue-900 text-lg lg:text-xl">
-                                            {{ $category->name }}
+                                            {{ $tag->name }}
                                         </a>
                                     </li>
                                 @endforeach
