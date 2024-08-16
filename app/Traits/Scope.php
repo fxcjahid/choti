@@ -97,19 +97,19 @@ trait Scope
 
         $meta::setTitle($this->title);
 
-        if (method_exists($this, 'previous')) {
+        if (method_exists($this, 'previous') && ! empty($this->previous())) {
             $meta::setPrevHref(
                 $this->previous()->url(),
             );
         }
 
-        if (method_exists($this, 'next')) {
+        if (method_exists($this, 'next') && ! empty($this->next())) {
             $meta::setNextHref(
                 $this->next()->url(),
             );
         }
 
-        if (method_exists($this, 'url')) {
+        if (method_exists($this, 'url') && ! empty($this->url())) {
             $meta::setCanonical(
                 $this->url(),
             );

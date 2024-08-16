@@ -10,22 +10,22 @@
 
                         <div class="px-4 py-4 border-b-2">
                             <h1 class="text-2xl md:text-4xl font-semibold text-slate-900">
-                                {{ $tag->name }}
+                                {{ $category->name }}
                             </h1>
                             <p class="py-2 text-lg text-slate-900">
-                                {{ $tag->description }}
+                                {{ $category->description }}
                             </p>
                         </div>
 
                         <div class="p-0">
-                            @foreach ($tag->post as $index => $post)
+                            @foreach ($category->post as $index => $post)
                                 @include('public.post.partials.card')
                             @endforeach
                         </div>
 
-                        @if ($tag->post->hasPages())
+                        @if ($category->post->hasPages())
                             <div class="pagination-wrapper">
-                                {{ $tag->post->links('public/components/pagination/simple-step') }}
+                                {{ $category->post->links('public/components/pagination/simple-step') }}
                             </div>
                         @endif
                     </div>
@@ -40,11 +40,11 @@
                                 আরও গল্প দেখুন
                             </h2>
                             <ul class="my-1 ml-3 list-none">
-                                @foreach ($taglist as $tag)
+                                @foreach ($categorylist as $category)
                                     <li class="mb-1.5">
-                                        <a href="{{ $tag->url() }}"
+                                        <a href="{{ $category->url() }}"
                                             class="text-slate-800 hover:text-blue-900 text-lg lg:text-xl">
-                                            {{ $tag->name }}
+                                            {{ $category->name }}
                                         </a>
                                     </li>
                                 @endforeach

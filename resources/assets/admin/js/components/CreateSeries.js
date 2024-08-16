@@ -23,18 +23,12 @@ export default {
             this.form.slug = this.slugify(this.form.slug);
         },
         slugify(text = '', ampersand = 'and') {
-            const a = 'àáäâèéëêìíïîòóöôùúüûñçßÿỳýœæŕśńṕẃǵǹḿǘẍźḧ'
-            const b = 'aaaaeeeeiiiioooouuuuncsyyyoarsnpwgnmuxzh'
-            const p = new RegExp(a.split('').join('|'), 'g')
-
             return text.toString().toLowerCase()
                 .replace(/[\s_]+/g, '-')
-                .replace(p, c => b.charAt(a.indexOf(c)))
                 .replace(/&/g, `-${ampersand}-`)
-                .replace(/[^\w-]+/g, '')
+                .replace(/[^a-zA-Z0-9ঀ-৿\u0980-\u09FF-]+/g, '')
                 .replace(/^-+|-+$/g, '')
-                .replace(/[0-9]/g, '')
-                .replace(/--+/g, '-')
+                .replace(/--+/g, '-');
         },
         store() {
             this.isloading = 1,

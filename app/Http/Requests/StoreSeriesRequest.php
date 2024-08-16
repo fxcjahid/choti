@@ -26,7 +26,7 @@ class StoreSeriesRequest extends FormRequest
     {
         return [
             'name'        => 'required|unique:series|max:100',
-            'slug'        => 'nullable|unique:series|max:100|regex:/^[A-Za-z-_]+$/',
+            'slug'        => 'nullable|unique:series|max:100',
             'description' => 'nullable|min:10|max:2000',
         ];
     }

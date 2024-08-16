@@ -72,23 +72,14 @@ export default {
         remove() {
             this.form.thumbnail = [];
         },
-        makeSlug(str) {
+        makeSlug(str, ampersand = 'and') {
             if (str == '') return;
-            str = str.replace(/^\s+|\s+$/g, ''); // trim
-            str = str.toLowerCase();
-
-            // remove accents, swap ñ for n, etc
-            var from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;";
-            var to = "aaaaaeeeeeiiiiooooouuuunc------";
-            for (var i = 0, l = from.length; i < l; i++) {
-                str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-            }
-
-            str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-                .replace(/\s+/g, '-') // collapse whitespace and replace by -
-                .replace(/-+/g, '-'); // collapse dashes
-
-            return str;
+            return str.toString().toLowerCase()
+                .replace(/[\s_]+/g, '-')
+                .replace(/&/g, `-${ampersand}-`)
+                .replace(/[^a-zA-Z0-9ঀ-৿\u0980-\u09FF-]+/g, '')
+                .replace(/^-+|-+$/g, '')
+                .replace(/--+/g, '-');
         },
         updateFirstCategory() {
             if (typeof this.posts.category !== 'undefined' && this.posts.category.length > 0) {
