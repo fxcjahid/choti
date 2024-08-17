@@ -102,6 +102,7 @@ class TagController extends Controller
             $tag
                 ->post()
                 ->with('thumbnail')
+                ->orderByDesc('created_at')
                 ->paginate(42),
         );
 

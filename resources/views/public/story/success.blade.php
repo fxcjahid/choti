@@ -66,8 +66,8 @@
                                 <div class="text-sm my-0.5 font-normal text-gray-600">
                                     গল্পের নাম পরিবর্তন করতে চাইলে, অবশ্যই এক্সেস ভেরিফিকেশন করতে হবে
                                 </div>
-                                <input type="hidden" id="title" name="title" value="{{ old('title', $post->title) }}"
-                                    class="hidden">
+                                <input type="hidden" id="title" name="title" value="{{ $post->title }}" class="hidden">
+                                <input type="hidden" id="content" name="content" value="{{ $post->content }}" class="hidden">
                             @endguest
                             @auth
                                 <input type="text" id="title" name="title" value="{{ old('title', $post->title) }}"

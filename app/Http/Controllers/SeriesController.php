@@ -100,6 +100,7 @@ class SeriesController extends Controller
             $series
                 ->post()
                 ->with('thumbnail')
+                ->orderByDesc('created_at')
                 ->paginate(200),
         );
 

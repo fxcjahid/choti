@@ -100,6 +100,7 @@ class CategorydController extends Controller
             $category
                 ->post()
                 ->with('thumbnail')
+                ->orderByDesc('created_at')
                 ->paginate(10),
         );
 

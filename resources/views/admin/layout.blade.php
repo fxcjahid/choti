@@ -213,12 +213,13 @@
                                             <!-- statics -->
                                             <div class="mt-auto mr-4 flex w-full flex-wrap justify-end gap-4">
                                                 <div class="flex">
-                                                    <div class="text-gray-700" aria-lavel="comment">
-                                                        0 <i class="fa fa-comment-alt"></i>
+                                                    <div class="text-gray-700" title="unique-views">
+                                                        {{ views($post)->unique()->count() }} <i
+                                                            class="fa fa-chart-bar"></i>
                                                     </div>
                                                 </div>
                                                 <div class="flex">
-                                                    <div class="text-gray-700" aria-lavel="comment">
+                                                    <div class="text-gray-700" aria-lavel="views">
                                                         {{ views($post)->remember(15)->count() }}
                                                         <i class="fa fa-chart-line"></i>
                                                     </div>
