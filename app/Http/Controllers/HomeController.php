@@ -23,7 +23,9 @@ class HomeController extends Controller
             ->limit(10)
             ->get();
 
-        Meta::setTitle(__('app.name'))
+        Meta::setTitle(__('app.title'))
+            ->setDescription(__('app.description'))
+            ->setKeywords(__('app.keyword'))
             ->setPaginationLinks($posts)
             ->setCanonical(request()->url());
 

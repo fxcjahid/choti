@@ -1,7 +1,5 @@
 @extends('public.app')
 
-@section('title', 'বাংলা চটি গল্প')
-@section('canonical', route('home'))
 @section('content')
     <!-- page content start -->
     <main class="">
@@ -48,5 +46,4 @@
             </section>
         </div>
     </main>
-
 @endsection
