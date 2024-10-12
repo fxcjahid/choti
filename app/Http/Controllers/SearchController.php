@@ -47,7 +47,9 @@ class SearchController extends Controller
         /**
          * Combine queries and paginate results
          */
-        $results = $getTitle->union($getSummary)->paginate(10);
+        $results = $getTitle->union($getSummary)
+            ->orderByDesc('created_at')
+            ->paginate(10);
 
         // Highlight keywords in the results
         $results->getCollection()->transform(function ($result) use ($query) {
@@ -72,7 +74,8 @@ class SearchController extends Controller
      */
     private function highlightTitle($title, $query)
     {
-        return preg_replace("/($query)/i", '<strong class="bg-yellow-200">$1</strong>', $title);
+        return preg_replace("/(" . preg_quote($query, '/') . ")/iu", '<strong class="bg-yellow-200">$1</strong>', $title);
+        // return preg_replace("/($query)/i", '<strong class="bg-yellow-200">$1</strong>', $title);
     }
 
     /**
@@ -83,7 +86,6 @@ class SearchController extends Controller
         $keyword = preg_quote($keyword, '/');
         $content = strip_tags($content);
 
-
         $radius          = 300;
         $keywordPosition = stripos($content, $keyword);
 
@@ -92,10 +94,10 @@ class SearchController extends Controller
         }
 
         $start   = max($keywordPosition - $radius, 0);
-        $end     = min($keywordPosition + $radius + strlen($keyword), strlen($content));
-        $snippet = substr($content, $start, $end - $start);
+        $end     = min($keywordPosition + $radius + mb_strlen($keyword), mb_strlen($content)); // Use mb_strlen for multibyte support
+        $snippet = mb_substr($content, $start, $end - $start); // Use mb_substr for multibyte support
 
-        return preg_replace("/($keyword)/i", '<strong class="bg-yellow-200">$1</strong>', $snippet);
+        return preg_replace("/(" . $keyword . ")/iu", '<strong class="bg-yellow-200">$1</strong>', $snippet);
     }
 
     /**
