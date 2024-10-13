@@ -6,16 +6,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostComments;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\FileController;
-use App\Http\Controllers\admin\PostController;
-use App\Http\Controllers\admin\SearchController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CategorydController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\admin\PageController;
+use App\Http\Controllers\admin\PostController;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\FileManagerController;
 use App\Http\Controllers\ImageUploadController;
+use App\Http\Controllers\admin\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +92,8 @@ Route::prefix('contact')
         Route::get('/', [ContactController::class, 'index'])->name('index');
         Route::post('/', [ContactController::class, 'store'])->name('store');
     });
+
+Route::resource('users', UsersController::class)->names('users');
 
 Route::prefix('file')
     ->name('file.')

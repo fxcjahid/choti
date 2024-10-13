@@ -77,4 +77,12 @@ class User extends Authenticatable
         return $username;
     }
 
+    /**
+     * Get post attached
+     * Relation between table
+     */
+    public function post()
+    {
+        return $this->belongsTo(Post::class, 'id', 'user_id');
+    }
 }
