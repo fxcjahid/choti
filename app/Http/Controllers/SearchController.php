@@ -74,8 +74,17 @@ class SearchController extends Controller
      */
     private function highlightTitle($title, $query)
     {
-        return preg_replace("/(" . preg_quote($query, '/') . ")/iu", '<strong class="bg-yellow-200">$1</strong>', $title);
-        // return preg_replace("/($query)/i", '<strong class="bg-yellow-200">$1</strong>', $title);
+        $pos = mb_stripos($title, $query);
+
+        if ($pos !== false) {
+            $highlighted = mb_substr($title, 0, $pos)
+                . '<strong class="bg-yellow-200">' . mb_substr($title, $pos, mb_strlen($query)) . '</strong>'
+                . mb_substr($title, $pos + mb_strlen($query));
+
+            return $highlighted;
+        }
+
+        return $title;
     }
 
     /**
@@ -86,16 +95,18 @@ class SearchController extends Controller
         $keyword = preg_quote($keyword, '/');
         $content = strip_tags($content);
 
-        $radius          = 300;
-        $keywordPosition = stripos($content, $keyword);
+        $radius = 300;
+
+        $keywordPosition = mb_stripos($content, $keyword);
 
         if ($keywordPosition === false) {
             return Str::limit($content, $radius * 2, '...');
         }
 
-        $start   = max($keywordPosition - $radius, 0);
-        $end     = min($keywordPosition + $radius + mb_strlen($keyword), mb_strlen($content)); // Use mb_strlen for multibyte support
-        $snippet = mb_substr($content, $start, $end - $start); // Use mb_substr for multibyte support
+        $start = max($keywordPosition - $radius, 0);
+        $end   = min($keywordPosition + $radius + mb_strlen($keyword), mb_strlen($content));
+
+        $snippet = mb_substr($content, $start, $end - $start);
 
         return preg_replace("/(" . $keyword . ")/iu", '<strong class="bg-yellow-200">$1</strong>', $snippet);
     }
