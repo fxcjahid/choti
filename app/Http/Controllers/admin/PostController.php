@@ -6,10 +6,8 @@ use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Series;
 use App\Models\PostTags;
-use App\Helpers\AppHelper;
 use App\Models\Categories;
 use App\Models\PostSeries;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\PostThumbnail;
 use App\Models\PostCategories;
@@ -22,6 +20,64 @@ use fxcjahid\LaravelTableOfContent\MarkupFixer;
 class PostController extends Controller
 {
     static $slug;
+
+    public function index(Request $request)
+    {
+        $posts = Post::getAll()
+            ->when(true, function ($query) use ($request) {
+
+                $orderType = $request->get('orderBy');
+
+                if (! empty($orderType)) {
+                    /**
+                     * Order By
+                     */
+                    switch ($orderType) {
+
+                        case 'lastUpdate':
+                            $query
+                                ->where('updated_at', '>', now()->subDays(10)->endOfDay())
+                                ->orderBy('updated_at', 'DESC');
+                            break;
+
+                        case 'name':
+                            $query->orderBy('name');
+                            break;
+
+                        case 'asc':
+                            $query->orderBy('id', 'ASC');
+                            break;
+
+                        case 'desc':
+                            $query->orderBy('id', 'DESC');
+                            break;
+
+                        case 'views':
+                            $query->orderByViews()->get();
+                            break;
+
+                        default:
+                            $query->orderBy('id', 'DESC');
+                            break;
+                    }
+                } else {
+                    $query->orderBy('id', 'DESC');
+                }
+            })
+            ->where(function ($query) use ($request) {
+
+                $status = $request->get('status');
+
+                if (! empty($status)) {
+                    $query->where('status', '=', $status);
+                }
+            })
+            ->paginate(25);  //get first 25 rows
+
+        $statistics = Post::statistics();
+
+        return view('admin.layout', compact('posts', 'statistics'));
+    }
 
     /**
      * Replace post content to HTML view useing Block-editor

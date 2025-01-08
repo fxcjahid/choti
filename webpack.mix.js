@@ -10,7 +10,7 @@ require('./webpack.public.mix.js');
  */
 if (!mix.inProduction()) {
     // Browsersync Automatically Reloading
-    mix.browserSync('http://127.0.0.1:8000');
+    // mix.browserSync('http://127.0.0.1:8000');
 }
 
 

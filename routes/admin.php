@@ -1,21 +1,16 @@
-<?php
+<?php 
 
-use Illuminate\Support\Facades\Auth;
-
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostComments;
+use Illuminate\Support\Facades\Route; 
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\SeriesController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\ContactController; 
 use App\Http\Controllers\CategorydController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\admin\PageController;
-use App\Http\Controllers\admin\PostController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UsersController;
-use App\Http\Controllers\FileManagerController;
-use App\Http\Controllers\ImageUploadController;
+use App\Http\Controllers\FileManagerController; 
 use App\Http\Controllers\admin\SearchController;
 
 /*
@@ -74,6 +69,7 @@ Route::post('/update/post', [PostController::class, 'updatePost'])->name('update
 Route::prefix('post')
     ->name('post.')
     ->group(function () {
+        Route::get('/', [PostController::class, 'index'])->name('index');
         Route::post('update', [PostController::class, 'update'])->name('update');
     });
 

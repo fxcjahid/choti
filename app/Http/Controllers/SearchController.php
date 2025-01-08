@@ -108,8 +108,11 @@ class SearchController extends Controller
 
         $snippet = mb_substr($content, $start, $end - $start);
 
-        return preg_replace("/(" . $keyword . ")/iu", '<strong class="bg-yellow-200">$1</strong>', $snippet);
+        $highlightedKeyword = '<strong class="bg-yellow-200">' . mb_substr($snippet, $keywordPosition - $start, mb_strlen($keyword)) . '</strong>';
+
+        return mb_substr($snippet, 0, $keywordPosition - $start) . $highlightedKeyword . mb_substr($snippet, $keywordPosition - $start + mb_strlen($keyword));
     }
+
 
     /**
      * Retrieve random active categories.

@@ -30,7 +30,7 @@
                     </a>
                     <ul id="dropdown-pages" class="sub-list hidden space-y-2 py-2">
                         <li>
-                            <a href="{{ route('admin.dashboard', ['orderBy' => 'desc']) }}" class="sub-item">
+                            <a href="{{ route('admin.post.index', ['orderBy' => 'desc']) }}" class="sub-item">
                                 All Post
                             </a>
                         </li>
