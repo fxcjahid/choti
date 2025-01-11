@@ -29,7 +29,7 @@ class Post extends Model implements Viewable
         'content',
         'summary',
         'user_id',
-        'status', // 'publish','draft','scheduled','trash' 
+        'status', // 'publish','draft','scheduled','trash'
     ];
 
     protected $cats = [
@@ -42,6 +42,16 @@ class Post extends Model implements Viewable
      * @var string
      */
     protected $slugAttribute = 'title';
+
+    /**
+     * Remove views on delete
+     * To automatically delete all views of an viewable Eloquent model on delete.
+     *
+     * @see https://github.com/cyrildewit/eloquent-viewable?tab=readme-ov-file#remove-views-on-delete
+     * @var boolean
+     */
+    protected $removeViewsOnDelete = true;
+
 
     protected static function boot()
     {
@@ -73,7 +83,7 @@ class Post extends Model implements Viewable
 
     /**
      * Get post thumbnail image
-     * @param string $size 
+     * @param string $size
      */
     public function image($size = null)
     {
@@ -197,7 +207,7 @@ class Post extends Model implements Viewable
     }
 
     /**
-     * Get all post 
+     * Get all post
      * @return mixed
      */
     public static function getAll()
@@ -210,7 +220,7 @@ class Post extends Model implements Viewable
         ]);
     }
 
-    /** 
+    /**
      * Get active post by slug
      * @return mixed
      **/

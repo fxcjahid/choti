@@ -3,7 +3,9 @@
     <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200">
         <div class="flex flex-col h-full">
             <div class="flex items-center justify-between">
-                <h2 class="text-3xl text-slate-900 font-bold">2,340</h2>
+                <h2 class="text-3xl text-slate-900 font-bold">
+                    {{ $postViews }}
+                </h2>
                 <p class="text-base font-semibold text-green-500">14.6%</p>
             </div>
             <div class="flex justify-between mt-1.5">
