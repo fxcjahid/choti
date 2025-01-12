@@ -65,15 +65,7 @@ Route::get('tags/{tag}', [TagController::class, 'postBytag'])
 
 
 Route::get('{category}/{slug}', [PostController::class, 'show'])->name('post.show');
-
-
-Route::get('sitemap:generate:blanee', function () {
-    if (Auth()->check()) {
-        return Artisan::call('sitemap:generate');
-    } else {
-        return abort(404);
-    }
-});
+Route::get('most-views', [PostController::class, 'mostViews'])->name('post.show.mostViews');
 
 Route::prefix('submit-new-story')
     ->name('public.story.')

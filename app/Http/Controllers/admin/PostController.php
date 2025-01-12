@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Models\PostThumbnail;
 use App\Models\PostCategories;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 use App\Http\Requests\StorePostRequest;
 use fxcjahid\LaravelTableOfContent\table;
 use fxcjahid\LaravelEditorJsHtml\BlocksManager;
@@ -255,6 +256,10 @@ class PostController extends Controller
         $this->updateThumbnail($request->thumbnail, $request->id);
 
         $post->save();
+
+
+        Cache::forget("post_{$post->category[0]['slug']}_{$post->slug}");
+        Cache::forget("breadcrumb_post_{$post->slug}");
 
         return response()->json([
             'success' => true,

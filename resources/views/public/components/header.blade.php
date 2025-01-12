@@ -79,7 +79,7 @@
                     হোমপেজ
                 </a>
                 <a class="mx-4 transform text-xl leading-5 text-white hover:text-blue-600 transition-colors duration-300 dark:text-gray-200"
-                    href="#">
+                    href="{{ route('post.show.mostViews') }}">
                     জনপ্রিয় গল্প
                 </a>
                 <a class="mx-4 transform text-xl leading-5 text-white hover:text-blue-600 transition-colors duration-300 dark:text-gray-200"

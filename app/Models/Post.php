@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use App\Traits\Relationship;
 use App\Traits\Scope;
 use App\Traits\Sluggable;
 use Illuminate\Support\Str;
+use App\Traits\Relationship;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use CyrildeWit\EloquentViewable\InteractsWithViews;
+use CyrildeWit\EloquentViewable\Support\Period;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
@@ -311,5 +312,19 @@ class Post extends Model implements Viewable
                 'thumbnail',
             ])
             ->get();
+    }
+
+
+    /**
+     * Get top view post by weekend
+     * @param mixed $query
+     * @param mixed $limit
+     * @return mixed
+     */
+    public function scopeTopViewed($query, $limit = 30)
+    {
+        return $query->orderByViews('desc', Period::pastWeeks(1))
+            ->where('status', '=', 'publish')
+            ->take($limit);
     }
 }
