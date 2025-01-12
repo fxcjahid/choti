@@ -6,12 +6,12 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\ContactController; 
 use App\Http\Controllers\CategorydController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\admin\PageController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UsersController;
-use App\Http\Controllers\FileManagerController; 
 use App\Http\Controllers\admin\SearchController;
+use App\Http\Controllers\FileManagerController; 
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------

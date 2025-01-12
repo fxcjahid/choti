@@ -4,9 +4,12 @@
         <div class="flex flex-col h-full">
             <div class="flex items-center justify-between">
                 <h2 class="text-3xl text-slate-900 font-bold">
-                    {{ $postViews }}
+                    {{ $currentWeekVisitors }}
                 </h2>
-                <p class="text-base font-semibold text-green-500">14.6%</p>
+                <p
+                    class="text-base font-semibold {{ $visitorsPercentChange < 0 ? 'text-red-500' : ($visitorsPercentChange > 0 ? 'text-green-500' : 'text-gray-500') }}">
+                    {{ number_format($visitorsPercentChange, 1) }}%
+                </p>
             </div>
             <div class="flex justify-between mt-1.5">
                 <p class="text-sm text-gray-600">New visitors this week</p>
@@ -25,8 +28,13 @@
     <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200">
         <div class="flex flex-col h-full">
             <div class="flex items-center justify-between">
-                <h2 class="text-3xl text-slate-900 font-bold">2,340</h2>
-                <p class="text-base font-semibold text-green-500">14.6%</p>
+                <h2 class="text-3xl text-slate-900 font-bold">
+                    {{ $currentWeekPosts }}
+                </h2>
+                <p
+                    class="text-base font-semibold {{ $postsPercentChange < 0 ? 'text-red-500' : ($postsPercentChange > 0 ? 'text-green-500' : 'text-gray-500') }}">
+                    {{ number_format($postsPercentChange, 1) }}%
+                </p>
             </div>
             <div class="flex justify-between mt-1.5">
                 <p class="text-sm text-gray-600">New posts this week</p>
@@ -46,8 +54,13 @@
     <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200">
         <div class="flex flex-col h-full">
             <div class="flex items-center justify-between">
-                <h2 class="text-3xl text-slate-900 font-bold">40</h2>
-                <p class="text-base font-semibold text-red-500">1.6%</p>
+                <h2 class="text-3xl text-slate-900 font-bold">
+                    {{ $currentWeekUsers }}
+                </h2>
+                <p
+                    class="text-base font-semibold {{ $usersPercentChange < 0 ? 'text-red-500' : ($usersPercentChange > 0 ? 'text-green-500' : 'text-gray-500') }}">
+                    {{ number_format($usersPercentChange, 1) }}%
+                </p>
             </div>
             <div class="flex justify-between mt-1.5">
                 <p class="text-sm text-gray-600">User signups this week</p>

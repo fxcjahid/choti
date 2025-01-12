@@ -64,7 +64,7 @@
 
                     <!-- Post Tag items -->
                     <div class="px-7 md:mt-5">
-                        <div class="flex justify-start gap-2">
+                        <div class="flex flex-wrap justify-start gap-2">
                             @foreach ($post->tag as $tag)
                                 <a href="{{ route('tag', ['tag' => $tag->slug]) }}" itemprop="post-tags"
                                     title="{{ $tag->name }}"

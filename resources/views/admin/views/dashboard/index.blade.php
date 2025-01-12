@@ -9,13 +9,12 @@
             @include('admin.components.errors')
 
             @include('admin.views.dashboard.metrics')
-            @include('admin.views.dashboard.chart')
+            {{-- @include('admin.views.dashboard.chart') --}}
 
-            <div class="flex items-start gap-5">
+            {{-- <div class="flex items-start gap-5">
                 @include('admin.views.dashboard.channel')
-                @include('admin.views.dashboard.country')
-                {{-- @include('admin.views.dashboard.searches') --}}
-            </div>
+                @include('admin.views.dashboard.country') 
+            </div> --}}
 
             <div class="flex items-start gap-5 my-10">
                 @include('admin.views.dashboard.tops_post')
