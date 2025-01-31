@@ -39,6 +39,18 @@ trait Scope
         ]);
     }
 
+    public function scopeWhereSeries($query, $slug)
+    {
+        return $query->with([
+            'series' => function ($query) use ($slug) {
+                $query
+                    ->where('slug', '=', $slug)
+                    ->where('is_active', '=', true)
+                    ->firstOrFail();
+            },
+        ]);
+    }
+
     public function scopeWithSeries($query)
     {
         return $query->with([

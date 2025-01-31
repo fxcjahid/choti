@@ -26,7 +26,7 @@ class UpdateTagRequest extends FormRequest
 		return [
 			'id'	  	  => 'required|exists:tags,id',
 			'name' 	  	  => 'required|max:100|unique:tags,name,' . $this->id,
-			'slug'		  => 'nullable|max:100|regex:/^[A-Za-z-_]+$/|unique:tags,slug,' . $this->id, // Ignore unique verifation on same ID 
+			'slug'		  => 'nullable|max:100|unique:tags,slug,' . $this->id, // Ignore unique verifation on same ID 
 			'description' => 'nullable|min:10|max:2000',
 		];
 	}

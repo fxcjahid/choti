@@ -8526,7 +8526,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import 'flowbite'; 
+ // import 'flowbite';
 
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];

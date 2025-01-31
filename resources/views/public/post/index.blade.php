@@ -76,6 +76,17 @@
                     </div>
 
                     <!-- series wise post suggest -->
+                    @if ($post->series->first()?->post->count() >= 8)
+                        <section class="my-2 sm:my-5 mx-4 md:mx-8 sm:mt-9">
+                            <h2 href="#" class="mt-4 mb-4 text-2xl font-semibold text-slate-900">
+                                এই গল্পের পুরো সিরিজ দেখুনঃ
+                                <a href="{{ route('series', $post->series->first()?->slug) }}"
+                                    class="hover:underline pl-1 text-blue-700 text-blue-900">
+                                    {{ $post->series->first()?->name }}
+                                </a>
+                            </h2>
+                        </section>
+                    @endif
                     @if ($post->series->count() >= 1)
                         <section class="my-2 sm:my-5 sm:mt-9">
                             <div itemprop="post--more-series" class="mx-4 md:mx-8 px-5 pt-2 pb-1 rounded-md bg-gray-100">

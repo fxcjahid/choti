@@ -26,7 +26,7 @@ class UpdateCategoryRequest extends FormRequest
 		return [
 			'id'	  	  => 'required|exists:categories,id',
 			'name' 	  	  => 'required|max:100|unique:categories,name,' . $this->id,
-			'slug'		  => 'nullable|max:100|regex:/^[A-Za-z-_]+$/|unique:categories,slug,' . $this->id, // Ignore unique verifation on same ID 
+			'slug'		  => 'nullable|max:100|unique:categories,slug,' . $this->id, // Ignore unique verifation on same ID 
 			'description' => 'nullable|min:10|max:2000',
 		];
 	}

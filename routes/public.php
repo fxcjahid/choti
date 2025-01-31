@@ -51,20 +51,12 @@ Route::prefix('account')
             ->name('create-story');
     });
 
-Route::get('category/{category}', [CategorydController::class, 'postByCategory'])
-    ->where(['category' => '[A-Za-z-_]+'])
-    ->name('category');
-
-Route::get('series/{series}', [SeriesController::class, 'postBySeries'])
-    ->where(['series' => '[A-Za-z-_]+'])
-    ->name('series');
-
-Route::get('tags/{tag}', [TagController::class, 'postBytag'])
-    ->where(['tag' => '[A-Za-z-_]+'])
-    ->name('tag');
+Route::get('category/{category}', [CategorydController::class, 'postByCategory'])->name('category');
+Route::get('series/{series}', [SeriesController::class, 'postBySeries'])->name('series');
+Route::get('tags/{tag}', [TagController::class, 'postBytag'])->name('tag');
+Route::get('{type}/{slug}', [PostController::class, 'show'])->name('post.show');
 
 
-Route::get('{category}/{slug}', [PostController::class, 'show'])->name('post.show');
 Route::get('most-views', [PostController::class, 'mostViews'])->name('post.show.mostViews');
 
 Route::prefix('submit-new-story')

@@ -51,10 +51,10 @@ class PostController extends Controller
      * Cache::forget("breadcrumb_post_{$post->id}");
      * @param int|string $slug
      */
-    public function show($category, $slug)
+    public function show($type, $slug)
     {
-        $post = Cache::remember("post_{$category}_{$slug}", now()->addYear(), function () use ($category, $slug) {
-            return Post::findPublishPost($category, $slug);
+        $post = Cache::remember("post_{$type}_{$slug}", now()->addYear(), function () use ($type, $slug) {
+            return Post::findPublishPost($type, $slug);
         });
 
         if (! $post) {
@@ -63,9 +63,9 @@ class PostController extends Controller
 
         $post->TrackViewRecord();
 
-        $breadcrumb = Cache::remember("breadcrumb_post_{$post->id}", now()->addDay(), function () use ($post) {
-            return BreadcrumbHelper::forPost($post);
-        });
+        $breadcrumb = Cache::remember("breadcrumb_post_{$post->id}_{$type}", now()->addDay(),
+            fn () => BreadcrumbHelper::forPost($post, $type)
+        );
 
         $post->Metas();
 

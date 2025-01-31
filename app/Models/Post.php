@@ -77,9 +77,20 @@ class Post extends Model implements Viewable
      */
     public function url()
     {
-        $category = ! empty($this->category[0]->slug) ? $this->category[0]->slug : 'draft';
+        // Direct request parameters take precedence
+        $requestType = request()->category ?? request()->series ?? request()->tag;
+        if ($requestType) {
+            return route('post.show', [$requestType, $this->slug]);
+        }
 
-        return route('post.show', [$category, $this->slug]);
+        $type = request()->type;
+        $url  = collect([
+            $this->category()->where('slug', $type)->value('slug'),
+            $this->series()->where('slug', $type)->value('slug'),
+            $this->tag()->where('slug', $type)->value('slug'),
+        ])->filter()->first() ?? $this->category[0]->slug ?? 'draft';
+
+        return route('post.show', [$url, $this->slug]);
     }
 
     /**
@@ -225,16 +236,32 @@ class Post extends Model implements Viewable
      * Get active post by slug
      * @return mixed
      **/
-    public static function findPublishPost($category, $post)
+    public static function findPublishPost($type, $slug)
     {
-        return self::WithThumbnail()
+        $query = self::WithThumbnail()
             ->WithSeries()
             ->WithTag()
             ->WithComments()
             ->WherePublished()
-            ->WhereCategory($category)
-            ->whereSlug($post)
-            ->firstOrFail();
+            ->whereSlug($slug);
+
+        $post = $query->where(function ($q) use ($type) {
+            $q->WhereCategory($type);
+        })->first();
+
+        if (! $post) {
+            $post = $query->where(function ($q) use ($type) {
+                $q->WhereSeries($type);
+            })->first();
+        }
+
+        if (! $post) {
+            $post = $query->where(function ($q) use ($type) {
+                $q->WhereTag($type);
+            })->first();
+        }
+
+        return $post ?? abort(404);
     }
 
     /**
